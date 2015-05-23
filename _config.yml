@@ -14,4 +14,3 @@ github_username:    egel
 # Build settings
 markdown:   kramdown
 permalink:  pretty
-pygments:   true
