@@ -294,11 +294,16 @@ like user owner.</p>
 </td></tr></table>
 
 <blockquote>
-<p>Somtimes it is a good practice to check <code>SERVER_CONFIG_FILE</code>.
-    /usr/sbin/apache2 -V
-    source /etc/apache2/envvars
-    /usr/sbin/apache2 -V
-Should be something like <code>-D SERVER_CONFIG_FILE="apache2.conf"</code></p>
+<p>Somtimes it is a good practice to check <code>SERVER_CONFIG_FILE</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>/usr/sbin/apache2 -V
+<span class="nb">source</span> /etc/apache2/envvars
+/usr/sbin/apache2 -V
+</pre></div>
+</td></tr></table>
+
+<p>Should be something like <code>-D SERVER_CONFIG_FILE="apache2.conf"</code></p>
 </blockquote>
 <h4>Add a name to the server</h4>
 <p>Basic apache configuration does not impose add the server name, but I really

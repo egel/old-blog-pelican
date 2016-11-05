@@ -526,11 +526,16 @@ like user owner.&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Somtimes it is a good practice to check &lt;code&gt;SERVER_CONFIG_FILE&lt;/code&gt;.
-    /usr/sbin/apache2 -V
-    source /etc/apache2/envvars
-    /usr/sbin/apache2 -V
-Should be something like &lt;code&gt;-D SERVER_CONFIG_FILE="apache2.conf"&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Somtimes it is a good practice to check &lt;code&gt;SERVER_CONFIG_FILE&lt;/code&gt;.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;/usr/sbin/apache2 -V
+&lt;span class="nb"&gt;source&lt;/span&gt; /etc/apache2/envvars
+/usr/sbin/apache2 -V
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Should be something like &lt;code&gt;-D SERVER_CONFIG_FILE="apache2.conf"&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4&gt;Add a name to the server&lt;/h4&gt;
 &lt;p&gt;Basic apache configuration does not impose add the server name, but I really
