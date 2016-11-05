@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/mysql.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-06-27T00:00:00+02:00</updated><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own
+website.  It could be a simple static site, managed by some static site
+generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;,
+&lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or
+&lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that
+it's to easy and they would like to try something more complex like basic PHP
+CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;,
+&lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class
+frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
+&lt;p&gt;Whatever they choose, they will need some tools to deal with showing to the
+whole world their new website project.&lt;/p&gt;
+&lt;p&gt;In this simple article I'll show you how to build your own simple (and standard
+in these days) server configuration based on (Ubuntu 14.04 LTS) LAMP, but those
+tools can be easily replaced with others technologies. For example if you're
+interested in Django you could replace PHP language with more mature Python (of
+course some setting will vary a bit from content presented in this article, but
+in the end setup will be made).&lt;/p&gt;
+&lt;p&gt;I think this is good, start example to play with :) Enjoy.&lt;/p&gt;
+&lt;h3&gt;Table of content&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#apache-2"&gt;Apache 2&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#add-user-to-www-data-group"&gt;Add user to www-data group&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mysql"&gt;MySQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#php"&gt;PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#phpmyadmin"&gt;PHPMyAdmin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#common-problems"&gt;Common problems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Good &lt;a href="http://www.ubuntu-pomoc.org/instalacja-apache-php5-mysql/"&gt;Polish article&lt;/a&gt; and &lt;a href="https://library.linode.com/web-servers/apache/installation/ubuntu-12.04-precise-pangolin"&gt;English article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let's begin from updating our Debian based system (Ubuntu):&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get update
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Apache&lt;/h3&gt;
+&lt;p&gt;Installation Apache 2.4 with its useful dependencies:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Then restart the service with:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service apache2 restart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Or also you can use good, old school &lt;a href="https://en.wikipedia.org/wiki/Daemon_%28computing%29"&gt;daemon&lt;/a&gt; &lt;code&gt;sudo /etc/init.d/apache2 restart&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now we take a peek on our server's version by writing &lt;code&gt;apache2 -v&lt;/code&gt; in your
+console.&lt;/p&gt;
+&lt;p&gt;Now, if all went well, you could start your web browser with &lt;code&gt;http://localhost/&lt;/code&gt;
+to check if "It works!" appears to you :)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;"It works!" page is actually simple &lt;code&gt;index.html&lt;/code&gt; file stored in
+&lt;code&gt;/var/www/html/&lt;/code&gt; directory, but details comes later :)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Add user to www-data group&lt;/h4&gt;
+&lt;p&gt;Now we'd like to add your current user (&lt;code&gt;$USER&lt;/code&gt;)  to &lt;code&gt;www-data&lt;/code&gt; group used by
+apache server. We will do this to prevent you from some error-access failures
+like user owner.&lt;/p&gt;
+&lt;p&gt;To check if your current user belongs to &lt;code&gt;www-data&lt;/code&gt; group simply do:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;groups &lt;span class="nv"&gt;$USER&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Now add existing user to &lt;code&gt;www-data&lt;/code&gt; group.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo usermod -a -G &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Somtimes it is a good practice to check &lt;code&gt;SERVER_CONFIG_FILE&lt;/code&gt;.
+    /usr/sbin/apache2 -V
+    source /etc/apache2/envvars
+    /usr/sbin/apache2 -V
+Should be something like &lt;code&gt;-D SERVER_CONFIG_FILE="apache2.conf"&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Add a name to the server&lt;/h4&gt;
+&lt;p&gt;Basic apache configuration does not impose add the server name, but I really
+don't like to see some text like this below, when I reloading the server.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; * Restarting web server apache2
+AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;&amp;#39;s fully qualified domain name, using 127.0.1.1. Set the &amp;#39;&lt;/span&gt;ServerName&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; directive globally to suppress this message
+ ...done.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;That's why we will name it :)&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ServerName localhost&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/apache2/conf-available/servername.conf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Then we're enable its name in for apache config by&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo a2enconf servername
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Just restart the server to make sure that all is done correctly.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service apache2 restart
+ * Restarting web server apache2
+  ...done.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;...and now full smile should appear on your face :)&lt;/p&gt;
+&lt;h3&gt;MySQL&lt;/h3&gt;
+&lt;p&gt;MySQL is one of the most popular databases on the website market. So we will
+install it along.&lt;/p&gt;
+&lt;p&gt;During the installation process program ask you for the root password, so we
+write it and &lt;strong&gt;remeber it&lt;/strong&gt; for later use.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install mysql-server
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;That's it for the database server :)&lt;/p&gt;
+&lt;h3&gt;PHP&lt;/h3&gt;
+&lt;p&gt;Installation of the PHP interpreter isn't hard. One important thing is to install
+all modules related to our new setup, enable it, and configure to suite your
+needs. I'll show you most commonly used setup to save your precious time
+searching it through Internet.&lt;/p&gt;
+&lt;h4&gt;Installation of PHP interpreter&lt;/h4&gt;
+&lt;p&gt;Below we will install all useful modules, and enable them Apache server and PHP.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo a2enmod php5
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo a2enmod rewrite
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo php5enmod mcrypt   &lt;span class="c"&gt;# required by phpMyAdmin&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h4&gt;Configuration files&lt;/h4&gt;
+&lt;p&gt;Into below Apache's PHP configuration file stored at
+&lt;code&gt;/etc/php5/apache2/php.ini&lt;/code&gt;, it worth to change default parameters according to
+those presented below. There are most commonly changed variables for PHP.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="na"&gt;upload_max_filesize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
+&lt;span class="na"&gt;post_max_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
+&lt;span class="na"&gt;display_errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;On&lt;/span&gt;
+&lt;span class="na"&gt;display_startup_errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;On&lt;/span&gt;
+&lt;span class="na"&gt;track_errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;On&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h4&gt;Other useful configuration files&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/etc/apache2/sites-available/default&lt;/code&gt;
+&lt;!--- &lt;code&gt;/home/$USER/apache/conf/httpd.conf&lt;/code&gt;--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;PHPMyAdmin&lt;/h3&gt;
+&lt;p&gt;Installation of PHPMyAdmin is trivial.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install phpmyadmin
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;During the installation, wizard will ask you for:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Which WWW Server would you like to choose. We mark (with space key)
+    &lt;code&gt;apache2&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Next window is the configuration of phpMyAdmin package and integration with
+    current database. We mark &lt;code&gt;Yes&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sometimes we made mistake during this installation process, so command to reopen
+this configuration wizard is &lt;code&gt;sudo dpkg-reconfigure phpmyadmin&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Add VirtualHost&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Good practice:&lt;/strong&gt; If you want to create site ex: &lt;code&gt;egel.pl&lt;/code&gt;, write conf file like this &lt;code&gt;egel.pl.conf&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/pelican-egel-blog.local.conf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;And create something like this&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nb"&gt;ServerAdmin&lt;/span&gt; admin@example.com
+  &lt;span class="nb"&gt;ServerName&lt;/span&gt; pelican-egel-blog.local
+  &lt;span class="nb"&gt;DocumentRoot&lt;/span&gt; &lt;span class="sx"&gt;/var/www/pelican-egel-blog.local/public_html/&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/var/www/pelican-egel-blog.local/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nb"&gt;AllowOverride&lt;/span&gt; &lt;span class="k"&gt;All&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+
+  &lt;span class="nb"&gt;ErrorLog&lt;/span&gt; ${APACHE_LOG_DIR}/error.log
+  &lt;span class="nb"&gt;CustomLog&lt;/span&gt; ${APACHE_LOG_DIR}/access.log combined
+&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Save it.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s &lt;span class="nv"&gt;$HOME&lt;/span&gt;/workspace/pelican-egel-blog/output/ /var/www/pelican-egel-blog.local/public_html
+sudo a2ensite pelican-egel-blog.local.conf
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 pelican-egel-blog.local&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Then &lt;code&gt;sudo service apache2 reload&lt;/code&gt; and open&lt;/p&gt;
+&lt;h3&gt;Creating public_html directory for the user&lt;/h3&gt;
+&lt;p&gt;Some people not agree with it (mainly by security issues it can cause) but
+apache also support the old user catalog usually stored at &lt;code&gt;~/public_html&lt;/code&gt;,
+and it can be working like &lt;code&gt;/var/www/html&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;There are 2 different approaches for creating this directory.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;First one assumes that User's catalog (~/public_html) should be owned by
+    &lt;a href="https://en.wikipedia.org/wiki/Hir_%28disambiguation%29"&gt;hir&lt;/a&gt; and hir alone, also with files permissions.&lt;/li&gt;
+&lt;li&gt;The second one, presuppose that all files should be owned by &lt;code&gt;www-data&lt;/code&gt;
+    user. This solution is a bit better because other files migration not cause
+    the access collisions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Personally, I prefer the second approach.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To enable this magical directory we need to edit
+&lt;code&gt;/etc/apache2/mods-enabled/php5.conf&lt;/code&gt; (it may require &lt;code&gt;sudo&lt;/code&gt; privileges to save
+it).&lt;/p&gt;
+&lt;p&gt;Into this file we need to comment some lines (&lt;code&gt;##&lt;/code&gt;) like in below snippet.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.ph(p[345]?|t|tml)$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nb"&gt;SetHandler&lt;/span&gt; application/x-httpd-php
+&lt;span class="nt"&gt;&amp;lt;/FilesMatch&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.phps$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nb"&gt;SetHandler&lt;/span&gt; application/x-httpd-php-source
+    &lt;span class="c"&gt;# Deny access to raw php sources by default&lt;/span&gt;
+    &lt;span class="c"&gt;# To re-enable it&amp;#39;s recommended to enable access to the files&lt;/span&gt;
+    &lt;span class="c"&gt;# only in specific virtual host or directory&lt;/span&gt;
+    &lt;span class="nb"&gt;Order&lt;/span&gt; Deny,Allow
+    &lt;span class="nb"&gt;Deny&lt;/span&gt; from &lt;span class="k"&gt;all&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/FilesMatch&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;# Deny access to files without filename (e.g. &amp;#39;.php&amp;#39;)&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;^\.ph(p[345]?|t|tml|ps)$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nb"&gt;Order&lt;/span&gt; Deny,Allow
+    &lt;span class="nb"&gt;Deny&lt;/span&gt; from &lt;span class="k"&gt;all&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/FilesMatch&amp;gt;&lt;/span&gt;
+
+&lt;span class="c"&gt;# Running PHP scripts in user directories is disabled by default&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="c"&gt;# To re-enable PHP in user directories comment the following lines&lt;/span&gt;
+&lt;span class="c"&gt;# (from &amp;lt;IfModule ...&amp;gt; to &amp;lt;/IfModule&amp;gt;.) Do NOT set it to On as it&lt;/span&gt;
+&lt;span class="c"&gt;# prevents .htaccess files from disabling it.&lt;/span&gt;
+&lt;span class="c"&gt;##&amp;lt;IfModule mod_userdir.c&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;##    &amp;lt;Directory /home/*/public_html&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;##        php_admin_flag engine Off&lt;/span&gt;
+&lt;span class="c"&gt;##    &amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;##&amp;lt;/IfModule&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Now we set server, so that we can throw files into the &lt;code&gt;~/public_html&lt;/code&gt;
+directory. It maybe necessary to give the appropriate rights for the directory
+so we need to take this under consideration as well.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mkdir ~/public_html
+chmod &lt;span class="m"&gt;775&lt;/span&gt; ~/public_html
+sudo a2enmod userdir
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Now restart the apache and since this moment we can easily use &lt;code&gt;~/public_html&lt;/code&gt; in
+all user's catalogs like the server's one.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo /etc/init.d/apache2 restart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h5&gt;Setup the httpd.conf&lt;/h5&gt;
+&lt;p&gt;We locate our &lt;code&gt;httpd.conf&lt;/code&gt; file.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt; For the different systems vary called &lt;/strong&gt;, for example, for Ubuntu 14.04 64-bit is a &lt;code&gt;apache2.conf&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We remember the path for running apache2&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ps -ef &lt;span class="p"&gt;|&lt;/span&gt; grep apache
+apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt; Oct20 ?        00:00:00 /usr/sbin/apache2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Now we add &lt;code&gt;-V&lt;/code&gt; flag&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V &lt;span class="p"&gt;|&lt;/span&gt; grep SERVER_CONFIG_FILE
+-D &lt;span class="nv"&gt;SERVER_CONFIG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/apache2/apache2.conf&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Next we are open the file and we can add our path to &lt;code&gt;public_html&lt;/code&gt; inside:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/home/maciej/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nb"&gt;Options&lt;/span&gt; Indexes FollowSymLinks
+    &lt;span class="nb"&gt;AllowOverride&lt;/span&gt; &lt;span class="k"&gt;All&lt;/span&gt;
+    &lt;span class="nb"&gt;Require&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; granted
+&lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;restart and we are home.&lt;/p&gt;
+&lt;h5&gt;May occur the problem like "index.php not found"&lt;/h5&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;Not Found
+
+The requested URL /index.php was not found on this server.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Probably the cause of that is rewriting the URL into for example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Joomla: &lt;code&gt;Global config&lt;/code&gt; &amp;gt; &lt;code&gt;Adjust rewriting URLs&lt;/code&gt; and set for &lt;strong&gt;OFF&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Problem #1&lt;/h3&gt;
+&lt;p&gt;Once you install the module, the module will be available in the &lt;code&gt;/etc/apache2/mods-available&lt;/code&gt; directory. You can use the &lt;code&gt;a2enmod&lt;/code&gt; command to enable a module. You can use the &lt;code&gt;a2dismod&lt;/code&gt; command to disable a module. Once you enable the module, the module will be available in the &lt;code&gt;/etc/apache2/mods-enabled&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;sudo a2enmod rewrite&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Problem #2&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/6245895/apache2-on-ubuntu-php-files-downloading"&gt;Apache2 on ubuntu - PHP downloading files insteed of run&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Problem #3&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Files&lt;/strong&gt; should have permissions rights &lt;strong&gt;664&lt;/strong&gt;, while &lt;strong&gt;directories 755&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The exceptions are, of course, executable files.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Example of changes for both types, files and directories (recursively)&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;find ~/public_html -type d -exec chmod &lt;span class="m"&gt;755&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;find ~/public_html -type f -exec chmod &lt;span class="m"&gt;644&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Problem #4&lt;/h3&gt;
+&lt;p&gt;Updating all folders and files for &lt;code&gt;www-data&lt;/code&gt; user into the &lt;code&gt;public_html&lt;/code&gt; directory.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+sudo adduser &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
+sudo chown -R www-data:www-data /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/public_html
+sudo chmod -R &lt;span class="m"&gt;775&lt;/span&gt; /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/public_html
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Save it inside &lt;code&gt;/home/$USER/bin&lt;/code&gt; and make it executable using:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo chmod +x /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/bin/public_html_fix.sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="apache"></category><category term="mysql"></category><category term="php"></category><category term="domains"></category></entry></feed>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/category/diary.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-04-13T12:44:00+02:00</updated><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
+ &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and
+&lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real
+backend was being built.&lt;/p&gt;
+&lt;p&gt;The main gole for proper nginx configuration was to serve &lt;code&gt;*.example.dev&lt;/code&gt;
+domains, but with some exceptions (restrictions) for subdomains:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;www&lt;/code&gt; subdomain as a legacy restriction&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;api&lt;/code&gt; subdomain reserved for final REST API&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tests&lt;/code&gt; this subdomain (for my purpose only) provides easy URL to code coverage with
+    unit tests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I use &lt;code&gt;dev&lt;/code&gt; domain only for on my local machine only. Feel free to change it
+on whatever name you like.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While building frontend application I have made some basic nginx configuration
+and it looks like this snippet presented at the bottom.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It might be important for Readers. We have decided to split application for two separate projects, due to AngularJS have problems with support of multiple subdomains. Finally one of our application serve subdomains &lt;code&gt;&amp;lt;variable&amp;gt;.example.dev&lt;/code&gt; and other serve bacis domain &lt;code&gt;example.dev&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This configuration provides 5 servers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;First one is for frontend application, which may support organizations with
+    some exceptions for &lt;code&gt;api&lt;/code&gt;, &lt;code&gt;tests&lt;/code&gt; and &lt;code&gt;www&lt;/code&gt; (ex.: &lt;code&gt;companyname.example.dev&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Second for legacy domain &lt;code&gt;www&lt;/code&gt; redirect.&lt;/li&gt;
+&lt;li&gt;The third is for frontend aplication which may support only basic domain (ex.: &lt;code&gt;example.dev&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Next one is for REST backend domain redirect provided by apiary.&lt;/li&gt;
+&lt;li&gt;The Last one provides easy access for auto generated code coverage for
+    fronted app.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="p"&gt;~&lt;/span&gt;&lt;span class="sr"&gt;^(?:(?!www)(?!api)(?!tests))(.*)\.example\.dev$;&lt;/span&gt;
+  &lt;span class="s"&gt;access_log&lt;/span&gt; &lt;span class="s"&gt;/tmp/subdomains.example.dev.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;error_log&lt;/span&gt;  &lt;span class="s"&gt;/tmp/subdomains.example.dev.error.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;client_max_body_size&lt;/span&gt; &lt;span class="s"&gt;100M&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;location&lt;/span&gt; &lt;span class="s"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kn"&gt;add_header&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Access-Control-Allow-Origin&amp;#39;&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/ABSOLUTE_PATH_TO_WORKING_DIR/example-subdomain-frontend/build&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kn"&gt;try_files&lt;/span&gt; &lt;span class="nv"&gt;$uri&lt;/span&gt; &lt;span class="nv"&gt;$uri/&lt;/span&gt; &lt;span class="s"&gt;/index.html&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="s"&gt;www.example.dev&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;301&lt;/span&gt; &lt;span class="nv"&gt;$scheme://exampe.dev$request_uri&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="s"&gt;example.dev&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;access_log&lt;/span&gt; &lt;span class="s"&gt;/tmp/example.dev.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;error_log&lt;/span&gt;  &lt;span class="s"&gt;/tmp/example.dev.error.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;client_max_body_size&lt;/span&gt; &lt;span class="s"&gt;100M&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;location&lt;/span&gt; &lt;span class="s"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kn"&gt;add_header&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Access-Control-Allow-Origin&amp;#39;&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/ABSOLUTE_PATH_TO_WORKING_DIR/example-domain-frontend/build&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kn"&gt;try_files&lt;/span&gt; &lt;span class="nv"&gt;$uri&lt;/span&gt; &lt;span class="nv"&gt;$uri/&lt;/span&gt; &lt;span class="s"&gt;/index.html&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="s"&gt;api.example.dev&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;access_log&lt;/span&gt; &lt;span class="s"&gt;/tmp/api.example.dev.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;error_log&lt;/span&gt;  &lt;span class="s"&gt;/tmp/api.example.dev.error.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;location&lt;/span&gt; &lt;span class="s"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kn"&gt;add_header&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Access-Control-Allow-Credentials&amp;#39;&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;true&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kn"&gt;add_header&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Access-Control-Allow-Methods&amp;#39;&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;GET,&lt;/span&gt; &lt;span class="s"&gt;POST,&lt;/span&gt; &lt;span class="s"&gt;PUT,&lt;/span&gt; &lt;span class="s"&gt;DELETE,&lt;/span&gt; &lt;span class="s"&gt;OPTIONS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kn"&gt;add_header&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Access-Control-Allow-Headers&amp;#39;&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="kn"&gt;proxy_pass&lt;/span&gt; &lt;span class="s"&gt;http://private-ABCDE-example.apiary-mock.com&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="s"&gt;tests.example.dev&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;client_max_body_size&lt;/span&gt; &lt;span class="s"&gt;100M&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/ABSOLUTE_PATH_TO_WORKING_DIR/example-subdomain-frontend/tests/test-coverage/PhantomJS&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="s"&gt;.1.1&lt;/span&gt; &lt;span class="s"&gt;(Mac&lt;/span&gt; &lt;span class="s"&gt;OS&lt;/span&gt; &lt;span class="s"&gt;X&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="s"&gt;.0.0)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry><entry><title>Migrating blog content</title><link href="http://egel.pl/migrating-blog-content.html" rel="alternate"></link><updated>2016-03-14T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-03-14:migrating-blog-content.html</id><summary type="html">&lt;p&gt;Currently, I am in a phase of migrating my content from legacy Wordpress to
+Pelican. To finally complete this, I have to translate all content from Polish
+to English to reach further audience.&lt;/p&gt;
+&lt;p&gt;Unfortunately, at this moment I suffer for lack of free time. There are many
+posts to process and it takes a lot of effort to update them for appropriate
+level of well written article.&lt;/p&gt;
+&lt;p&gt;As soon as I finish transfer of my articles, I will post it here. By this
+moment, I would like to invite you take a look on actual a list, you may find
+something interesting here.&lt;/p&gt;
+&lt;p&gt;Thank you for your indulgence and stay tuned :)&lt;/p&gt;</summary><category term="pelican"></category><category term="wordpress"></category></entry><entry><title>Moving from Wordpress to Pelican</title><link href="http://egel.pl/moving-from-wordpress-to-pelican.html" rel="alternate"></link><updated>2016-02-25T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-25:moving-from-wordpress-to-pelican.html</id><summary type="html">&lt;p&gt;I have to start with words "I used wordpress for 2 yeas constantly". During
+this period of time, several times I had problems with many basic stuff like
+uploading and managing images, insert some code snippets (like simple &lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; or
+&lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; elements), constantly updating framework core, but is not the point.&lt;/p&gt;
+&lt;h2&gt;Objective of frameworks&lt;/h2&gt;
+&lt;p&gt;IMHO Wordpress is great for PR guys, not for programmers/hackers. PR guys
+usually wants to quickly upload news with few sample photos, and they use for it
+some &lt;a href="https://en.wikipedia.org/wiki/WYSIWYG"&gt;WYSIWYG&lt;/a&gt; HTML editors like &lt;a href="https://www.tinymce.com/"&gt;TinyMCE&lt;/a&gt;
+or &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;. This editors can be really "smart" and do
+amazing job - saving text with HTML conventions, but after some time you will
+realize that this kind of making content may not suites you, your idea of
+writing, which was in my case.&lt;/p&gt;
+&lt;p&gt;I hope I would not say lie to you that programmers, web admins or hackers really
+loved Markdown syntax - I loved it. It has a very clean and simple syntax, which
+can allows you to focus on making some content and do not concern anything else
+(your content will always have the same generated HTML code).  Markdown power is
+especially visible for blogs and basic documentation (like simple README files)
+where you can mainly focus on content with some basic graphics which illustrate
+the whole content.&lt;/p&gt;
+&lt;p&gt;In time I realize that kind of magic what those WYSYWIG live editors are
+making is not for me, not for my profession - programmer. But here not
+profession is important, but the care about the code you are writing, and that
+is why programmers and hackers find in those web pages generators a true ally.&lt;/p&gt;
+&lt;h2&gt;Finding the single point of truth&lt;/h2&gt;
+&lt;p&gt;After while I take a look around market and instantly remembered that is
+something like static pages generators. After few minutes, I just surfing among
+some rankings that gather some basic data about many frameworks like this one
+&lt;a href="https://www.staticgen.com/"&gt;https://www.staticgen.com/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are many of them, and most popular at the moment of choosing one was:
+Jekyll, Gitbook, Octopress, Hexo or Hugo, then was the Pelican.&lt;/p&gt;
+&lt;p&gt;Why pelican? You will probably as... Hmmm, the answer is simple, because I
+really like Python language.&lt;/p&gt;
+&lt;p&gt;I will not favoring any of those frameworks, because it point less and actually
+depends on user preferences and language taste, then just start writing in it :)&lt;/p&gt;
+&lt;h2&gt;Pros and cons of migration&lt;/h2&gt;
+&lt;p&gt;As an advantage of migration to static webpages generators I can point:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Writing directly through your SSH connection.&lt;/li&gt;
+&lt;li&gt;Writing posts extremely fluent in Vim or Emacs - I realize that is not an
+      advantage for all ;)&lt;/li&gt;
+&lt;li&gt;Improve performance of displaying your webpage (non database framework is
+      faster then static web generator)&lt;/li&gt;
+&lt;li&gt;Improve content visibility by adding many useful plugins (cloud tags,
+      code syntax highlighting, and many more)&lt;/li&gt;
+&lt;li&gt;Host it anywhere&lt;/li&gt;
+&lt;li&gt;It likes to be &lt;a href="https://git-scm.com/"&gt;git&lt;/a&gt;-ed ;)&lt;/li&gt;
+&lt;li&gt;Making articles in 3 types of text syntax (&lt;code&gt;.rst&lt;/code&gt;, &lt;code&gt;.md&lt;/code&gt; or &lt;code&gt;.adoc&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Articles written in markdown can be easy to migrated almost any type of text
+      processor like LaTeX or Word/Writer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the other side, disadvantages can be:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Face the problem of fast and clean migrating HTML content to reStructuredText, Markdown, or
+      AsciiDoc&lt;/li&gt;
+&lt;li&gt;Change your habits of directly web editing content into CMS&lt;/li&gt;
+&lt;li&gt;Generate content after changes (there are some easy techniques which
+      constantly watch the content for any changes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;It is worth it?&lt;/h2&gt;
+&lt;p&gt;If you want to just write blog or blog-like page in easy to write syntax (like
+markdown) I definitely say YES, it is worth the time.&lt;/p&gt;
+&lt;p&gt;But if you expect whole next level of writing articles like you do in CMS, turn
+around and go back to your stuff, you will waste your time implement it.&lt;/p&gt;</summary><category term="wordpress"></category><category term="pelican"></category></entry></feed>

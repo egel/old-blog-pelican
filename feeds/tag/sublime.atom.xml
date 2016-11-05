@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/sublime.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-10-01T19:30:00+02:00</updated><entry><title>Discover the Sublime Text 3 Beta</title><link href="http://egel.pl/discover-the-sublime-text-3-beta.html" rel="alternate"></link><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:discover-the-sublime-text-3-beta.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/Sublime_Text_Logo.png" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Sublime is just amazing text editor. I've loved it since I've taste it. However its uniqueness and some advantage in contrast with other GUI editors that is versatility of usage and huge staff of plug-ins supports user experience.&lt;/p&gt;
+&lt;p&gt;It is also available with free trial version for many popular platforms (Mac, Linux, Windows). But in this article I will focus on configuration most suitable for my daily basics with system from Linux family, naturally based on Debian.&lt;/p&gt;
+&lt;!--
+#### Installation
+
+*   [Installation of Sublime Text 3 Beta][1]
+*   [Installation of Package Control][2]
+
+#### Sublime Plug-ins
+
+*   [All Autocomplete]({filename}#all-autocomplete)
+*   [Syntax highlight for Sass][4]
+*   [Less Syntax][5]
+*   [CoffeeScript Sublime Plugin][6]
+*   [Live Loader][7]
+*   [Markdown Preview][8]
+*   [Markdown Extended][9]
+*   [GitGutter][10]
+*   [Git-Status​Bar][11]
+*   [Sublime linter (core)][12]
+*   [Sidebar Enhancements][13]
+*   [Djaneiro][14]
+*   [VimL][15]
+*   [Soda Theme][16]
+*   [Tommorow Theme][17]
+*   [Color Scheme Selector][18]
+*   [Vintageous][19]
+
+#### My Configuration
+
+*   [Key Bindings - User][20]
+*   [Settings - User][21]
+--&gt;
+
+&lt;hr /&gt;
+&lt;h3&gt;Installation of Sublime Text 3&lt;/h3&gt;
+&lt;p&gt;Probably you have already notice that "beta" in title of the article. Authors of the editor have made a very stable version of software, even if it is still in beta! They rocks! I've been very surprised by the quality and stability.&lt;/p&gt;
+&lt;p&gt;The best method of installation is go to &lt;a href="https://www.sublimetext.com/3"&gt;official Sublime Text 3 website&lt;/a&gt;, download it and install.&lt;/p&gt;
+&lt;h3&gt;Package Control&lt;/h3&gt;
+&lt;p&gt;On official website of &lt;a href="https://packagecontrol.io/installation"&gt;packagecontrol.io&lt;/a&gt; (which is a package manager for sublime) we can find Sublime Text 3 code snippet paste it into sublime console (can open with &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;~&lt;/code&gt;) and press enter. After seconds, we can access to Sublime Package Manager by combination of &lt;code&gt;Shift&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;P&lt;/code&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;Plug-ins&lt;/h3&gt;
+&lt;p&gt;Plug-ins extend default editor functionality.&lt;/p&gt;
+&lt;h4&gt;All Autocomplete&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; All Autocomplete&lt;/p&gt;
+&lt;h4&gt;Syntax highlight for Sass&lt;/h4&gt;
+&lt;p&gt;Repository of plug-in: &lt;a href="https://github.com/P233/Syntax-highlighting-for-Sass"&gt;Syntax highlighting for Sass&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Syntax highlighting for Sass&lt;/p&gt;
+&lt;h4&gt;Less Syntax&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Less Syntax&lt;/p&gt;
+&lt;h4&gt;CoffeeScript&lt;/h4&gt;
+&lt;p&gt;Repository of plug-in: &lt;a href="https://github.com/Xavura/CoffeeScript-Sublime-Plugin"&gt;CoffeeScript Sublime Plugin&lt;/a&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/.config/sublime-text-3/Packages &lt;span class="se"&gt;\&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; rm -rf CoffeeScript &lt;span class="se"&gt;\&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git clone https://github.com/Xavura/CoffeeScript-Sublime-Plugin.git CoffeeScript
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h4&gt;Live Loader&lt;/h4&gt;
+&lt;p&gt;Repository of plug-in: &lt;a href="https://github.com/dz0ny/LiveReload-sublimetext2"&gt;Github repo&lt;/a&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/.config/sublime-text-3/Packages &lt;span class="se"&gt;\&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; rm -rf LiveReload &lt;span class="se"&gt;\&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git clone -b devel https://github.com/dz0ny/LiveReload-sublimetext2.git LiveReload
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;This plug-in also be added as plug-in of your browser &lt;a href="http://livereload.com/"&gt;LiveReload&lt;/a&gt; and while
+saving file into Sublime the content will be automaticaly reloaded into browser.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei"&gt;Chrome addon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Markdown Extended&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Markdown Extended&lt;/p&gt;
+&lt;h4&gt;GitGutter&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; GitGutter&lt;/p&gt;
+&lt;h4&gt;Git-Status-Bar&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Git-Status-Bar&lt;/p&gt;
+&lt;h4&gt;Local History&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Local-history&lt;/p&gt;
+&lt;h4&gt;EditorConfig&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; EditorConfig&lt;/p&gt;
+&lt;h4&gt;Sublime linter (core)&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Sublime linter v3&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Extensions of the plug-in&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://sublime.wbond.net/packages/SublimeLinter-annotations"&gt;SublimeLinter-annotations&lt;/a&gt; - marks in color annotations like: TODO, README, FIXME&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/SublimeLinter/SublimeLinter-csslint"&gt;SublimeLinter-csslint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SublimeLinter-contrib-scss-lint&lt;/li&gt;
+&lt;li&gt;SublimeLinter-php&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Sidebar Enhancements&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Sidebar Enhancements&lt;/p&gt;
+&lt;h4&gt;Djaneiro&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Djaneiro&lt;/p&gt;
+&lt;h4&gt;VimL&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; VimL&lt;/p&gt;
+&lt;h4&gt;Soda Theme&lt;/h4&gt;
+&lt;p&gt;Best theme for the editor I've came across. The website of theme &lt;a href="http://buymeasoda.github.io/soda-theme/"&gt;http://buymeasoda.github.io/soda-theme/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Theme - Soda&lt;/p&gt;
+&lt;p&gt;To make it work, you need to add config line to &lt;code&gt;Settings - User&lt;/code&gt; into Sublime.
+More info how to achieve this you can find &lt;a href="#settings-user"&gt;Settings - User&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Gruvbox Dark Theme&lt;/h4&gt;
+&lt;p&gt;Instalation through Package Manager: Install Package &amp;gt; Gruvbox Dark&lt;/p&gt;
+&lt;p&gt;To activate it go to &lt;code&gt;Preferences&lt;/code&gt; &amp;gt; &lt;code&gt;Gruvbox Dark&lt;/code&gt; and choose &lt;code&gt;gruvbox&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Color Scheme Selector&lt;/h4&gt;
+&lt;p&gt;The website of plug-in: &lt;a href="https://github.com/jugyo/SublimeColorSchemeSelector"&gt;https://github.com/jugyo/SublimeColorSchemeSelector&lt;/a&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/.config/sublime-text-3/Packages &lt;span class="se"&gt;\&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; rm -rf &lt;span class="s2"&gt;&amp;quot;ColorSchemeSelector&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git clone https://github.com/jugyo/SublimeColorSchemeSelector.git &lt;span class="s2"&gt;&amp;quot;ColorSchemeSelector&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;Here I paste my configurations of Sublime editor, but it can become outdated in time.&lt;/p&gt;
+&lt;h4&gt;Key Bindings - User&lt;/h4&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;alt+up&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;swap_line_up&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;alt+down&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;swap_line_down&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ctrl+shift+up&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;duplicate_line&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ctrl+shift+down&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;duplicate_line&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ctrl+shift+x&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;swap_case&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ctrl+f5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;refresh_folder_list&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Quick&lt;/span&gt; &lt;span class="err"&gt;rename&lt;/span&gt; &lt;span class="err"&gt;of&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;file&lt;/span&gt; &lt;span class="err"&gt;(require&lt;/span&gt; &lt;span class="err"&gt;SideBar&lt;/span&gt; &lt;span class="err"&gt;Enhancements&lt;/span&gt; &lt;span class="err"&gt;plug-in)&lt;/span&gt;
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;f2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;side_bar_move&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Toggle&lt;/span&gt; &lt;span class="err"&gt;side&lt;/span&gt; &lt;span class="err"&gt;bar&lt;/span&gt;
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;f9&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;toggle_side_bar&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h4&gt;Settings - User&lt;/h4&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Colors&lt;/span&gt; &lt;span class="err"&gt;+&lt;/span&gt; &lt;span class="err"&gt;Themes&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;theme&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Soda Dark 3.sublime-theme&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;color_scheme&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Font&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;font_face&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Ubuntu Mono&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;font_size&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;15.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;line_padding_bottom&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;line_padding_top&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;highlight_line&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;font_options&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;subpixel_antialias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;no_bold&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;],&lt;/span&gt;
+
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Editor&lt;/span&gt; &lt;span class="err"&gt;behavior&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;spell_check&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;dictionary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Packages/Language - English/en_US.dic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;open_files_in_new_window&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;highlight_modified_tabs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;always_show_minimap_viewport&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;bold_folder_labels&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;fade_fold_buttons&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;draw_minimap_border&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;find_selected_text&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;rulers&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="mi"&gt;79&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;show_encoding&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;scroll_past_end&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;caret_style&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;solid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;wide_caret&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Ignored&lt;/span&gt; &lt;span class="err"&gt;packages&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;ignored_packages&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;Vintage&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;],&lt;/span&gt;
+
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Whitespace&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;no&lt;/span&gt; &lt;span class="err"&gt;tabs,&lt;/span&gt; &lt;span class="err"&gt;trimming,&lt;/span&gt; &lt;span class="err"&gt;end&lt;/span&gt; &lt;span class="err"&gt;files&lt;/span&gt; &lt;span class="err"&gt;with&lt;/span&gt; &lt;span class="err"&gt;\n&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;tab_size&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;translate_tabs_to_spaces&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;trim_automatic_white_space&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;trim_trailing_white_space_on_save&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;ensure_newline_at_eof_on_save&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Sidebar&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;exclude&lt;/span&gt; &lt;span class="err"&gt;distracting&lt;/span&gt; &lt;span class="err"&gt;files&lt;/span&gt; &lt;span class="err"&gt;and&lt;/span&gt; &lt;span class="err"&gt;folders&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;file_exclude_patterns&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.pyc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.pyo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.exe&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.dll&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.obj&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.o&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.a&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.lib&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.so&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.dylib&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.ncb&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.sdf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.suo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.pdb&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.idb&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;.DS_Store&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.psd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;*.db&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;folder_exclude_patterns&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;.git&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;__pycache__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;env&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;env3&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="text editor"></category><category term="sublime"></category><category term="gui"></category></entry></feed>

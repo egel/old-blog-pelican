@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Thesis in LaTeX - part 3 - The Egel's Blog</title>
+  <!-- Using the latest rendering mode for IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="http://egel.pl/extras/favicon.png" rel="icon">
+
+<link rel="canonical" href="http://egel.pl/thesis-in-latex-part-3.html">
+
+    <meta name="author" content="Maciej Sypień" />
+    <meta name="keywords" content="latex,university" />
+    <meta name="description" content="In this article I will try to explain how to prepare front page for our thesis in LaTeX. I will also say something about good practices in writing and how to proper format the content into LaTeX files using the built-in commands. Furthermore I will show you how to use ..." />
+
+    <meta property="og:site_name" content="The Egel's Blog" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Thesis in LaTeX - part 3"/>
+    <meta property="og:url" content="http://egel.pl/thesis-in-latex-part-3.html"/>
+    <meta property="og:description" content="In this article I will try to explain how to prepare front page for our thesis in LaTeX. I will also say something about good practices in writing and how to proper format the content into LaTeX files using the built-in commands. Furthermore I will show you how to use ..."/>
+    <meta property="article:published_time" content="2015-04-06" />
+      <meta property="article:section" content="Self improvement" />
+      <meta property="article:tag" content="latex" />
+      <meta property="article:tag" content="university" />
+      <meta property="article:author" content="Maciej Sypień" />
+
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="http://egel.pl/theme/css/styles.css" type="text/css"/>
+  <link href="http://egel.pl/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Egel's Blog ATOM Feed"/>
+</head>
+<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="http://egel.pl/" class="navbar-brand">
+The Egel's Blog        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+
+          <li ><a href="http://egel.pl">Home</a></li>
+
+            <li ><a href="http://egel.pl/pages/about-me.html">About me</a></li>
+
+          <li >
+            <a href="http://egel.pl/reading-list.html">Reading list</a>
+          </li>
+          <li >
+            <a href="http://egel.pl/archives.html">Archives</a>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav>
+  <header class="intro-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="site-heading">
+            <h1>Do more in less time</h1>
+            <hr class="small">
+            <span class="subheading">Simplicity and clarity of the implementation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 sidebar sidebar-tablet">
+<div class="aboutme">
+  <h4>About the author</h4>
+    <img class="avatar thumbnail" src="https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=200" />
+  <p>
+    
+Programmer, soundtracks enthusiast, astrophysics fan.
+Occasionally hacking this blog with new articles.
+
+  </p>
+</div>  <ul class="list-group social-list">
+    <li>
+      <ul class="list-inline" id="social">
+        <li ><a href="https://twitter.com/MaciejSypien" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a></li>
+        <li ><a href="https://github.com/egel" target="_blank"><i class="fa fa-github-square fa-lg"></i></a></li>
+        <li ><a href="https://www.linkedin.com/in/maciejsypien" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a></li>
+<li><a href="http://egel.pl/feeds/all.atom.xml" title="Feed atom" target="_blank"><i class="fa fa-lg fa-rss-square"></i></a></li>      </ul>
+    </li>
+  </ul>
+
+
+<section>
+  <ul class="list-group">
+
+
+    <li>
+      <h4>Categories</h4>
+      <ul id="categories">
+        <li>
+          <a href="http://egel.pl/category/diary.html">Diary</a>
+        </li>
+        <li>
+          <a href="http://egel.pl/category/discovery.html">Discovery</a>
+        </li>
+        <li>
+          <a href="http://egel.pl/category/how-to.html">how to</a>
+        </li>
+        <li>
+          <a href="http://egel.pl/category/self-improvement.html">Self improvement</a>
+        </li>
+      </ul>
+    </li>
+
+      <li><h4><span class="icon-label">Tags</span></h4>
+        <ul class="list-inline tagcloud" id="tags">
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/angularjs.html">angularjs</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/apache.html">apache</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/apiary.html">apiary</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/console.html">console</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/domains.html">domains</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/frontend.html">frontend</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/git.html">git</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/gui.html">gui</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/install.html">install</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/latex.html">latex</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/linux.html">linux</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/mysql.html">mysql</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/nginx.html">nginx</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/osx.html">osx</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/pelican.html">pelican</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/php.html">php</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/sublime.html">sublime</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/terminal.html">terminal</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/text-editor.html">text-editor</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/university.html">university</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/vim.html">vim</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/wordpress.html">wordpress</a>
+          </li>
+        </ul>
+      </li>
+
+
+  </ul>
+</section>
+      </div>
+
+      <div class="col-sm-9">
+
+  <section id="content" class="single-article">
+    <article>
+      <header class="page-header">
+<div class="post-info">
+  <span class="published">
+    <time datetime="2015-04-06T00:00:00+02:00">Apr 6, 2015</time>
+  </span>
+
+    <span class="published"> · Category</span>
+    <a href="http://egel.pl/category/self-improvement.html">Self improvement</a>
+
+
+&middot;   <i class="fa fa-tags text-muted"></i>
+  	<a href="http://egel.pl/tag/latex.html">latex</a>,  	<a href="http://egel.pl/tag/university.html">university</a>  
+</div><!-- /.post-info -->        <h1>
+          Thesis in LaTeX - part 3
+          <!-- <a href="http://egel.pl/thesis-in-latex-part-3.html" rel="bookmark" title="Permalink to Thesis in LaTeX - part 3">
+          </a> -->
+        </h1>
+      </header>
+      <div class="entry-content">
+        <div class="intro-article-image-md">
+<p><img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /></p>
+</div>
+<p>In this article I will try to explain how to prepare front page for our thesis in LaTeX. I&nbsp;will also say something about good practices in writing and how to proper format the content into LaTeX files using the built-in commands. Furthermore I will show you how to use other commands provided by additional packages for LaTeX.</p>
+<p>I assume, that for this moment, you have read previous both articles <a href="http://blog.egel.pl/thesis-in-latex-part-1.html">part 1</a>, <a href="http://blog.egel.pl/thesis-in-latex-part-2.html">part 2</a> and also you have prepared your computer's work space.</p>
+<p>Dear Reader, you have come one of the hardest paths, which was mandatory to begin becoming <strong>LaTeX Ninja</strong>. You have interested and spent your time to understand LaTeX better and by this fact LaTeX will repay you with (related with time you have spent) fabulously enjoyable writing even the biggest and the most complicated documents. Believe me or not but, that is big, even if you not realize it yet.</p>
+<p>Getting back to our main goal of the article. We will make front page of our thesis. This might be tricky in some aspects, especially if we will make this from the ground. Although after read and understand this article you should be able to make your own templates or adjust the existing themes to your needs.</p>
+<h2>Making of the thesis front page</h2>
+<p>To make the front page of our thesis, we will begin from defining own class of the document.</p>
+<blockquote>
+<p>But why you want to define our own class and just not make a simple file with the content?</p>
+</blockquote>
+<p>Of course, this front page can be put in separate file. I insert it into a class, mainly because this content (front page) is totally repeatable. Almost every thesis from the same university and department probably will have identical copies (beside few variables like: topic, supervisor, author name, index number, ect.). Every other aspect like formatting of content could be identical. That is the main reason why I put it into a class, that in further you can fork and adjust for your needs for specific situations.</p>
+<p>In below example, I named my class <code>uekthesis</code>, because of the fact, that I used to go to the University of Economics in Cracow (UEK), hence the decision to implement this name was obvious ;)</p>
+<blockquote>
+<p>It is true that the class we will create together is by default prepared for a model for graduate work at the University of Economics in Cracow (in full compliance with theses requirements), but everything prepared cleverly into the class change the default content for the template will be extremely easy and simple.</p>
+</blockquote>
+<p>So lets begin with crating out new file <code>uekthesis.cls</code> which will be a heart of out document.</p>
+<p>This document which I have created is extensive, so putting its whole fragments into this article is useless (but I am not hiding that I would like to discuss every more important part of it). Although I have built <code>uekthesis.cls</code> in such a way, that reading and understanding of it by other users could be as simple as possible. Additionally almost every fragment of the code is commented, so there is little chance that you will lost into it :)</p>
+<p>Now if I describe the basics, we can get into more important fragments of <code>uekthesis.cls</code> and strangely enough I will not say about the code of the class (I will not offend you and your intelligence - the basic analyze and how things works you can make on your own), but I will say something about the configuration, because I my opinion is enough to easy and enjoyable usage or even adjusting to the requirement from your university (department).</p>
+<p>The most important knowledge about <code>uekthesis.cls</code> are the global variables that I used to in the document and special class options.</p>
+<blockquote>
+<p>Yes, I know, I know ...global variables is generally in the modern programming that is the pure evil. But LaTeX is not the language typically object-oriented (of course there are: classes, functions, variables, but the philosophy of their programming is completely different from OOP), so I simplified the discussion about the class as much as possible, to not spend too much time on constructing the class file, but to focus on maximum readability for the users. So I encourage you strongly to get involved and cooperate with the created class <a href="https://github.com/egel/uek-latex-thesis-class">uekthesis</a> or read up a complete example of the finished document in my repository on Github <a href="https://github.com/egel/latex-thesis-example">latex-thesis-example</a> or if you prefer I have a <a href="https://www.sharelatex.com/project/5713903dee119a314abcad5d">live online example</a>.</p>
+</blockquote>
+<h3>The uekthesis class</h3>
+<p>The class contains a set of few configurable options allows to adjust individual parts of the document for get the desired results.</p>
+<p>Option should be entered in the main file for our document. In our case, the file is <code>main.tex</code>, while the line configuration is, of course:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">\documentclass</span><span class="na">[nazwy_opcji_odzielone_przecinkami]</span><span class="nb">{</span>uekthesis<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>So in the example we will have:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">\documentclass</span><span class="na">[male, authorStatement, indexNumber, fileVersion, ]</span><span class="nb">{</span>uekthesis<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+
+<h4>The uekthesis configuration options</h4>
+<ul>
+<li>
+<p><code>male</code> or <code>female</code> - this option sets the configuration of the sexes for the author of the document and is used in other options if there is a need to personalize their gender (ex.: <code>authorStatement</code>). If none of the options is not specified, the default is set: <code>male</code>.</p>
+</li>
+<li>
+<p><code>twoside</code> - this option sets the configuration of the work on the two-sided. <em>It is not the least of two-sided printing</em>, since the print job, and the system are two completely separate things. If no option is specified, the defaults: <code>oneside</code>.</p>
+</li>
+<li>
+<p><code>indexNumber</code> - this option sets the index number of the student. It display on 1 page (front page) to inform the audience about the author's index number. If the option is not set, the default is disabled (Off).</p>
+</li>
+<li>
+<p><code>fileVersion</code> - this option sets the version number of the document. Is displayed on 1 page (title page) in order to inform the users which version of the document is currently dealing with (particularly helpful for the writer or promoter). <strong>For the final version of the work, this option should be disabled</strong>. If the option is not set, the default is disabled (Off).</p>
+</li>
+<li>
+<p><code>authorStatement</code> - this option sets the standard statement of the author of an independent execution of work (often, this option is required by the universities directly in the document work).
+     If the option is not set, the default is disabled (Off).</p>
+</li>
+</ul>
+<p>That would be enough of configuration options the appearance and behavior of the class. Now we come to the previously mentioned global variables performing the function of direct personalization of classes for our document.</p>
+<h4>Global variables of uekthesis</h4>
+<p>We already know that global variables available in the class of <code>uekthesis</code> that is the form of personalization our document class. Thanks to this variables we can define the basic information ie.: name of the author, university faculty, the name of the promoter, the index number of the student, and many, many other data.</p>
+<p>So let's start from the complete code in our <code>main.tex</code> file. We will move from the general aspects to the particular examples. Same variables were quite intuitively named, so I should not be much of a problem with deciphering what they are, but if that was not enough, each line is marked with informative comment. Major portions will be discuss a bit lower.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">\globalFullAuthor</span><span class="nb">{</span>Maciej Sypień<span class="nb">}</span>    <span class="c">% Pełna nazwa autora pracy</span>
+<span class="k">\globalShortAuthor</span><span class="nb">{</span>M. Sypień<span class="nb">}</span>       <span class="c">% Autor - zwięzła forma wydruku</span>
+<span class="k">\globalFullTitle</span><span class="nb">{</span>Projekt i implementacja autorskiego systemu zarządzania treścią<span class="nb">}</span>  <span class="c">% Pełny tytuł pracy</span>
+<span class="k">\globalShortTitle</span><span class="nb">{</span>Projekt i implementacja autorskiego CMS<span class="nb">}</span>  <span class="c">% Krótki, zwięzły tytuł pracy</span>
+<span class="k">\globalFullUniversity</span><span class="nb">{</span>Uniwersytet Ekonomiczny w Krakowie<span class="nb">}</span> <span class="c">% Pełna nazwa uniwersytetu</span>
+<span class="k">\globalShortUniversity</span><span class="nb">{</span>UEK<span class="nb">}</span>                           <span class="c">% Skrócona nazwa uniwersytetu</span>
+<span class="k">\globalDepartment</span><span class="nb">{</span>Wydział Zarządzania<span class="nb">}</span>                <span class="c">% Wydział</span>
+<span class="k">\globalDegreeprogramme</span><span class="nb">{</span>Informatyka Stosowana<span class="nb">}</span>         <span class="c">% Kierunek studiów</span>
+<span class="k">\globalThesisType</span><span class="nb">{</span>Praca dyplomowa<span class="nb">}</span>                    <span class="c">% Typ pracy dyplomowej</span>
+<span class="k">\globalSupervisor</span><span class="nb">{</span>prof. n. dr hab. Jana Iksińskiego<span class="nb">}</span>  <span class="c">% Promotor</span>
+<span class="k">\globalAcknowledgements</span><span class="nb">{</span>Dla moich rodziców oraz najbliższych przyjaciół za niezłomną wiarę w~moje zwycięstwo.<span class="nb">}</span>   <span class="c">% Podziękowania</span>
+<span class="k">\globalFileVersion</span><span class="nb">{</span>0.1.0<span class="nb">}</span>   <span class="c">% wersja pliku (przy włączonej opcji &quot;fileVersion&quot;)</span>
+<span class="k">\globalIndexNumber</span><span class="nb">{</span>123456<span class="nb">}</span>  <span class="c">% numer indeksu (przy włączonej opcji &quot;indexNumber&quot;)</span>
+<span class="k">\globalCity</span><span class="nb">{</span>Kraków<span class="nb">}</span>         <span class="c">% miasto</span>
+<span class="k">\globalYear</span><span class="nb">{</span>2014<span class="nb">}</span>           <span class="c">% rok powstania pracy</span>
+</pre></div>
+</td></tr></table>
+
+<p>Lets begin with, that we define here all the variables, even those which do not call in the options class. This practice is required by LaTeX notation. However, despite that define them all, it does not mean that we will use all of them (I assumed that not everyone will want to use the example: <code>fileVersion</code>). From what we show or hide into the thesis we use <a href="#the-uekthesis-configuration-options">uekthesis configuration options</a> :)</p>
+<p>All variables were use the notation <code>lowerCamelCase</code> and have enriched my prefix "global", which reminds of its range in relation to the whole document. The prefix is my solution to unify the notation of variables and by no means is the default notation LaTeX.</p>
+<p>Most of the variables also includes their abbreviated counterparts. These acronyms are used in places where you can not use the full name (mainly for typographical reasons), so also be sure to you have turn it on.</p>
+<p>That would be enough with uekthesis class configuration. It was not so hard, was it? So many options is enough to fully personalize the class, without unnecessary nesting in the structure of the code.</p>
+<p>Those who willing to improve project quality, I encourage you strongly to fork and share my <a href="https://github.com/egel/latex-thesis-example">example of uekthesis class</a> on Github :)</p>
+<h2>Work with external packages</h2>
+<p>LaTeX has wide rage of options to configure for creating documents. From small letters, through short works, to end up with huge, complex with hundred of pages documents or book.</p>
+<p>In this section I will show you how to external packages with <code>graphicx</code> package, but it also will apply to any other package.</p>
+<p>To use any package you have to you have to declare its usage into <a href="">preambule of the document</a>. Then we are going to our <code>main.tex</code> and we declare its usage with <code>usepackage{}</code> command. For better understand this illustrate below snippet.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">\documentclass</span><span class="na">[male, indexNumber, fileVersion, twoside, ]</span><span class="nb">{</span>uekthesis<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+...
+<span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+...
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Since this moment, we can use all commands from <code>graphicx</code> package into our document. As you can see, the idea is so simple :)</p>
+<blockquote>
+<p>Please note that, in order to add new packages directly in the <code>.tex</code>, they must be installed (of course once). Windows has a package manager called <em>MiKTeX</em>, which in the current version automatically draws the needed packages when compiling the file. On Linux, you can install all the packages into one convenient command: <code>apt-get install texlive-full</code>. I mentioned this in the <a href="http://blog.egel.pl/thesis-in-latex-part-1.html">first part</a> article.</p>
+</blockquote>
+<h3>graphicx</h3>
+<p>This package is created to easily manipulate images in TeX files. It has simple construction and it should not be intellectual challenge while using commands from its interface.</p>
+<h4>Example 1.1</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">\includegraphics</span><span class="na">[scale=0.5]</span><span class="nb">{</span>images/lion<span class="nb">_</span>1.jpg<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>This short line attach image into the document and scales it to 50% of its default size. The source of the image takes the path: <code>images/lion_1.jpg</code>.</p>
+<h4>Example 1.2</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">\includegraphics</span><span class="na">[width=12cm]</span><span class="nb">{</span>images/lion<span class="nb">_</span>2.jpg<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>This short line attached to the document image with the desired width, in this case 12cm. It is a very useful option especially when we want to get always the same picture size regardless of the size of the input image.</p>
+<blockquote>
+<p>Of course, the bigger the picture, the better final quality (because image has a certain size), but increasing the quality will be paid for with an increase in the weight of the resulting file work.</p>
+</blockquote>
+<p>It is also possible there are other very useful options instead of sample "12cm" put the width of the command:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">\includegraphics</span><span class="na">[width=\textwidth]</span><span class="nb">{</span>images/lion<span class="nb">_</span>2.jpg<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>This makes the width of the photo will always be equal to 100% of the width of the page. Here you also need to be careful, because if the image is not properly trimmed can cover the entire page and push the text to sidelines of the document.</p>
+<h4>More examples</h4>
+<p>To find more examples I will refer you to nice article about <a href="http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics">how to attach graphix to the LaTeX document</a>. Despite of the fact that wiki is not reliable and always up to date source of information, but in this case the article is quite fine and clear.</p>
+<h2>Good practices</h2>
+<p>This chapter is in fact a very large topic, which can not be closed in a few narrow tips (maybe someday expand it enough, to make it a separate, full-fledged article).</p>
+<p>Here are some best practices, which I read or develop myself through time. This advises are especially for creating large documents such as thesis.</p>
+<h4>Divide the chapters into files</h4>
+<p>Each chapter should have its own separate file. So you can easily manipulate their order with the main file (in our case it was a <code>main.tex</code>), as well as shorten the compilation, if a finished chapter contains extensive logic (ex.: dynamic creation of graphical models for chemical compounds).</p>
+<h4>Creating paragraphs</h4>
+<p>Creating a new paragraph always start with a new line. To continue the idea of the previous paragraph also use the command <code>\noindent</code>, it deletes (created by default) indentation in the text (it is responsible for the <code>indentfirst</code> package). Such practices will ensure better alignment and adaptation of content to the entire contents of the documents (including tables, pictures, mathematical formulas, ect.)</p>
+<p>Example below:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre>Here is a very long paragraph shorting one specific idea of the author <span class="k">\dots</span>
+
+And for another, the insanely long paragraph containing another author&#39;s another thought.
+
+<span class="k">\noindent</span> On the other hand it is also the next paragraph, however, that by using the command <span class="k">\texttt</span><span class="nb">{</span><span class="k">\noindent</span><span class="nb">}</span> does not contain a default created indentation. It symbolizes the continuation of the thoughts of the previous paragraph.
+</pre></div>
+</td></tr></table>
+
+<h4>Use indentation to better illustrate the content</h4>
+<p>A principle which applies more to programming, rater the ordinary writing. But LaTeX is not a <em>normal</em> system of writing, so the rules should be taken from both worlds.</p>
+<p>Indentation may help you to orientate in your document. LaTeX uses a lot of special characters in its notation and among other things they are characters <code>{}</code> or <code>[]</code>. These signs are grouped the content and some of their combinations should be separated to each other, while others can be written one after another.</p>
+<p>Example for a better picture of the situation:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre>This is plain text that contains <span class="k">\textbf</span><span class="nb">{</span>bold font<span class="nb">}</span>, but also the written
+<span class="k">\textit</span><span class="nb">{</span>italic<span class="nb">}</span>. In contrast, this text will be <span class="nb">{</span><span class="k">\large</span> adequately larger<span class="nb">}</span>
+and the <span class="nb">{</span><span class="k">\small</span> reduced accordingly<span class="nb">}</span>.
+
+Below appears a tiny table:
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[t]
+  <span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l|c<span class="nb">}</span>
+    Name    <span class="nb">&amp;</span> Surename          <span class="k">\\</span> <span class="k">\hline</span> <span class="k">\hline</span>
+    Stefan  <span class="nb">&amp;</span> Batory            <span class="k">\\</span> <span class="k">\hline</span>
+    Juliusz <span class="nb">&amp;</span> Słowacki          <span class="k">\\</span> <span class="k">\hline</span>
+    Maria   <span class="nb">&amp;</span> Skłodowska-Curie  <span class="k">\\</span> <span class="k">\hline</span>
+  <span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span>Caption for my simple table.<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>my-simple-table<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+
+<h4>Convert tabs to spaces</h4>
+<p>This practice allows convenient editing of the text, both in the text editor of your choice (God forbid, I'm not talking about the Microsoft Word!) and other text editors. Each editor has a different interpretation of the default sizes tabs to spaces - for some it is 2, 4 or even 8 spaces. Hence, the text could looking really nice in your editor, but if someone else open it (for example your supervisor) it could look like "Nightmare on Elm Street".</p>
+<hr />
+<p>I think that as a beginner level of difficulty for the article, so should be enough. I would like to thank you for your attention and will remain with me until last phrases.</p>
+<p>Full example for this article you will find into link below. It includes a complete, working code.</p>
+<p><a href="https://www.sharelatex.com/project/543abd9e69870b1d3e39c3f8" title="Full online example" class="btn btn-primary">Full online example</a></p>
+<hr />
+<p>At this point, I invite you to the next and probably the final 4th part of creating a thesis:</p>
+<ul>
+<li>overview of existing bibliographic applied (for all but especially for Polish);</li>
+<li>we will implement the full bibliographic system with <code>biblatex</code> + <code>biber</code> for our document;</li>
+<li>and will join at the end of the document lists of: bibliography, figures and tables.</li>
+</ul>
+<p>This will be one of the most interesting articles in a series, as it works with ready examples of implementation of the <code>biblatex</code> and <code>biber</code> is RARE (in particular Polish LaTeX community). At the date of publication of this article, the above combination seems to be the most effective solution for storing and formatting bibliographies. At this moment I would love to, to invite you for next article from this series :)</p>
+      </div>
+      <!-- /.entry-content -->
+<section class="well" id="related-posts">
+    <h4>Few related posts:</h4>
+    <ul>
+        <li><a href="http://egel.pl/thesis-in-latex-part-1.html">Thesis in LaTeX - part 1</a></li>
+        <li><a href="http://egel.pl/thesis-in-latex-part-2.html">Thesis in LaTeX - part 2</a></li>
+        <li><a href="http://egel.pl/how-to-install-vim-from-the-source-files.html">How to install Vim from the source files</a></li>
+    </ul>
+</section>
+  <hr/>
+  <section class="comments" id="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "egel";
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <!-- End Disqus Code -->
+
+  </section>
+    </article>
+  </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="container sidebar-phone">
+    <div class="row">
+      <div class="col-xs-12 sidebar">
+<div class="aboutme">
+  <h4>About the author</h4>
+    <img class="avatar thumbnail" src="https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=200" />
+  <p>
+    
+Programmer, soundtracks enthusiast, astrophysics fan.
+Occasionally hacking this blog with new articles.
+
+  </p>
+</div>  <ul class="list-group social-list">
+    <li>
+      <ul class="list-inline" id="social">
+        <li ><a href="https://twitter.com/MaciejSypien" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a></li>
+        <li ><a href="https://github.com/egel" target="_blank"><i class="fa fa-github-square fa-lg"></i></a></li>
+        <li ><a href="https://www.linkedin.com/in/maciejsypien" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a></li>
+<li><a href="http://egel.pl/feeds/all.atom.xml" title="Feed atom" target="_blank"><i class="fa fa-lg fa-rss-square"></i></a></li>      </ul>
+    </li>
+  </ul>
+
+
+<section>
+  <ul class="list-group">
+
+
+    <li>
+      <h4>Categories</h4>
+      <ul id="categories">
+        <li>
+          <a href="http://egel.pl/category/diary.html">Diary</a>
+        </li>
+        <li>
+          <a href="http://egel.pl/category/discovery.html">Discovery</a>
+        </li>
+        <li>
+          <a href="http://egel.pl/category/how-to.html">how to</a>
+        </li>
+        <li>
+          <a href="http://egel.pl/category/self-improvement.html">Self improvement</a>
+        </li>
+      </ul>
+    </li>
+
+      <li><h4><span class="icon-label">Tags</span></h4>
+        <ul class="list-inline tagcloud" id="tags">
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/angularjs.html">angularjs</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/apache.html">apache</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/apiary.html">apiary</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/console.html">console</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/domains.html">domains</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/frontend.html">frontend</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/git.html">git</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/gui.html">gui</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/install.html">install</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/latex.html">latex</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/linux.html">linux</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/mysql.html">mysql</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/nginx.html">nginx</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/osx.html">osx</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/pelican.html">pelican</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/php.html">php</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/sublime.html">sublime</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/terminal.html">terminal</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/text-editor.html">text-editor</a>
+          </li>
+          <li class="tag-1">
+            <a href="http://egel.pl/tag/university.html">university</a>
+          </li>
+          <li class="tag-4">
+            <a href="http://egel.pl/tag/vim.html">vim</a>
+          </li>
+          <li class="tag-2">
+            <a href="http://egel.pl/tag/wordpress.html">wordpress</a>
+          </li>
+        </ul>
+      </li>
+
+
+  </ul>
+</section>
+      </div>
+    </div>
+  </div>
+
+<footer class="footer">
+   <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <a href="#" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
+          <p>
+            &copy; Copyright 2016 &middot; The Egel's Blog &middot; The <a href="https://en.wikipedia.org/wiki/KISS_principle" title="Keep it stupid simple" target="_blank">KISS</a> Principle &middot; Build with <a href="http://docs.getpelican.com/" target="_blank">pelican</a>.
+          </p>
+        </div>
+      </div>
+   </div>
+</footer>
+  <script src="http://egel.pl/theme/js/scripts.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-26456669-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics Code -->
+
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=True"></script>
+</div>
+  </div>
+</body>
+</html>

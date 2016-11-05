@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/terminal.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-05-16T00:00:00+02:00</updated><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:git-push-guardian.html</id><summary type="html">&lt;!-- Summary: --&gt;
+
+&lt;div class="intro-article-image-md"&gt;
+&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/git_logo-mini.png" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Recently I wondering how to improve my workflow with Git. I came across the Web
+and found some article which pointed on git hooks and were introduced in
+version 1.8.2.&lt;/p&gt;
+&lt;p&gt;That cool feature, allows to execute some code before/after some actions made in
+git. My team have decided that we will compleate our tasks into feature branches,
+and to do it so, we mark our main branches: &lt;code&gt;master&lt;/code&gt;, &lt;code&gt;stage&lt;/code&gt; and &lt;code&gt;develop&lt;/code&gt; as
+protected. That means, only users with master access or grater (for repository),
+can push directly to this branches. I have that privilage, but switching between
+so many branches, checking, pushing, checking, pushing - this all can confuse a
+mind for a second.&lt;/p&gt;
+&lt;p&gt;Than I realize, if there any available option to prevent important actions (like
+push) on those protected branches. And puff...there git hooks came in on the
+stage.&lt;/p&gt;
+&lt;h2&gt;Guardian Script&lt;/h2&gt;
+&lt;p&gt;With some examples on web and git documentation, I wrote simple git &lt;strong&gt;pre-push&lt;/strong&gt;
+script that will check on which branch you are in and it will ask you "Are you
+intend to push?" to those protected branches.&lt;/p&gt;
+&lt;p&gt;Full script are available into my gist on github &lt;a href="https://gist.github.com/egel/2058f19cf78df84ade741b7a77a38006"&gt;HERE - git pre-push&lt;/a&gt;,
+but I also paste this snippet here, to make the article complete.&lt;/p&gt;
+&lt;h3&gt;Implemented features:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Array with protected branches (easy to maintain)&lt;/li&gt;
+&lt;li&gt;Base terminal colors to improve visibility&lt;/li&gt;
+&lt;li&gt;Question that only work when confirm with enter (time to wonder it is
+    correct action)&lt;/li&gt;
+&lt;li&gt;Default value of question set to &lt;code&gt;No&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Message of committed action&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Things which may be improved in the future:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Download list of protected branches direct from repository&lt;/li&gt;
+&lt;li&gt;Add support for some popular flags like: &lt;code&gt;--force&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="c"&gt;# General colors&lt;/span&gt;
+&lt;span class="nv"&gt;black&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;30m&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;red&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;31m&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;green&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;32m&amp;#39;&lt;/span&gt; &lt;span class="c"&gt;# &amp;#39;\e[1;32m&amp;#39; is too bright for white bg.&lt;/span&gt;
+&lt;span class="nv"&gt;blue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[1;34m&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;yellow&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;33m&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;purple&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[1;35m&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;cyan&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;36m&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;endColor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0m&amp;#39;&lt;/span&gt;
+
+
+&lt;span class="nv"&gt;protected_branches&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt; master develop &lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;current_branch&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;git symbolic-ref HEAD &lt;span class="p"&gt;|&lt;/span&gt; sed -e &lt;span class="s1"&gt;&amp;#39;s,.*/\(.*\),\1,&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; i in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;protected_branches&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;current_branch&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; -en &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;yellow&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;[Git pre-push]&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;endColor&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; You&amp;#39;re about to push to &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;red&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;endColor&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, is that what you intended?&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;read&lt;/span&gt; -p &lt;span class="s2"&gt;&amp;quot; [y/N] &amp;quot;&lt;/span&gt; -r &amp;lt; /dev/tty
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;REPLY&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; egrep -E &lt;span class="s1"&gt;&amp;#39;^[yY]$&amp;#39;&lt;/span&gt; &amp;gt; /dev/null
+    &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;Continue of pushing to &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;red&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;endColor&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="nb"&gt;exit &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c"&gt;# push will execute&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; -en &lt;span class="s2"&gt;&amp;quot;Abort pushing to &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;red&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;endColor&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;\n&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;exit &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# push will not execute&lt;/span&gt;
+  &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="nb"&gt;exit &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c"&gt;# push will execute when won&amp;#39;t match protected_branches&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h2&gt;How to use it?&lt;/h2&gt;
+&lt;p&gt;You need to enter into your git project &lt;code&gt;~/workspace/&amp;lt;your_project&amp;gt;&lt;/code&gt;. In this
+folder you should have a &lt;code&gt;.git/hooks&lt;/code&gt; directory (if not you have poprably git
+older then 1.8.2). Then save above file as
+&lt;code&gt;~/workspace/&amp;lt;your_project&amp;gt;/.git/hooks/pre-push&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Do not forget to add &lt;code&gt;chmod +x pre-push&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now every time you will push to one of &lt;code&gt;protected_branches&lt;/code&gt; listed into the
+file, Git will ask you is that was your intend action. For git masters, this
+little trick can save a day ;)&lt;/p&gt;</summary><category term="git"></category><category term="terminal"></category></entry></feed>

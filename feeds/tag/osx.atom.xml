@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/osx.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-02-16T00:00:00+01:00</updated><entry><title>How to improve nginx setup on Mac OSX</title><link href="http://egel.pl/how-to-improve-nginx-setup-on-mac-osx.html" rel="alternate"></link><updated>2016-02-16T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-16:how-to-improve-nginx-setup-on-mac-osx.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;If you store all your configurations for nginx servers on your Mac into single
+file... you probably can do it better.&lt;/p&gt;
+&lt;p&gt;Take a look how to improve your server instances by separating it into folders,
+just like Apache handle with it by &lt;code&gt;sites-enables&lt;/code&gt; and &lt;code&gt;sites-available&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Default nginx installation did not provide this but in few quick steps we can
+achieve this.&lt;/p&gt;
+&lt;p&gt;Some example code snippets comes from &lt;a href="https://gist.github.com/jimothyGator/5436538"&gt;this gist&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Create desired directories&lt;/h3&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p /usr/local/etc/nginx/sites-&lt;span class="o"&gt;{&lt;/span&gt;enabled,available&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt; /usr/local/etc/nginx/sites-enabled
+ln -s ../sites-available/default.conf
+ln -s ../sites-available/default-ssl.conf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Now some info about important file locations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;nginx.conf&lt;/em&gt; to &lt;code&gt;/usr/local/etc/nginx/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;default.conf&lt;/em&gt; and &lt;em&gt;default-ssl.conf&lt;/em&gt; to &lt;code&gt;/usr/local/etc/nginx/sites-available&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;homebrew.mxcl.nginx.plist to &lt;code&gt;/Library/LaunchDaemons/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Improve nginx.conf file&lt;/h3&gt;
+&lt;p&gt;Probably the most important part of this snippet is last two &lt;code&gt;include&lt;/code&gt; methods.&lt;/p&gt;
+&lt;p&gt;Those are enables &lt;code&gt;sites-enabled/&lt;/code&gt; directory to observe every file into it. So
+now you can put separate configurations for your server configurations.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: You may have to create log directory if doesn't exist yet. To do so
+type: &lt;code&gt;sudo mkdir -p /Library/Logs/nginx&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;#user  nobody;&lt;/span&gt;
+&lt;span class="k"&gt;worker_processes&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;error_log&lt;/span&gt; &lt;span class="s"&gt;/Library/Logs/nginx/error.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;events&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kn"&gt;worker_connections&lt;/span&gt;  &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;http&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kn"&gt;include&lt;/span&gt; &lt;span class="s"&gt;mime.types&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;default_type&lt;/span&gt; &lt;span class="s"&gt;application/octet-stream&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;log_format&lt;/span&gt; &lt;span class="s"&gt;main&lt;/span&gt;   &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$remote_addr&lt;/span&gt; &lt;span class="s"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;$remote_user&lt;/span&gt; &lt;span class="s"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$time_local]&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$request&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$status&lt;/span&gt; &lt;span class="nv"&gt;$body_bytes_sent&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$http_referer&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$http_user_agent&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$http_x_forwarded_for&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;access_log&lt;/span&gt; &lt;span class="s"&gt;/Library/Logs/nginx/access.log&lt;/span&gt;  &lt;span class="s"&gt;main&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;sendfile&lt;/span&gt; &lt;span class="no"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;keepalive_timeout&lt;/span&gt; &lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;index&lt;/span&gt; &lt;span class="s"&gt;index.html&lt;/span&gt; &lt;span class="s"&gt;index.php&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kn"&gt;upstream&lt;/span&gt; &lt;span class="s"&gt;www-upstream-pool&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="kn"&gt;server&lt;/span&gt; &lt;span class="s"&gt;unix:/tmp/php-fpm.sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="kn"&gt;include&lt;/span&gt; &lt;span class="s"&gt;/etc/nginx/conf.d/*.conf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kn"&gt;include&lt;/span&gt; &lt;span class="s"&gt;/usr/local/etc/nginx/sites-enabled/*.conf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="osx"></category><category term="nginx"></category></entry></feed>
