@@ -69,12 +69,89 @@ like user owner.&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Somtimes it is a good practice to check &lt;code&gt;SERVER_CONFIG_FILE&lt;/code&gt;.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;/usr/sbin/apache2 -V
-&lt;span class="nb"&gt;source&lt;/span&gt; /etc/apache2/envvars
-/usr/sbin/apache2 -V
+&lt;p&gt;&lt;strong&gt;Hint&lt;/strong&gt;: Somtimes it is a good practice to check &lt;code&gt;SERVER_CONFIG_FILE&lt;/code&gt;.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633874 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633903 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_PID_FILE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633910 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633913 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_GROUP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633920 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636829 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636921 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636927 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+AH00526: Syntax error on line &lt;span class="m"&gt;74&lt;/span&gt; of /etc/apache2/apache2.conf:
+Invalid Mutex directory in argument file:&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;To fix that you need to:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; /etc/apache2/envvars
+&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V
+
+Server version: Apache/2.4.7 &lt;span class="o"&gt;(&lt;/span&gt;Ubuntu&lt;span class="o"&gt;)&lt;/span&gt;
+Server built:   Jul &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; 15:34:04
+Server&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s Module Magic Number: 20120211:27
+Server loaded:  APR 1.5.1-dev, APR-UTIL 1.5.3
+Compiled using: APR 1.5.1-dev, APR-UTIL 1.5.3
+Architecture:   64-bit
+Server MPM:     prefork
+  threaded:     no
+    forked:     yes &lt;span class="o"&gt;(&lt;/span&gt;variable process count&lt;span class="o"&gt;)&lt;/span&gt;
+Server compiled with....
+ -D APR_HAS_SENDFILE
+ -D APR_HAS_MMAP
+ -D APR_HAVE_IPV6 &lt;span class="o"&gt;(&lt;/span&gt;IPv4-mapped addresses enabled&lt;span class="o"&gt;)&lt;/span&gt;
+ -D APR_USE_SYSVSEM_SERIALIZE
+ -D APR_USE_PTHREAD_SERIALIZE
+ -D SINGLE_LISTEN_UNSERIALIZED_ACCEPT
+ -D APR_HAS_OTHER_CHILD
+ -D AP_HAVE_RELIABLE_PIPED_LOGS
+ -D &lt;span class="nv"&gt;DYNAMIC_MODULE_LIMIT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;256
+ -D &lt;span class="nv"&gt;HTTPD_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/apache2&amp;quot;&lt;/span&gt;
+ -D &lt;span class="nv"&gt;SUEXEC_BIN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/lib/apache2/suexec&amp;quot;&lt;/span&gt;
+ -D &lt;span class="nv"&gt;DEFAULT_PIDLOG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/run/apache2.pid&amp;quot;&lt;/span&gt;
+ -D &lt;span class="nv"&gt;DEFAULT_SCOREBOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;logs/apache_runtime_status&amp;quot;&lt;/span&gt;
+ -D &lt;span class="nv"&gt;DEFAULT_ERRORLOG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;logs/error_log&amp;quot;&lt;/span&gt;
+ -D &lt;span class="nv"&gt;AP_TYPES_CONFIG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mime.types&amp;quot;&lt;/span&gt;
+ -D &lt;span class="nv"&gt;SERVER_CONFIG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;apache2.conf&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
