@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/mysql.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-06-27T00:00:00+02:00</updated><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own
-website.  It could be a simple static site, managed by some static site
-generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;,
-&lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or
-&lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that
-it's to easy and they would like to try something more complex like basic PHP
-CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;,
-&lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class
-frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
-&lt;p&gt;Whatever they choose, they will need some tools to deal with showing to the
-whole world their new website project.&lt;/p&gt;
-&lt;p&gt;In this simple article I'll show you how to build your own simple (and standard
-in these days) server configuration based on (Ubuntu 14.04 LTS) LAMP, but those
-tools can be easily replaced with others technologies. For example if you're
-interested in Django you could replace PHP language with more mature Python (of
-course some setting will vary a bit from content presented in this article, but
-in the end setup will be made).&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/mysql.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-06-27T00:00:00+02:00</updated><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or &lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;, &lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
+&lt;p&gt;Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.&lt;/p&gt;
+&lt;p&gt;In this simple article I'll show you how to build your own simple (and standard in these days) server configuration based on LAMP, but those tools can be easily replaced with others technologies.  For example if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end setup will be made).&lt;/p&gt;
 &lt;p&gt;I think this is good, start example to play with :) Enjoy.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The examples are refers to Ubuntu 14.04, but it should also works for other Debian based distros.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3&gt;Table of content&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#apache-2"&gt;Apache 2&lt;/a&gt;&lt;ul&gt;
@@ -46,18 +35,13 @@ in the end setup will be made).&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Or also you can use good, old school &lt;a href="https://en.wikipedia.org/wiki/Daemon_%28computing%29"&gt;daemon&lt;/a&gt; &lt;code&gt;sudo /etc/init.d/apache2 restart&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Now we take a peek on our server's version by writing &lt;code&gt;apache2 -v&lt;/code&gt; in your
-console.&lt;/p&gt;
-&lt;p&gt;Now, if all went well, you could start your web browser with &lt;code&gt;http://localhost/&lt;/code&gt;
-to check if "It works!" appears to you :)&lt;/p&gt;
+&lt;p&gt;Now we take a peek on our server's version by writing &lt;code&gt;apache2 -v&lt;/code&gt; in your console.&lt;/p&gt;
+&lt;p&gt;Now, if all went well, you could start your web browser with &lt;code&gt;http://localhost/&lt;/code&gt; to check if "It works!" appears to you :)&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;"It works!" page is actually simple &lt;code&gt;index.html&lt;/code&gt; file stored in
-&lt;code&gt;/var/www/html/&lt;/code&gt; directory, but details comes later :)&lt;/p&gt;
+&lt;p&gt;"It works!" page is actually simple &lt;code&gt;index.html&lt;/code&gt; file stored in &lt;code&gt;/var/www/html/&lt;/code&gt; directory, but details comes later :)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4&gt;Add user to www-data group&lt;/h4&gt;
-&lt;p&gt;Now we'd like to add your current user (&lt;code&gt;$USER&lt;/code&gt;)  to &lt;code&gt;www-data&lt;/code&gt; group used by
-apache server. We will do this to prevent you from some error-access failures
-like user owner.&lt;/p&gt;
+&lt;p&gt;Now we'd like to add your current user (&lt;code&gt;$USER&lt;/code&gt;)  to &lt;code&gt;www-data&lt;/code&gt; group used by apache server. We will do this to prevent you from some error-access failures like user owner.&lt;/p&gt;
 &lt;p&gt;To check if your current user belongs to &lt;code&gt;www-data&lt;/code&gt; group simply do:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;groups &lt;span class="nv"&gt;$USER&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -158,8 +142,7 @@ Server compiled with....
 &lt;p&gt;Should be something like &lt;code&gt;-D SERVER_CONFIG_FILE="apache2.conf"&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4&gt;Add a name to the server&lt;/h4&gt;
-&lt;p&gt;Basic apache configuration does not impose add the server name, but I really
-don't like to see some text like this below, when I reloading the server.&lt;/p&gt;
+&lt;p&gt;Basic apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; * Restarting web server apache2
@@ -189,20 +172,20 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 
 &lt;p&gt;...and now full smile should appear on your face :)&lt;/p&gt;
 &lt;h3&gt;MySQL&lt;/h3&gt;
-&lt;p&gt;MySQL is one of the most popular databases on the website market. So we will
-install it along.&lt;/p&gt;
-&lt;p&gt;During the installation process program ask you for the root password, so we
-write it and &lt;strong&gt;remeber it&lt;/strong&gt; for later use.&lt;/p&gt;
+&lt;p&gt;MySQL is one of the most popular databases on the website market. So we will install it along.&lt;/p&gt;
+&lt;p&gt;During the installation process program ask you for the root password, so we write it and &lt;strong&gt;remeber it&lt;/strong&gt; for later use.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install mysql-server
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Check the installed version&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mysql -V
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;That's it for the database server :)&lt;/p&gt;
 &lt;h3&gt;PHP&lt;/h3&gt;
-&lt;p&gt;Installation of the PHP interpreter isn't hard. One important thing is to install
-all modules related to our new setup, enable it, and configure to suite your
-needs. I'll show you most commonly used setup to save your precious time
-searching it through Internet.&lt;/p&gt;
+&lt;p&gt;Installation of the PHP interpreter isn't hard. One important thing is to install all modules related to our new setup, enable it, and configure to suite your needs. I'll show you most commonly used setup to save your precious time searching it through Internet.&lt;/p&gt;
 &lt;h4&gt;Installation of PHP interpreter&lt;/h4&gt;
 &lt;p&gt;Below we will install all useful modules, and enable them Apache server and PHP.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -216,9 +199,7 @@ searching it through Internet.&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;h4&gt;Configuration files&lt;/h4&gt;
-&lt;p&gt;Into below Apache's PHP configuration file stored at
-&lt;code&gt;/etc/php5/apache2/php.ini&lt;/code&gt;, it worth to change default parameters according to
-those presented below. There are most commonly changed variables for PHP.&lt;/p&gt;
+&lt;p&gt;Into below Apache's PHP configuration file stored at &lt;code&gt;/etc/php5/apache2/php.ini&lt;/code&gt;, it is worth to change the default parameters according to those presented below. There are most commonly changed variables for PHP for development purposes.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
@@ -244,24 +225,24 @@ those presented below. There are most commonly changed variables for PHP.&lt;/p&
 
 &lt;p&gt;During the installation, wizard will ask you for:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Which WWW Server would you like to choose. We mark (with space key)
-    &lt;code&gt;apache2&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Next window is the configuration of phpMyAdmin package and integration with
-    current database. We mark &lt;code&gt;Yes&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Which WWW Server would you like to choose. We mark (with space key) &lt;code&gt;apache2&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Next window is the configuration of phpMyAdmin package and integration with current database. We mark &lt;code&gt;Yes&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Sometimes we made mistake during this installation process, so command to reopen
-this configuration wizard is &lt;code&gt;sudo dpkg-reconfigure phpmyadmin&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sometimes we made mistake during this installation process, so command to reopen this configuration wizard is &lt;code&gt;sudo dpkg-reconfigure phpmyadmin&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;Add VirtualHost&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Good practice:&lt;/strong&gt; If you want to create site ex: &lt;code&gt;egel.pl&lt;/code&gt;, write conf file like this &lt;code&gt;egel.pl.conf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Good practice:&lt;/strong&gt; If you want to create site ex: &lt;code&gt;egel.pl&lt;/code&gt;, write config file like this &lt;code&gt;egel.pl.conf&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/pelican-egel-blog.local.conf
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;And create something like this&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I like to use &lt;code&gt;.loc&lt;/code&gt; for my local domains. I not use &lt;code&gt;.dev&lt;/code&gt; anymore due to now it is a real, official domain extension.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -273,47 +254,44 @@ this configuration wizard is &lt;code&gt;sudo dpkg-reconfigure phpmyadmin&lt;/co
  9
 10
 11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="nb"&gt;ServerAdmin&lt;/span&gt; admin@example.com
-  &lt;span class="nb"&gt;ServerName&lt;/span&gt; pelican-egel-blog.local
-  &lt;span class="nb"&gt;DocumentRoot&lt;/span&gt; &lt;span class="sx"&gt;/var/www/pelican-egel-blog.local/public_html/&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/var/www/pelican-egel-blog.local/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="nb"&gt;AllowOverride&lt;/span&gt; &lt;span class="k"&gt;All&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+    &lt;span class="nb"&gt;ServerAdmin&lt;/span&gt; admin@example.com
+    &lt;span class="nb"&gt;ServerName&lt;/span&gt; blog.loc
+    &lt;span class="nb"&gt;DocumentRoot&lt;/span&gt; &lt;span class="sx"&gt;/var/www/blog.loc/public_html/&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/var/www/blog.loc/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nb"&gt;AllowOverride&lt;/span&gt; &lt;span class="k"&gt;All&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
 
-  &lt;span class="nb"&gt;ErrorLog&lt;/span&gt; ${APACHE_LOG_DIR}/error.log
-  &lt;span class="nb"&gt;CustomLog&lt;/span&gt; ${APACHE_LOG_DIR}/access.log combined
+    &lt;span class="nb"&gt;ErrorLog&lt;/span&gt; ${APACHE_LOG_DIR}/error.log
+    &lt;span class="nb"&gt;CustomLog&lt;/span&gt; ${APACHE_LOG_DIR}/access.log combined
 &lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Save it.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s &lt;span class="nv"&gt;$HOME&lt;/span&gt;/workspace/pelican-egel-blog/output/ /var/www/pelican-egel-blog.local/public_html
-sudo a2ensite pelican-egel-blog.local.conf
-&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 pelican-egel-blog.local&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s &lt;span class="nv"&gt;$HOME&lt;/span&gt;/workspace/blog/output/ /var/www/blog.loc/public_html
+sudo a2ensite blog.loc.conf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Next we need to tell the server to use our new ServerName.&lt;/p&gt;
+&lt;p&gt;The best solution I know for development purposes involving &lt;code&gt;dnsmasq&lt;/code&gt;, which I definitely recommend - you can find how to do it into article &lt;a href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html"&gt;How to install dnsmasq&lt;/a&gt; or just add the name of server to the hosts file:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 blog.loc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Then &lt;code&gt;sudo service apache2 reload&lt;/code&gt; and open&lt;/p&gt;
 &lt;h3&gt;Creating public_html directory for the user&lt;/h3&gt;
-&lt;p&gt;Some people not agree with it (mainly by security issues it can cause) but
-apache also support the old user catalog usually stored at &lt;code&gt;~/public_html&lt;/code&gt;,
-and it can be working like &lt;code&gt;/var/www/html&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Some people not agree with it (mainly by security issues it can cause) but apache also support the old user catalog usually stored at &lt;code&gt;~/public_html&lt;/code&gt;, and it can be working like &lt;code&gt;/var/www/html&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;There are 2 different approaches for creating this directory.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;First one assumes that User's catalog (~/public_html) should be owned by
-    &lt;a href="https://en.wikipedia.org/wiki/Hir_%28disambiguation%29"&gt;hir&lt;/a&gt; and hir alone, also with files permissions.&lt;/li&gt;
-&lt;li&gt;The second one, presuppose that all files should be owned by &lt;code&gt;www-data&lt;/code&gt;
-    user. This solution is a bit better because other files migration not cause
-    the access collisions.&lt;/li&gt;
+&lt;li&gt;First one assumes that User's catalog (~/public_html) should be owned by &lt;a href="https://en.wikipedia.org/wiki/Hir_%28disambiguation%29"&gt;hir&lt;/a&gt; and hir alone, also with files permissions.&lt;/li&gt;
+&lt;li&gt;The second one, presuppose that all files should be owned by &lt;code&gt;www-data&lt;/code&gt; user. This solution is a bit better because other files migration not cause the access collisions.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Personally, I prefer the second approach.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;To enable this magical directory we need to edit
-&lt;code&gt;/etc/apache2/mods-enabled/php5.conf&lt;/code&gt; (it may require &lt;code&gt;sudo&lt;/code&gt; privileges to save
-it).&lt;/p&gt;
+&lt;p&gt;To enable this magical directory we need to edit &lt;code&gt;/etc/apache2/mods-enabled/php5.conf&lt;/code&gt; (it may require &lt;code&gt;sudo&lt;/code&gt; privileges to save it).&lt;/p&gt;
 &lt;p&gt;Into this file we need to comment some lines (&lt;code&gt;##&lt;/code&gt;) like in below snippet.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
@@ -371,9 +349,7 @@ it).&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;Now we set server, so that we can throw files into the &lt;code&gt;~/public_html&lt;/code&gt;
-directory. It maybe necessary to give the appropriate rights for the directory
-so we need to take this under consideration as well.&lt;/p&gt;
+&lt;p&gt;Now we set server, so that we can throw files into the &lt;code&gt;~/public_html&lt;/code&gt; directory. It maybe necessary to give the appropriate rights for the directory, so we need to take this under consideration as well.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mkdir ~/public_html
@@ -382,8 +358,7 @@ sudo a2enmod userdir
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;Now restart the apache and since this moment we can easily use &lt;code&gt;~/public_html&lt;/code&gt; in
-all user's catalogs like the server's one.&lt;/p&gt;
+&lt;p&gt;Now restart the apache and since this moment we can easily use &lt;code&gt;~/public_html&lt;/code&gt; in all user's catalogs like the server's one.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo /etc/init.d/apache2 restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -420,7 +395,7 @@ apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;restart and we are home.&lt;/p&gt;
+&lt;p&gt;Restart and we are home.&lt;/p&gt;
 &lt;h5&gt;May occur the problem like "index.php not found"&lt;/h5&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2

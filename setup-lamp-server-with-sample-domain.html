@@ -224,24 +224,13 @@ Occasionally hacking this blog with new articles.
         </h1>
       </header>
       <div class="entry-content">
-        <p>Every young IT person will at last faced with the challenge of creating his own
-website.  It could be a simple static site, managed by some static site
-generator (like <a href="http://jekyllrb.com/">Jekkly</a>,
-<a href="http://octopress.org/">Octopress</a>, <a href="http://docs.getpelican.com">Pelican</a> or
-<a href="https://www.staticgen.com/">some others examples</a>). But few proud, claim that
-it's to easy and they would like to try something more complex like basic PHP
-CMS similar to <a href="https://www.joomla.com/">Joomla</a>,
-<a href="https://wordpress.org">Wordpress</a> or even use a professional, enterprise class
-frameworks like Laravel, Symfony or Zend.</p>
-<p>Whatever they choose, they will need some tools to deal with showing to the
-whole world their new website project.</p>
-<p>In this simple article I'll show you how to build your own simple (and standard
-in these days) server configuration based on (Ubuntu 14.04 LTS) LAMP, but those
-tools can be easily replaced with others technologies. For example if you're
-interested in Django you could replace PHP language with more mature Python (of
-course some setting will vary a bit from content presented in this article, but
-in the end setup will be made).</p>
+        <p>Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like <a href="http://jekyllrb.com/">Jekkly</a>, <a href="http://octopress.org/">Octopress</a>, <a href="http://docs.getpelican.com">Pelican</a> or <a href="https://www.staticgen.com/">some others examples</a>). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to <a href="https://www.joomla.com/">Joomla</a>, <a href="https://wordpress.org">Wordpress</a> or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.</p>
+<p>Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.</p>
+<p>In this simple article I'll show you how to build your own simple (and standard in these days) server configuration based on LAMP, but those tools can be easily replaced with others technologies.  For example if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end setup will be made).</p>
 <p>I think this is good, start example to play with :) Enjoy.</p>
+<blockquote>
+<p>The examples are refers to Ubuntu 14.04, but it should also works for other Debian based distros.</p>
+</blockquote>
 <h3>Table of content</h3>
 <ul>
 <li><a href="#apache-2">Apache 2</a><ul>
@@ -271,18 +260,13 @@ in the end setup will be made).</p>
 </td></tr></table>
 
 <p>Or also you can use good, old school <a href="https://en.wikipedia.org/wiki/Daemon_%28computing%29">daemon</a> <code>sudo /etc/init.d/apache2 restart</code>.</p>
-<p>Now we take a peek on our server's version by writing <code>apache2 -v</code> in your
-console.</p>
-<p>Now, if all went well, you could start your web browser with <code>http://localhost/</code>
-to check if "It works!" appears to you :)</p>
+<p>Now we take a peek on our server's version by writing <code>apache2 -v</code> in your console.</p>
+<p>Now, if all went well, you could start your web browser with <code>http://localhost/</code> to check if "It works!" appears to you :)</p>
 <blockquote>
-<p>"It works!" page is actually simple <code>index.html</code> file stored in
-<code>/var/www/html/</code> directory, but details comes later :)</p>
+<p>"It works!" page is actually simple <code>index.html</code> file stored in <code>/var/www/html/</code> directory, but details comes later :)</p>
 </blockquote>
 <h4>Add user to www-data group</h4>
-<p>Now we'd like to add your current user (<code>$USER</code>)  to <code>www-data</code> group used by
-apache server. We will do this to prevent you from some error-access failures
-like user owner.</p>
+<p>Now we'd like to add your current user (<code>$USER</code>)  to <code>www-data</code> group used by apache server. We will do this to prevent you from some error-access failures like user owner.</p>
 <p>To check if your current user belongs to <code>www-data</code> group simply do:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>groups <span class="nv">$USER</span>
 </pre></div>
@@ -383,8 +367,7 @@ Server compiled with....
 <p>Should be something like <code>-D SERVER_CONFIG_FILE="apache2.conf"</code></p>
 </blockquote>
 <h4>Add a name to the server</h4>
-<p>Basic apache configuration does not impose add the server name, but I really
-don't like to see some text like this below, when I reloading the server.</p>
+<p>Basic apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre> * Restarting web server apache2
@@ -414,20 +397,20 @@ AH00558: apache2: Could not reliably determine the server<span class="s1">&#39;s
 
 <p>...and now full smile should appear on your face :)</p>
 <h3>MySQL</h3>
-<p>MySQL is one of the most popular databases on the website market. So we will
-install it along.</p>
-<p>During the installation process program ask you for the root password, so we
-write it and <strong>remeber it</strong> for later use.</p>
+<p>MySQL is one of the most popular databases on the website market. So we will install it along.</p>
+<p>During the installation process program ask you for the root password, so we write it and <strong>remeber it</strong> for later use.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo apt-get install mysql-server
+</pre></div>
+</td></tr></table>
+
+<p>Check the installed version</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>mysql -V
 </pre></div>
 </td></tr></table>
 
 <p>That's it for the database server :)</p>
 <h3>PHP</h3>
-<p>Installation of the PHP interpreter isn't hard. One important thing is to install
-all modules related to our new setup, enable it, and configure to suite your
-needs. I'll show you most commonly used setup to save your precious time
-searching it through Internet.</p>
+<p>Installation of the PHP interpreter isn't hard. One important thing is to install all modules related to our new setup, enable it, and configure to suite your needs. I'll show you most commonly used setup to save your precious time searching it through Internet.</p>
 <h4>Installation of PHP interpreter</h4>
 <p>Below we will install all useful modules, and enable them Apache server and PHP.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -441,9 +424,7 @@ searching it through Internet.</p>
 </td></tr></table>
 
 <h4>Configuration files</h4>
-<p>Into below Apache's PHP configuration file stored at
-<code>/etc/php5/apache2/php.ini</code>, it worth to change default parameters according to
-those presented below. There are most commonly changed variables for PHP.</p>
+<p>Into below Apache's PHP configuration file stored at <code>/etc/php5/apache2/php.ini</code>, it is worth to change the default parameters according to those presented below. There are most commonly changed variables for PHP for development purposes.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -469,24 +450,24 @@ those presented below. There are most commonly changed variables for PHP.</p>
 
 <p>During the installation, wizard will ask you for:</p>
 <ol>
-<li>Which WWW Server would you like to choose. We mark (with space key)
-    <code>apache2</code>.</li>
-<li>Next window is the configuration of phpMyAdmin package and integration with
-    current database. We mark <code>Yes</code>.</li>
+<li>Which WWW Server would you like to choose. We mark (with space key) <code>apache2</code>.</li>
+<li>Next window is the configuration of phpMyAdmin package and integration with current database. We mark <code>Yes</code>.</li>
 </ol>
 <blockquote>
-<p>Sometimes we made mistake during this installation process, so command to reopen
-this configuration wizard is <code>sudo dpkg-reconfigure phpmyadmin</code>.</p>
+<p>Sometimes we made mistake during this installation process, so command to reopen this configuration wizard is <code>sudo dpkg-reconfigure phpmyadmin</code>.</p>
 </blockquote>
 <h3>Add VirtualHost</h3>
 <blockquote>
-<p><strong>Good practice:</strong> If you want to create site ex: <code>egel.pl</code>, write conf file like this <code>egel.pl.conf</code></p>
+<p><strong>Good practice:</strong> If you want to create site ex: <code>egel.pl</code>, write config file like this <code>egel.pl.conf</code></p>
 </blockquote>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/pelican-egel-blog.local.conf
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
 </pre></div>
 </td></tr></table>
 
 <p>And create something like this</p>
+<blockquote>
+<p>I like to use <code>.loc</code> for my local domains. I not use <code>.dev</code> anymore due to now it is a real, official domain extension.</p>
+</blockquote>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -498,47 +479,44 @@ this configuration wizard is <code>sudo dpkg-reconfigure phpmyadmin</code>.</p>
  9
 10
 11</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
-  <span class="nb">ServerAdmin</span> admin@example.com
-  <span class="nb">ServerName</span> pelican-egel-blog.local
-  <span class="nb">DocumentRoot</span> <span class="sx">/var/www/pelican-egel-blog.local/public_html/</span>
-  <span class="nt">&lt;Directory</span> <span class="s">/var/www/pelican-egel-blog.local/public_html/</span><span class="nt">&gt;</span>
-    <span class="nb">AllowOverride</span> <span class="k">All</span>
-  <span class="nt">&lt;/Directory&gt;</span>
+    <span class="nb">ServerAdmin</span> admin@example.com
+    <span class="nb">ServerName</span> blog.loc
+    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/blog.loc/public_html/</span>
+    <span class="nt">&lt;Directory</span> <span class="s">/var/www/blog.loc/public_html/</span><span class="nt">&gt;</span>
+        <span class="nb">AllowOverride</span> <span class="k">All</span>
+    <span class="nt">&lt;/Directory&gt;</span>
 
-  <span class="nb">ErrorLog</span> ${APACHE_LOG_DIR}/error.log
-  <span class="nb">CustomLog</span> ${APACHE_LOG_DIR}/access.log combined
+    <span class="nb">ErrorLog</span> ${APACHE_LOG_DIR}/error.log
+    <span class="nb">CustomLog</span> ${APACHE_LOG_DIR}/access.log combined
 <span class="nt">&lt;/VirtualHost&gt;</span>
 </pre></div>
 </td></tr></table>
 
 <p>Save it.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre>sudo ln -s <span class="nv">$HOME</span>/workspace/pelican-egel-blog/output/ /var/www/pelican-egel-blog.local/public_html
-sudo a2ensite pelican-egel-blog.local.conf
-<span class="nb">echo</span> <span class="s2">&quot;127.0.0.1 pelican-egel-blog.local&quot;</span> <span class="p">|</span> sudo tee /etc/hosts
+2</pre></div></td><td class="code"><div class="highlight"><pre>sudo ln -s <span class="nv">$HOME</span>/workspace/blog/output/ /var/www/blog.loc/public_html
+sudo a2ensite blog.loc.conf
+</pre></div>
+</td></tr></table>
+
+<p>Next we need to tell the server to use our new ServerName.</p>
+<p>The best solution I know for development purposes involving <code>dnsmasq</code>, which I definitely recommend - you can find how to do it into article <a href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html">How to install dnsmasq</a> or just add the name of server to the hosts file:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;127.0.0.1 blog.loc&quot;</span> <span class="p">|</span> sudo tee /etc/hosts
 </pre></div>
 </td></tr></table>
 
 <p>Then <code>sudo service apache2 reload</code> and open</p>
 <h3>Creating public_html directory for the user</h3>
-<p>Some people not agree with it (mainly by security issues it can cause) but
-apache also support the old user catalog usually stored at <code>~/public_html</code>,
-and it can be working like <code>/var/www/html</code>.</p>
+<p>Some people not agree with it (mainly by security issues it can cause) but apache also support the old user catalog usually stored at <code>~/public_html</code>, and it can be working like <code>/var/www/html</code>.</p>
 <p>There are 2 different approaches for creating this directory.</p>
 <ol>
-<li>First one assumes that User's catalog (~/public_html) should be owned by
-    <a href="https://en.wikipedia.org/wiki/Hir_%28disambiguation%29">hir</a> and hir alone, also with files permissions.</li>
-<li>The second one, presuppose that all files should be owned by <code>www-data</code>
-    user. This solution is a bit better because other files migration not cause
-    the access collisions.</li>
+<li>First one assumes that User's catalog (~/public_html) should be owned by <a href="https://en.wikipedia.org/wiki/Hir_%28disambiguation%29">hir</a> and hir alone, also with files permissions.</li>
+<li>The second one, presuppose that all files should be owned by <code>www-data</code> user. This solution is a bit better because other files migration not cause the access collisions.</li>
 </ol>
 <blockquote>
 <p>Personally, I prefer the second approach.</p>
 </blockquote>
-<p>To enable this magical directory we need to edit
-<code>/etc/apache2/mods-enabled/php5.conf</code> (it may require <code>sudo</code> privileges to save
-it).</p>
+<p>To enable this magical directory we need to edit <code>/etc/apache2/mods-enabled/php5.conf</code> (it may require <code>sudo</code> privileges to save it).</p>
 <p>Into this file we need to comment some lines (<code>##</code>) like in below snippet.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -596,9 +574,7 @@ it).</p>
 </pre></div>
 </td></tr></table>
 
-<p>Now we set server, so that we can throw files into the <code>~/public_html</code>
-directory. It maybe necessary to give the appropriate rights for the directory
-so we need to take this under consideration as well.</p>
+<p>Now we set server, so that we can throw files into the <code>~/public_html</code> directory. It maybe necessary to give the appropriate rights for the directory, so we need to take this under consideration as well.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre>mkdir ~/public_html
@@ -607,8 +583,7 @@ sudo a2enmod userdir
 </pre></div>
 </td></tr></table>
 
-<p>Now restart the apache and since this moment we can easily use <code>~/public_html</code> in
-all user's catalogs like the server's one.</p>
+<p>Now restart the apache and since this moment we can easily use <code>~/public_html</code> in all user's catalogs like the server's one.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo /etc/init.d/apache2 restart
 </pre></div>
 </td></tr></table>
@@ -645,7 +620,7 @@ apache   <span class="m">12846</span> <span class="m">14590</span>  <span class=
 </pre></div>
 </td></tr></table>
 
-<p>restart and we are home.</p>
+<p>Restart and we are home.</p>
 <h5>May occur the problem like "index.php not found"</h5>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
