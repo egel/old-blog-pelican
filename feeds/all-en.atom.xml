@@ -482,7 +482,7 @@ Linking: gcc   -L. -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-E   -L/u
 &lt;p&gt;Trust &amp;amp; Safety
 DigitalOcean Support&lt;/p&gt;
 &lt;p&gt;Please login to view the ticket:
-https://&lt;DO I will not sponsor your links!&gt;/support/tickets&lt;/p&gt;
+https://%DO I will not sponsor your links here!%/support/tickets&lt;/p&gt;
 &lt;p&gt;Thanks so much,
 DigitalOcean&lt;/p&gt;
 &lt;/blockquote&gt;
