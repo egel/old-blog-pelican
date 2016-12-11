@@ -363,10 +363,10 @@ type: &lt;code&gt;sudo mkdir -p /Library/Logs/nginx&lt;/code&gt;&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="osx"></category><category term="nginx"></category></entry><entry><title>Install the latest nVidia drivers for Linux</title><link href="http://egel.pl/install-the-latest-nvidia-drivers-for-linux.html" rel="alternate"></link><updated>2015-11-02T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-11-02:install-the-latest-nvidia-drivers-for-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
 &lt;p&gt;&lt;img alt="Tmux" src="http://egel.pl/images/terminal_icon.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;And it's time that I had to face with reinstall of the Nvidia driver on my Mint
+&lt;p&gt;The time has come that I had to face with reinstall of the Nvidia driver on my Mint
 17 distribution.&lt;/p&gt;
 &lt;p&gt;Well, while using my distro, there appear couple of problems with "Nvidia proprietary drivers".
-As a pro Linux guy I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;F1&lt;/code&gt;, and got a black screen with flashing cursor. YES! - I shouted immediately - the console not broke down for good - I sad to myself in mind.&lt;/p&gt;
+As a pro Linux guy (laugh),  I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;F1&lt;/code&gt;, and got a black screen with flashing cursor. YES! - I shouted immediately - the console isn't broken for good - I sad to myself in mind.&lt;/p&gt;
 &lt;p&gt;I red somewhere, that the problem could have something with the framebuffer. So I made few modifications to &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Please remember, backup always go first!&lt;/p&gt;
@@ -411,7 +411,7 @@ sudo service mdm start
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</summary><category term="linux"></category><category term="console"></category></entry><entry><title>Install archived app into Linux</title><link href="http://egel.pl/install-archived-app-into-linux.html" rel="alternate"></link><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:install-archived-app-into-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</summary><category term="linux"></category><category term="terminal"></category><category term="console"></category></entry><entry><title>Install archived app into Linux</title><link href="http://egel.pl/install-archived-app-into-linux.html" rel="alternate"></link><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:install-archived-app-into-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
 &lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/linux_logo_pinguin.jpg" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;This should be obvious task for average Linux user, but there are hundreds of

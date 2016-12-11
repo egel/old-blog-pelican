@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/console.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-11-02T00:00:00+01:00</updated><entry><title>Install the latest nVidia drivers for Linux</title><link href="http://egel.pl/install-the-latest-nvidia-drivers-for-linux.html" rel="alternate"></link><updated>2015-11-02T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-11-02:install-the-latest-nvidia-drivers-for-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
 &lt;p&gt;&lt;img alt="Tmux" src="http://egel.pl/images/terminal_icon.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;And it's time that I had to face with reinstall of the Nvidia driver on my Mint
+&lt;p&gt;The time has come that I had to face with reinstall of the Nvidia driver on my Mint
 17 distribution.&lt;/p&gt;
 &lt;p&gt;Well, while using my distro, there appear couple of problems with "Nvidia proprietary drivers".
-As a pro Linux guy I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;F1&lt;/code&gt;, and got a black screen with flashing cursor. YES! - I shouted immediately - the console not broke down for good - I sad to myself in mind.&lt;/p&gt;
+As a pro Linux guy (laugh),  I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;F1&lt;/code&gt;, and got a black screen with flashing cursor. YES! - I shouted immediately - the console isn't broken for good - I sad to myself in mind.&lt;/p&gt;
 &lt;p&gt;I red somewhere, that the problem could have something with the framebuffer. So I made few modifications to &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Please remember, backup always go first!&lt;/p&gt;
@@ -50,4 +50,4 @@ sudo service mdm start
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</summary><category term="linux"></category><category term="console"></category></entry></feed>
+&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</summary><category term="linux"></category><category term="terminal"></category><category term="console"></category></entry></feed>

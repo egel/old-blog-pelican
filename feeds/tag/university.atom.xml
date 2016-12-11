@@ -3,7 +3,7 @@
 &lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;In this article I will try to explain how to prepare front page for our thesis in LaTeX. I&amp;nbsp;will also say something about good practices in writing and how to proper format the content into LaTeX files using the built-in commands. Furthermore I will show you how to use other commands provided by additional packages for LaTeX.&lt;/p&gt;
-&lt;p&gt;I assume, that for this moment, you have read previous both articles &lt;a href="http://blog.egel.pl/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;, &lt;a href="http://blog.egel.pl/thesis-in-latex-part-2.html"&gt;part 2&lt;/a&gt; and also you have prepared your computer's work space.&lt;/p&gt;
+&lt;p&gt;I assume, that for this moment, you have read previous both articles &lt;a href="http://egel.pl/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;, &lt;a href="http://egel.pl/thesis-in-latex-part-2.html"&gt;part 2&lt;/a&gt; and also you have prepared your computer's work space.&lt;/p&gt;
 &lt;p&gt;Dear Reader, you have come one of the hardest paths, which was mandatory to begin becoming &lt;strong&gt;LaTeX Ninja&lt;/strong&gt;. You have interested and spent your time to understand LaTeX better and by this fact LaTeX will repay you with (related with time you have spent) fabulously enjoyable writing even the biggest and the most complicated documents. Believe me or not but, that is big, even if you not realize it yet.&lt;/p&gt;
 &lt;p&gt;Getting back to our main goal of the article. We will make front page of our thesis. This might be tricky in some aspects, especially if we will make this from the ground. Although after read and understand this article you should be able to make your own templates or adjust the existing themes to your needs.&lt;/p&gt;
 &lt;h2&gt;Making of the thesis front page&lt;/h2&gt;
@@ -115,7 +115,7 @@
 
 &lt;p&gt;Since this moment, we can use all commands from &lt;code&gt;graphicx&lt;/code&gt; package into our document. As you can see, the idea is so simple :)&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Please note that, in order to add new packages directly in the &lt;code&gt;.tex&lt;/code&gt;, they must be installed (of course once). Windows has a package manager called &lt;em&gt;MiKTeX&lt;/em&gt;, which in the current version automatically draws the needed packages when compiling the file. On Linux, you can install all the packages into one convenient command: &lt;code&gt;apt-get install texlive-full&lt;/code&gt;. I mentioned this in the &lt;a href="http://blog.egel.pl/thesis-in-latex-part-1.html"&gt;first part&lt;/a&gt; article.&lt;/p&gt;
+&lt;p&gt;Please note that, in order to add new packages directly in the &lt;code&gt;.tex&lt;/code&gt;, they must be installed (of course once). Windows has a package manager called &lt;em&gt;MiKTeX&lt;/em&gt;, which in the current version automatically draws the needed packages when compiling the file. On Linux, you can install all the packages into one convenient command: &lt;code&gt;apt-get install texlive-full&lt;/code&gt;. I mentioned this in the &lt;a href="http://egel.pl/thesis-in-latex-part-1.html"&gt;first part&lt;/a&gt; article.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;graphicx&lt;/h3&gt;
 &lt;p&gt;This package is created to easily manipulate images in TeX files. It has simple construction and it should not be intellectual challenge while using commands from its interface.&lt;/p&gt;

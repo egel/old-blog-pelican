@@ -1,5 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/terminal.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-05-16T00:00:00+02:00</updated><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:git-push-guardian.html</id><summary type="html">&lt;!-- Summary: --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/terminal.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-18T00:00:00+01:00</updated><entry><title>Tasting of Arch Linux</title><link href="http://egel.pl/tasting-of-arch-linux.html" rel="alternate"></link><updated>2016-11-18T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-18:tasting-of-arch-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Linux logo" src="http://egel.pl/images/archlinux_logo.png" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I have to admit that installation of Arch Linux can be difficult for many people, but that exactly is real fun!&lt;/p&gt;
+&lt;p&gt;Few days ago I've tried to install Arch on my virtual machine then on my laptop and I could not find anything that I didn't like. Yeah, I agree that there are many decisions you have to decide during installation of Arch. For example: manual setting up of partitions, current date, downloading all related packages, then finally install whole system. For many (unfortunately) it's just the beginning, because after the installation you have a bare system - console and that is it. You need to install and configure GUI and other important stuff on your own, but actually that is real fun!&lt;/p&gt;
+&lt;p&gt;The longest part for me was the downloading and installation packages from the Net. This took me around 45 minutes to download the system and GUI interface (gnome).&lt;/p&gt;
+&lt;p&gt;Beside the installation process, I love the whole idea of having one release in contrast to Ubuntu. You have only one major version and you stick to it - until that community decide to change it.&lt;/p&gt;
+&lt;p&gt;Below I would like to share my whole process and preferences during the setting up the Arch.&lt;/p&gt;
+&lt;h3&gt;Partitioning hard drives&lt;/h3&gt;
+&lt;p&gt;Display all drives on PC. I have only one drive called &lt;code&gt;/dev/sda&lt;/code&gt;.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;fdisk -l
+cfdisk /dev/sda
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;I've got 500GB drive (with real space of 465GB), but the drive has one hidden partition for WinRecovery with size around 18GB (I'm not using it right now).&lt;/p&gt;
+&lt;p&gt;So, now I split a bit rest of my drive space for 2 additional partitions.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Many IT guys will be whimper a bit of having only one general partition for &lt;code&gt;/&lt;/code&gt;, but I found it more useful for me in daily work.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: If you have disk bigger then 2TB use &lt;a href="https://en.wikipedia.org/wiki/GUID_Partition_Table"&gt;&lt;code&gt;GPT&lt;/code&gt;&lt;/a&gt; instead of &lt;code&gt;DOS&lt;/code&gt;, if using of &lt;code&gt;MBR&lt;/code&gt; is not obligatory.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;18GB hidden WinRecovery partition (not used)&lt;/li&gt;
+&lt;li&gt;16GB for &lt;code&gt;/swap&lt;/code&gt; with type &lt;code&gt;linux swap&lt;/code&gt; (82)&lt;/li&gt;
+&lt;li&gt;~431GB for &lt;code&gt;/&lt;/code&gt; with &lt;strong&gt;bootable&lt;/strong&gt; flag and type &lt;code&gt;linux&lt;/code&gt; (83)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more take a look on &lt;a href="https://wiki.archlinux.org/index.php/partitioning"&gt;partitioning page&lt;/a&gt; on Arch wiki.&lt;/p&gt;
+&lt;h3&gt;Downloading basic packages&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I have tried installation on my virtual box then again on my laptop. The problem that I face to, was internet connection through WiFi. There is several way of doing this. You can use &lt;code&gt;wifi-menu&lt;/code&gt; to setup temporary connection for downloading packages and after installation setup &lt;code&gt;network-manager&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In this part we will format our partitions and enable Linux SWAP:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mksf.ext4 /dev/sda2
+mount /dev/sda2 /mnt
+mkswap /dev/sda1
+swapon /dev/sda2
+pacstrap /mnt base base-devel &lt;span class="c"&gt;# most basic packages&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;If you don't want to install anything more for now, you can omit below packages, but I recommend to install them also just for more efficient usage before setting up the &lt;code&gt;network-manager&lt;/code&gt;.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;pacstrap /mnt dialog wpa_supplicant network-manager-applet ldns &lt;span class="c"&gt;# for connecting via wifi-menu after install&lt;/span&gt;
+pacstrap /mnt sudo zsh wget curl &lt;span class="c"&gt;# additional packages&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Configuring the installation&lt;/h3&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;arch-chroot /mnt
+passwd root
+vi /etc/locale.gen    &lt;span class="c"&gt;# uncoment all for you lang: en_US&lt;/span&gt;
+locale-gen
+ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+timedatectl &lt;span class="nb"&gt;set&lt;/span&gt;-ntp &lt;span class="nb"&gt;true&lt;/span&gt;
+hwclock --systohc
+&lt;span class="nb"&gt;echo &lt;/span&gt;vbox &amp;gt; /etc/hostname
+
+&lt;span class="c"&gt;# installing grub&lt;/span&gt;
+pacman -S grub-bios
+grub-install /dev/sda
+
+&lt;span class="c"&gt;# generate system info file&lt;/span&gt;
+mkinitcpio -p linux
+
+grub-mkconfig -o /boot/grub/grub.cfg
+&lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="c"&gt;# from /mnt root&lt;/span&gt;
+
+&lt;span class="c"&gt;# generate partition info&lt;/span&gt;
+genfstab /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+umount -R /mnt
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This password is the most important of all. Write it down somewhere to not forget, we will need it later.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Connect to internet&lt;/h3&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;ip link
+systemctl &lt;span class="nb"&gt;enable &lt;/span&gt;dhcpcd.service
+systemctl start dhcpcd.service
+ping google.com
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;or copy profile from examples&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/
+vim /etc/netctl/ethernet-dhcp    &lt;span class="c"&gt;# change Interface=enp0s3&lt;/span&gt;
+netctl &lt;span class="nb"&gt;enable &lt;/span&gt;ethernet-dhcp
+netctl start ethernet-dhcp
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If above not work try manual install upon result from &lt;code&gt;ip link&lt;/code&gt;, in my case the Ethernet device name is called &lt;code&gt;enp0s3&lt;/code&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;ip link
+dhcpcd enp0s3
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;/blockquote&gt;
+&lt;h3&gt;Create user&lt;/h3&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;useradd -m -g users -G wheel,storage,power,sys,adm -s /bin/zsh maciej
+passwd maciej
+vim /etc/sudoers    &lt;span class="c"&gt;# Uncomment: wheel ALL=(ALL) ALL&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Now SWITCH to new created user!&lt;/strong&gt;
+To do it &lt;code&gt;logout&lt;/code&gt; from root user just to safety purpose.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Why? Because when you use &lt;strong&gt;root&lt;/strong&gt; you can do everything (it is good when you now what you're doing), but it's not about what you can or can't do, it's about you. You're more secure from yourself actions for example just using &lt;code&gt;sudo&lt;/code&gt; program.&lt;/p&gt;
+&lt;p&gt;It's good approach - but hey, you already know this, right? ;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Further steps&lt;/h3&gt;
+&lt;p&gt;Now we'll install additional useful stuff. You may or may not to install it, it's up to you.&lt;/p&gt;
+&lt;p&gt;My &lt;strong&gt;must have&lt;/strong&gt; list.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo pacman -Syu
+sudo pacman -S gvim git tmux htop
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For bash I usually install &lt;code&gt;bash-completion&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;For checking hardware &lt;code&gt;lshw hwinfo&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;For supporting different drives I install &lt;code&gt;exfat-utils dosfstools jfsutils ntfs-3g mtools&lt;/code&gt; and for partitioning I like &lt;code&gt;gparted&lt;/code&gt; and &lt;code&gt;gpart&lt;/code&gt; for fixing drives.&lt;/li&gt;
+&lt;li&gt;For graphics &lt;code&gt;gimp inkscape&lt;/code&gt; and &lt;code&gt;imagemagick&lt;/code&gt; for console operations.&lt;/li&gt;
+&lt;li&gt;For FTP &lt;code&gt;filezilla&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;For SSH &lt;code&gt;openssh&lt;/code&gt; is obvious choice!&lt;/li&gt;
+&lt;li&gt;For LaTeX I usually install all packages &lt;code&gt;texlive-most texlive-lang&lt;/code&gt; and &lt;code&gt;texstudio&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Install display manager&lt;/h3&gt;
+&lt;p&gt;I choose &lt;a href="https://www.gnome.org/gnome-3/"&gt;Gnome3&lt;/a&gt; for my graphical environment, because now may problems has been fixed and it quite nice.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo pacman -S gnome gnome-extra gnome-tweek-tool
+sudo systemctl &lt;span class="nb"&gt;enable &lt;/span&gt;gdm.service
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Reboot system with &lt;code&gt;sudo reboot&lt;/code&gt; and we're done with installation of GUI.&lt;/p&gt;
+&lt;h3&gt;Install the nVidia drivers&lt;/h3&gt;
+&lt;p&gt;First we check graphic card:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;lspci -k &lt;span class="p"&gt;|&lt;/span&gt; grep -A &lt;span class="m"&gt;2&lt;/span&gt; -E &lt;span class="s2"&gt;&amp;quot;(VGA|3D)&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;In my laptop have &lt;strong&gt;GeForce GT 425m&lt;/strong&gt;, so according to &lt;a href=""&gt;Arch Linux wiki about nvidia&lt;/a&gt;. I have to install &lt;code&gt;nvidia nvidia-libgl&lt;/code&gt; and enable service.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It might wants to uninstall other &lt;code&gt;mesa-libgl&lt;/code&gt; package (this package have some problems with doing animations for some graphic cards, like mine), so agree for that by pressing (Y).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo pacman -S nvidia nvidia-utils nvidia-libgl
+sudo systemctl &lt;span class="nb"&gt;enable &lt;/span&gt;nvidia-persistenced.service
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Then we have to reboot the system and check by &lt;code&gt;lsmod | grep nvidia&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;The end&lt;/h3&gt;
+&lt;p&gt;Now you should have full operational Arch Linux system - and yes, you should be proud of yourself!&lt;/p&gt;
+&lt;p&gt;Thanks for staying with me to the end. I hope that little tutorial of mine, help you a bit during your journey of setting up you private Arch instance ;)&lt;/p&gt;</summary><category term="linux"></category><category term="arch"></category><category term="terminal"></category></entry><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:git-push-guardian.html</id><summary type="html">&lt;!-- Summary: --&gt;
 
 &lt;div class="intro-article-image-md"&gt;
 &lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/git_logo-mini.png" /&gt;&lt;/p&gt;
@@ -111,4 +306,55 @@ older then 1.8.2). Then save above file as
 &lt;/blockquote&gt;
 &lt;p&gt;Now every time you will push to one of &lt;code&gt;protected_branches&lt;/code&gt; listed into the
 file, Git will ask you is that was your intend action. For git masters, this
-little trick can save a day ;)&lt;/p&gt;</summary><category term="git"></category><category term="terminal"></category></entry></feed>
+little trick can save a day ;)&lt;/p&gt;</summary><category term="git"></category><category term="terminal"></category></entry><entry><title>Install the latest nVidia drivers for Linux</title><link href="http://egel.pl/install-the-latest-nvidia-drivers-for-linux.html" rel="alternate"></link><updated>2015-11-02T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-11-02:install-the-latest-nvidia-drivers-for-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Tmux" src="http://egel.pl/images/terminal_icon.png" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The time has come that I had to face with reinstall of the Nvidia driver on my Mint
+17 distribution.&lt;/p&gt;
+&lt;p&gt;Well, while using my distro, there appear couple of problems with "Nvidia proprietary drivers".
+As a pro Linux guy (laugh),  I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;F1&lt;/code&gt;, and got a black screen with flashing cursor. YES! - I shouted immediately - the console isn't broken for good - I sad to myself in mind.&lt;/p&gt;
+&lt;p&gt;I red somewhere, that the problem could have something with the framebuffer. So I made few modifications to &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please remember, backup always go first!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo cp /etc/default/grub /etc/default/grub.bak
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Now edit the grub file by entering&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo vim /etc/default/grub
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;While editing in your favorite editor (I choose &lt;code&gt;vim&lt;/code&gt;), uncomment the lines, simply by removing the &lt;code&gt;#&lt;/code&gt; in front of those lines.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If your monitor support better resolutions you can change &lt;code&gt;GRUB_GFXMODE&lt;/code&gt; for another value, my highest was &lt;code&gt;1024x768&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;GRUB_TERMINAL=console
+GRUB_GFXMODE=640x480
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Save the file and run &lt;code&gt;update-grub&lt;/code&gt; to implement the changes&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo update-grub
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Now, I had to resolve which display manager do I have on my Mint?&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cat /etc/X11/default-display-manager
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;In my case, it was &lt;code&gt;mdm&lt;/code&gt;, so then I stopped display manager, installed drivers and enabled display manager again.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service mdm stop
+chmod +x /path/to/downloaded/driver/NVIDIA-Linux-x86_64-*.run
+sudo sh /path/to/downloaded/driver/NVIDIA-Linux-x86_64-*.run
+sudo service mdm start
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</summary><category term="linux"></category><category term="terminal"></category><category term="console"></category></entry></feed>
