@@ -167,7 +167,7 @@ sudo pacman -S gvim git tmux htop
 &lt;li&gt;For LaTeX I usually install all packages &lt;code&gt;texlive-most texlive-lang&lt;/code&gt; and &lt;code&gt;texstudio&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Install display manager&lt;/h3&gt;
-&lt;p&gt;I choose &lt;a href="https://www.gnome.org/gnome-3/"&gt;Gnome3&lt;/a&gt; for my graphical environment, because now may problems has been fixed and it quite nice.&lt;/p&gt;
+&lt;p&gt;I choose &lt;a href="https://www.gnome.org/gnome-3/"&gt;Gnome3&lt;/a&gt; for my graphical environment, because now many problems has been fixed by maintainers and it's looks quite nice.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo pacman -S gnome gnome-extra gnome-tweek-tool
 sudo systemctl &lt;span class="nb"&gt;enable &lt;/span&gt;gdm.service
@@ -176,14 +176,14 @@ sudo systemctl &lt;span class="nb"&gt;enable &lt;/span&gt;gdm.service
 
 &lt;p&gt;Reboot system with &lt;code&gt;sudo reboot&lt;/code&gt; and we're done with installation of GUI.&lt;/p&gt;
 &lt;h3&gt;Install the nVidia drivers&lt;/h3&gt;
-&lt;p&gt;First we check graphic card:&lt;/p&gt;
+&lt;p&gt;First we check which graphic card we have:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;lspci -k &lt;span class="p"&gt;|&lt;/span&gt; grep -A &lt;span class="m"&gt;2&lt;/span&gt; -E &lt;span class="s2"&gt;&amp;quot;(VGA|3D)&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;In my laptop have &lt;strong&gt;GeForce GT 425m&lt;/strong&gt;, so according to &lt;a href=""&gt;Arch Linux wiki about nvidia&lt;/a&gt;. I have to install &lt;code&gt;nvidia nvidia-libgl&lt;/code&gt; and enable service.&lt;/p&gt;
+&lt;p&gt;In my laptop I've got &lt;strong&gt;GeForce GT 425m&lt;/strong&gt;, so according to &lt;a href=""&gt;Arch Linux wiki about nvidia&lt;/a&gt;. I have to install &lt;code&gt;nvidia nvidia-libgl&lt;/code&gt; and enable service.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It might wants to uninstall other &lt;code&gt;mesa-libgl&lt;/code&gt; package (this package have some problems with doing animations for some graphic cards, like mine), so agree for that by pressing (Y).&lt;/p&gt;
+&lt;p&gt;It might wants to uninstall &lt;code&gt;mesa-libgl&lt;/code&gt; package (this package have some problems with handling animations for some graphic cards), so agree for that by pressing (Y).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo pacman -S nvidia nvidia-utils nvidia-libgl
@@ -191,7 +191,7 @@ sudo systemctl &lt;span class="nb"&gt;enable &lt;/span&gt;nvidia-persistenced.se
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;Then we have to reboot the system and check by &lt;code&gt;lsmod | grep nvidia&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then we have to reboot the system and check &lt;code&gt;lsmod | grep nvidia&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;The end&lt;/h3&gt;
 &lt;p&gt;Now you should have full operational Arch Linux system - and yes, you should be proud of yourself!&lt;/p&gt;
 &lt;p&gt;Thanks for staying with me to the end. I hope that little tutorial of mine, help you a bit during your journey of setting up you private Arch instance ;)&lt;/p&gt;</summary><category term="linux"></category><category term="arch"></category><category term="terminal"></category></entry><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;

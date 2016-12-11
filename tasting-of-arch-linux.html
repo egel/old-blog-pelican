@@ -393,7 +393,7 @@ sudo pacman -S gvim git tmux htop
 <li>For LaTeX I usually install all packages <code>texlive-most texlive-lang</code> and <code>texstudio</code></li>
 </ul>
 <h3>Install display manager</h3>
-<p>I choose <a href="https://www.gnome.org/gnome-3/">Gnome3</a> for my graphical environment, because now may problems has been fixed and it quite nice.</p>
+<p>I choose <a href="https://www.gnome.org/gnome-3/">Gnome3</a> for my graphical environment, because now many problems has been fixed by maintainers and it's looks quite nice.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre>sudo pacman -S gnome gnome-extra gnome-tweek-tool
 sudo systemctl <span class="nb">enable </span>gdm.service
@@ -402,14 +402,14 @@ sudo systemctl <span class="nb">enable </span>gdm.service
 
 <p>Reboot system with <code>sudo reboot</code> and we're done with installation of GUI.</p>
 <h3>Install the nVidia drivers</h3>
-<p>First we check graphic card:</p>
+<p>First we check which graphic card we have:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>lspci -k <span class="p">|</span> grep -A <span class="m">2</span> -E <span class="s2">&quot;(VGA|3D)&quot;</span>
 </pre></div>
 </td></tr></table>
 
-<p>In my laptop have <strong>GeForce GT 425m</strong>, so according to <a href="">Arch Linux wiki about nvidia</a>. I have to install <code>nvidia nvidia-libgl</code> and enable service.</p>
+<p>In my laptop I've got <strong>GeForce GT 425m</strong>, so according to <a href="">Arch Linux wiki about nvidia</a>. I have to install <code>nvidia nvidia-libgl</code> and enable service.</p>
 <blockquote>
-<p>It might wants to uninstall other <code>mesa-libgl</code> package (this package have some problems with doing animations for some graphic cards, like mine), so agree for that by pressing (Y).</p>
+<p>It might wants to uninstall <code>mesa-libgl</code> package (this package have some problems with handling animations for some graphic cards), so agree for that by pressing (Y).</p>
 </blockquote>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre>sudo pacman -S nvidia nvidia-utils nvidia-libgl
@@ -417,7 +417,7 @@ sudo systemctl <span class="nb">enable </span>nvidia-persistenced.service
 </pre></div>
 </td></tr></table>
 
-<p>Then we have to reboot the system and check by <code>lsmod | grep nvidia</code>.</p>
+<p>Then we have to reboot the system and check <code>lsmod | grep nvidia</code>.</p>
 <h3>The end</h3>
 <p>Now you should have full operational Arch Linux system - and yes, you should be proud of yourself!</p>
 <p>Thanks for staying with me to the end. I hope that little tutorial of mine, help you a bit during your journey of setting up you private Arch instance ;)</p>
