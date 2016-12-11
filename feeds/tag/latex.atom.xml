@@ -1037,7 +1037,7 @@ my another article called
 &lt;a href="http://egel.pl/is-worth-to-know-the-vim-editor-and-why.html"&gt;Is&amp;nbsp;worth&amp;nbsp;to&amp;nbsp;know&amp;nbsp;the&amp;nbsp;Vim&amp;nbsp;editor&amp;nbsp;an&amp;nbsp;why&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;From the GUI type, my favorite one is &lt;a href="http://www.texstudio.org/"&gt;TeXstudio&lt;/a&gt; and here I
 write another article
-&lt;a href="http://egel.pl/drafts/how-to-configure-texstudio.html"&gt;How&amp;nbsp;to&amp;nbsp;configure&amp;nbsp;TeXstudio&lt;/a&gt;
+&lt;a href="{filename}configure_texstudio.md"&gt;How&amp;nbsp;to&amp;nbsp;configure&amp;nbsp;TeXstudio&lt;/a&gt;
 where I describing how to smoothly start with this program and why use it for
 writing LaTeX. I also very like &lt;a href="https://www.sublimetext.com/3"&gt;Sublime&amp;nbsp;Text&amp;nbsp;3&lt;/a&gt;,
 although it has more common with usual text editor then with special LaTeX IDE.

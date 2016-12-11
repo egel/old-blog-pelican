@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/all.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-18T00:00:00+01:00</updated><entry><title>Tasting of Arch Linux</title><link href="http://egel.pl/tasting-of-arch-linux.html" rel="alternate"></link><updated>2016-11-18T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-18:tasting-of-arch-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Linux logo" src="http://egel.pl/images/archlinux_logo.png" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>The Egel's Blog</title><link>http://blog.loc/</link><description></description><atom:link href="http://blog.loc/feeds/maciej-sypien.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 18 Nov 2016 00:00:00 +0100</lastBuildDate><item><title>Tasting of Arch Linux</title><link>http://blog.loc/tasting-of-arch-linux.html</link><description>&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Linux logo" src="http://blog.loc/images/archlinux_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;I have to admit that installation of Arch Linux can be difficult for many people, but that exactly is real fun!&lt;/p&gt;
 &lt;p&gt;Few days ago I've tried to install Arch on my virtual machine then on my laptop and I could not find anything that I didn't like. Yeah, I agree that there are many decisions you have to decide during installation of Arch. For example: manual setting up of partitions, current date, downloading all related packages, then finally install whole system. For many (unfortunately) it's just the beginning, because after the installation you have a bare system - console and that is it. You need to install and configure GUI and other important stuff on your own, but actually that is real fun!&lt;/p&gt;
@@ -194,7 +194,7 @@ sudo systemctl &lt;span class="nb"&gt;enable &lt;/span&gt;nvidia-persistenced.se
 &lt;p&gt;Then we have to reboot the system and check &lt;code&gt;lsmod | grep nvidia&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;The end&lt;/h3&gt;
 &lt;p&gt;Now you should have full operational Arch Linux system - and yes, you should be proud of yourself!&lt;/p&gt;
-&lt;p&gt;Thanks for staying with me to the end. I hope that little tutorial of mine, help you a bit during your journey of setting up you private Arch instance ;)&lt;/p&gt;</summary><category term="linux"></category><category term="arch"></category><category term="terminal"></category></entry><entry><title>Install and configure dnsmasq on linux</title><link href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html" rel="alternate"></link><updated>2016-11-05T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-05:install-and-configure-dnsmasq-on-linux.html</id><summary type="html">&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
+&lt;p&gt;Thanks for staying with me to the end. I hope that little tutorial of mine, help you a bit during your journey of setting up you private Arch instance ;)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Fri, 18 Nov 2016 00:00:00 +0100</pubDate><guid>tag:blog.loc,2016-11-18:tasting-of-arch-linux.html</guid><category>linux</category><category>arch</category><category>terminal</category></item><item><title>Install and configure dnsmasq on linux</title><link>http://blog.loc/install-and-configure-dnsmasq-on-linux.html</link><description>&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
 &lt;h3&gt;Installation process&lt;/h3&gt;
 &lt;p&gt;Using the &lt;code&gt;apt-get&lt;/code&gt; manager we will install core program.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install dnsmasq
@@ -232,7 +232,7 @@ PING wp.loc (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.036 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.038 ms
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="linux"></category><category term="frontend"></category></entry><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><updated>2016-10-10T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;You may wonder why to install vim from source files if there are precompiled, ready to install packages available in your package managers. Yeah that is true, but there are also few "however".&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Sat, 05 Nov 2016 00:00:00 +0100</pubDate><guid>tag:blog.loc,2016-11-05:install-and-configure-dnsmasq-on-linux.html</guid><category>linux</category><category>frontend</category></item><item><title>How to install Vim from the source files</title><link>http://blog.loc/how-to-install-vim-from-the-source-files.html</link><description>&lt;p&gt;You may wonder why to install vim from source files if there are precompiled, ready to install packages available in your package managers. Yeah that is true, but there are also few "however".&lt;/p&gt;
 &lt;p&gt;If you compile and install from the source, the program is then the best suited to your system its software and also for the hardware. Moreover you can also use the latest versions, especially those not avaiable in the package managers.&lt;/p&gt;
 &lt;p&gt;There are also some light and dark side of doing it from the source, but for vim I think is the best possible way to have blazing fast text editor.&lt;/p&gt;
 &lt;h3&gt;Before you start&lt;/h3&gt;
@@ -466,7 +466,7 @@ Linking: gcc   -L. -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-E   -L/u
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;Awesome, now you are ready to discover the vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</summary><category term="text-editor"></category><category term="latex"></category><category term="install"></category></entry><entry><title>Being a perpetrator of DOS attack</title><link href="http://egel.pl/being-a-perpetrator-of-dos-attack.html" rel="alternate"></link><updated>2016-09-21T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-09-21:being-a-perpetrator-of-dos-attack.html</id><summary type="html">&lt;p&gt;Few days ago my tiny VPS server has become an attacker of denial of service. Really?&lt;/p&gt;
+&lt;p&gt;Awesome, now you are ready to discover the vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Mon, 10 Oct 2016 00:00:00 +0200</pubDate><guid>tag:blog.loc,2016-10-10:how-to-install-vim-from-the-source-files.html</guid><category>text-editor</category><category>latex</category><category>install</category></item><item><title>Being a perpetrator of DOS attack</title><link>http://blog.loc/being-a-perpetrator-of-dos-attack.html</link><description>&lt;p&gt;Few days ago my tiny VPS server has become an attacker of denial of service. Really?&lt;/p&gt;
 &lt;p&gt;I was mailed by automatic DO mailer, that my server have become an attacker of denial of service and everything have been shutdown.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Hi there,&lt;/p&gt;
@@ -491,10 +491,10 @@ DigitalOcean&lt;/p&gt;
 &lt;p&gt;In the latest time when I use DO VPS I've try to setup private Gitlab on this tiny machine and I was succeeded. I setup Gitlab + Apache + MySQL (and couple of other deamons) and this works flawlessly with additional drive SWAP around 2GB. But after few days my server has been shutdown instantly.&lt;/p&gt;
 &lt;p&gt;So when the super scripts of DO discovered, that my little server generate bigger traffic (guessing this), then my server has been cut out from connection to the Internet.&lt;/p&gt;
 &lt;p&gt;Even after shutting down my VPS, I was still charged with full amount - it was not much, but hey, I hire this VPS mainly to have a cheap server with connection to the Internet! If I want a simple server with similar amount of RAM, I would buy Raspberry PI and connect only to a power adapter without accessing to Internet.&lt;/p&gt;
-&lt;p&gt;I was really angry about this situation, but in the end that's good, that this happen to me - I change VPS provider much quicker then I thought :)&lt;/p&gt;</summary><category term="linux"></category><category term="console"></category><category term="server"></category></entry><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:git-push-guardian.html</id><summary type="html">&lt;!-- Summary: --&gt;
+&lt;p&gt;I was really angry about this situation, but in the end that's good, that this happen to me - I change VPS provider much quicker then I thought :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Wed, 21 Sep 2016 00:00:00 +0200</pubDate><guid>tag:blog.loc,2016-09-21:being-a-perpetrator-of-dos-attack.html</guid><category>linux</category><category>console</category><category>server</category></item><item><title>Git push guardian</title><link>http://blog.loc/git-push-guardian.html</link><description>&lt;!-- Summary: --&gt;
 
 &lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/git_logo-mini.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="LaTeX logo" src="http://blog.loc/images/git_logo-mini.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Recently I wondering how to improve my workflow with Git. I came across the Web
 and found some article which pointed on git hooks and were introduced in
@@ -603,8 +603,8 @@ older then 1.8.2). Then save above file as
 &lt;/blockquote&gt;
 &lt;p&gt;Now every time you will push to one of &lt;code&gt;protected_branches&lt;/code&gt; listed into the
 file, Git will ask you is that was your intend action. For git masters, this
-little trick can save a day ;)&lt;/p&gt;</summary><category term="git"></category><category term="terminal"></category></entry><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+little trick can save a day ;)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Mon, 16 May 2016 00:00:00 +0200</pubDate><guid>tag:blog.loc,2016-05-16:git-push-guardian.html</guid><category>git</category><category>terminal</category></item><item><title>Nginx configuration for AngularJS cloud project with Apiary</title><link>http://blog.loc/nginx-configuration-for-angularjs-cloud-project-with-apiary.html</link><description>&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://blog.loc/images/nginx_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
  &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and
@@ -759,7 +759,7 @@ and it looks like this snippet presented at the bottom.&lt;/p&gt;
   &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/ABSOLUTE_PATH_TO_WORKING_DIR/example-subdomain-frontend/tests/test-coverage/PhantomJS&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="s"&gt;.1.1&lt;/span&gt; &lt;span class="s"&gt;(Mac&lt;/span&gt; &lt;span class="s"&gt;OS&lt;/span&gt; &lt;span class="s"&gt;X&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="s"&gt;.0.0)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry><entry><title>Migrating blog content</title><link href="http://egel.pl/migrating-blog-content.html" rel="alternate"></link><updated>2016-03-14T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-03-14:migrating-blog-content.html</id><summary type="html">&lt;p&gt;Currently, I am in a phase of migrating my content from legacy Wordpress to
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Wed, 13 Apr 2016 12:44:00 +0200</pubDate><guid>tag:blog.loc,2016-04-13:nginx-configuration-for-angularjs-cloud-project-with-apiary.html</guid><category>angularjs</category><category>nginx</category><category>apiary</category><category>frontend</category></item><item><title>Migrating blog content</title><link>http://blog.loc/migrating-blog-content.html</link><description>&lt;p&gt;Currently, I am in a phase of migrating my content from legacy Wordpress to
 Pelican. To finally complete this, I have to translate all content from Polish
 to English to reach further audience.&lt;/p&gt;
 &lt;p&gt;Unfortunately, at this moment I suffer for lack of free time. There are many
@@ -768,7 +768,7 @@ level of well written article.&lt;/p&gt;
 &lt;p&gt;As soon as I finish transfer of my articles, I will post it here. By this
 moment, I would like to invite you take a look on actual a list, you may find
 something interesting here.&lt;/p&gt;
-&lt;p&gt;Thank you for your indulgence and stay tuned :)&lt;/p&gt;</summary><category term="pelican"></category><category term="wordpress"></category></entry><entry><title>Moving from Wordpress to Pelican</title><link href="http://egel.pl/moving-from-wordpress-to-pelican.html" rel="alternate"></link><updated>2016-02-25T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-25:moving-from-wordpress-to-pelican.html</id><summary type="html">&lt;p&gt;I have to start with words "I used wordpress for 2 yeas constantly". During
+&lt;p&gt;Thank you for your indulgence and stay tuned :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Mon, 14 Mar 2016 00:00:00 +0100</pubDate><guid>tag:blog.loc,2016-03-14:migrating-blog-content.html</guid><category>pelican</category><category>wordpress</category></item><item><title>Moving from Wordpress to Pelican</title><link>http://blog.loc/moving-from-wordpress-to-pelican.html</link><description>&lt;p&gt;I have to start with words "I used wordpress for 2 yeas constantly". During
 this period of time, several times I had problems with many basic stuff like
 uploading and managing images, insert some code snippets (like simple &lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; or
 &lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; elements), constantly updating framework core, but is not the point.&lt;/p&gt;
@@ -830,8 +830,8 @@ depends on user preferences and language taste, then just start writing in it :)
 &lt;p&gt;If you want to just write blog or blog-like page in easy to write syntax (like
 markdown) I definitely say YES, it is worth the time.&lt;/p&gt;
 &lt;p&gt;But if you expect whole next level of writing articles like you do in CMS, turn
-around and go back to your stuff, you will waste your time implement it.&lt;/p&gt;</summary><category term="wordpress"></category><category term="pelican"></category></entry><entry><title>How to improve nginx setup on Mac OSX</title><link href="http://egel.pl/how-to-improve-nginx-setup-on-mac-osx.html" rel="alternate"></link><updated>2016-02-16T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-16:how-to-improve-nginx-setup-on-mac-osx.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+around and go back to your stuff, you will waste your time implement it.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Thu, 25 Feb 2016 00:00:00 +0100</pubDate><guid>tag:blog.loc,2016-02-25:moving-from-wordpress-to-pelican.html</guid><category>wordpress</category><category>pelican</category></item><item><title>How to improve nginx setup on Mac OSX</title><link>http://blog.loc/how-to-improve-nginx-setup-on-mac-osx.html</link><description>&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://blog.loc/images/nginx_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;If you store all your configurations for nginx servers on your Mac into single
 file... you probably can do it better.&lt;/p&gt;
@@ -919,8 +919,8 @@ type: &lt;code&gt;sudo mkdir -p /Library/Logs/nginx&lt;/code&gt;&lt;/p&gt;
   &lt;span class="kn"&gt;include&lt;/span&gt; &lt;span class="s"&gt;/usr/local/etc/nginx/sites-enabled/*.conf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="osx"></category><category term="nginx"></category></entry><entry><title>Install the latest nVidia drivers for Linux</title><link href="http://egel.pl/install-the-latest-nvidia-drivers-for-linux.html" rel="alternate"></link><updated>2015-11-02T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-11-02:install-the-latest-nvidia-drivers-for-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Tmux" src="http://egel.pl/images/terminal_icon.png" /&gt;&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Tue, 16 Feb 2016 00:00:00 +0100</pubDate><guid>tag:blog.loc,2016-02-16:how-to-improve-nginx-setup-on-mac-osx.html</guid><category>osx</category><category>nginx</category></item><item><title>Install the latest nVidia drivers for Linux</title><link>http://blog.loc/install-the-latest-nvidia-drivers-for-linux.html</link><description>&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Tmux" src="http://blog.loc/images/terminal_icon.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;The time has come that I had to face with reinstall of the Nvidia driver on my Mint
 17 distribution.&lt;/p&gt;
@@ -970,10 +970,10 @@ sudo service mdm start
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</summary><category term="linux"></category><category term="terminal"></category><category term="console"></category></entry><entry><title>Is worth to know the Vim Editor and why?</title><link href="http://egel.pl/is-worth-to-know-the-vim-editor-and-why.html" rel="alternate"></link><updated>2016-07-04T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-04-06:is-worth-to-know-the-vim-editor-and-why.html</id><summary type="html">&lt;!-- Summary:    I'll try to gather all my current experience about writing the code, also writing in many text editors and finally express my opinion that is that worth to learn Vi/Vim.  --&gt;
+&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Mon, 02 Nov 2015 00:00:00 +0100</pubDate><guid>tag:blog.loc,2015-11-02:install-the-latest-nvidia-drivers-for-linux.html</guid><category>linux</category><category>terminal</category><category>console</category></item><item><title>Is worth to know the Vim Editor and why?</title><link>http://blog.loc/is-worth-to-know-the-vim-editor-and-why.html</link><description>&lt;!-- Summary:    I'll try to gather all my current experience about writing the code, also writing in many text editors and finally express my opinion that is that worth to learn Vi/Vim.  --&gt;
 
 &lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Vim" src="http://egel.pl/images/Vim_logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Logo of Vim" src="http://blog.loc/images/Vim_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;This topic has been long on my mind, but in the end I want to share with you with my reflections on the one of the earliest text editors. Yes, I am talking about Vi/Vim.&lt;/p&gt;
 &lt;p&gt;I will also try to answer for a few essential questions for those who would like to give it try, like:&lt;/p&gt;
@@ -1047,12 +1047,12 @@ sudo service mdm start
 &lt;p&gt;The last of the steps, which substantially simultaneously intertwined with learning keyboard controls and general customization, that great power of this editor lay in its configuration (the &lt;code&gt;~/.vimrc&lt;/code&gt; file). You will discover over time a lot of interesting things about Vim (modes, buffers, plugins), as well as the possibility of efficient typing on a keyboard, since the default layout of Vim keyboard controls is not shaped by accident ;)&lt;/p&gt;
 &lt;p&gt;In fact, this is the end. The only thing you need to do is to try to use Vim as far as possible, and as often as you can. In a relatively short period of time (it took me about a week to get used to it and two months to become addicted to it) you can master it in sufficient detail to enable a rapid and smooth operations.&lt;/p&gt;
 &lt;p&gt;The following slight digression comparing &lt;strong&gt;effort&lt;/strong&gt; (Y axis) and &lt;strong&gt;time&lt;/strong&gt; (X axis) that must be put into a selective group of text editors. As you can see the most interesting curves of all are presented by curves of Emacs and Vim.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Learning curve of some text editors" src="http://egel.pl/images/text_editors.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Learning curve of some text editors" src="http://blog.loc/images/text_editors.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;However I cannot leave you without any kind of further hint or help. So for the beginners, (and also advanced hackers) I can recommend you my &lt;a href="https://github.com/egel/dot-files"&gt;&lt;code&gt;dotfiles&lt;/code&gt;&lt;/a&gt; github repository, which I've made a while ago also for this kind of situations. Among other stuff, it stores my Vim configuration, so it is a good start to gets your own nice configuration.&lt;/p&gt;
 &lt;p&gt;This repository I've made specially for my Linux OS (mainly based on Debian, like Ubuntu, XUbuntu, Mint and so on), it also can be used for any other system, but have to be installed manually. In near future It will also support Macs! ;)&lt;/p&gt;
 &lt;p&gt;This repository also contains my keyboard shortcuts in beautiful PDF to download, print or modify by your self in your own fork. Yeah!&lt;/p&gt;
-&lt;p&gt;Thank you for staying with me to the end. Now, give Vim a try, leave a comment and say fresh!&lt;/p&gt;</summary><category term="vim"></category><category term="text-editor"></category></entry><entry><title>Thesis in LaTeX - part 3</title><link href="http://egel.pl/thesis-in-latex-part-3.html" rel="alternate"></link><updated>2015-04-06T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-04-06:thesis-in-latex-part-3.html</id><summary type="html">&lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Thank you for staying with me to the end. Now, give Vim a try, leave a comment and say fresh!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Mon, 04 Jul 2016 19:30:00 +0200</pubDate><guid>tag:blog.loc,2015-04-06:is-worth-to-know-the-vim-editor-and-why.html</guid><category>vim</category><category>text-editor</category></item><item><title>Thesis in LaTeX - part 3</title><link>http://blog.loc/thesis-in-latex-part-3.html</link><description>&lt;div class="intro-article-image-md"&gt;
+&lt;p&gt;&lt;img alt="LaTeX logo" src="http://blog.loc/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;In this article I will try to explain how to prepare front page for our thesis in LaTeX. I&amp;nbsp;will also say something about good practices in writing and how to proper format the content into LaTeX files using the built-in commands. Furthermore I will show you how to use other commands provided by additional packages for LaTeX.&lt;/p&gt;
 &lt;p&gt;I assume, that for this moment, you have read previous both articles &lt;a href="http://egel.pl/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;, &lt;a href="http://egel.pl/thesis-in-latex-part-2.html"&gt;part 2&lt;/a&gt; and also you have prepared your computer's work space.&lt;/p&gt;
@@ -1265,11 +1265,11 @@ Below appears a tiny table:
 &lt;li&gt;we will implement the full bibliographic system with &lt;code&gt;biblatex&lt;/code&gt; + &lt;code&gt;biber&lt;/code&gt; for our document;&lt;/li&gt;
 &lt;li&gt;and will join at the end of the document lists of: bibliography, figures and tables.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This will be one of the most interesting articles in a series, as it works with ready examples of implementation of the &lt;code&gt;biblatex&lt;/code&gt; and &lt;code&gt;biber&lt;/code&gt; is RARE (in particular Polish LaTeX community). At the date of publication of this article, the above combination seems to be the most effective solution for storing and formatting bibliographies. At this moment I would love to, to invite you for next article from this series :)&lt;/p&gt;</summary><category term="latex"></category><category term="university"></category></entry><entry><title>Thesis in LaTeX - part 2</title><link href="http://egel.pl/thesis-in-latex-part-2.html" rel="alternate"></link><updated>2014-10-19T12:21:49+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-10-19:thesis-in-latex-part-2.html</id><summary type="html">&lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;This will be one of the most interesting articles in a series, as it works with ready examples of implementation of the &lt;code&gt;biblatex&lt;/code&gt; and &lt;code&gt;biber&lt;/code&gt; is RARE (in particular Polish LaTeX community). At the date of publication of this article, the above combination seems to be the most effective solution for storing and formatting bibliographies. At this moment I would love to, to invite you for next article from this series :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Mon, 06 Apr 2015 00:00:00 +0200</pubDate><guid>tag:blog.loc,2015-04-06:thesis-in-latex-part-3.html</guid><category>latex</category><category>university</category></item><item><title>Thesis in LaTeX - part 2</title><link>http://blog.loc/thesis-in-latex-part-2.html</link><description>&lt;div class="intro-article-image-md"&gt;
+&lt;p&gt;&lt;img alt="LaTeX logo" src="http://blog.loc/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;I assume, that at the moment of reading this second part of writing thesis in
-LaTeX, you have already red the previous &lt;a href="http://egel.pl/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;
+LaTeX, you have already red the previous &lt;a href="http://blog.loc/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;
 and install required software. If you do, then perfect carry on, but if not you
 should catch up.&lt;/p&gt;
 &lt;p&gt;I this part I will try to make some very basic introduction &lt;strong&gt;How to use LaTeX in
@@ -1691,10 +1691,10 @@ will be pleased to invite to to next, third part and it will contain:&lt;/p&gt;
 &lt;li&gt;basic &lt;strong&gt;good practices&lt;/strong&gt; during writing in LaTeX&lt;/li&gt;
 &lt;li&gt;and we will make the title page for our thesis&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;...well, fun will be guarantee ;)&lt;/p&gt;</summary><category term="latex"></category><category term="university"></category></entry><entry><title>Thesis in LaTeX - part 1</title><link href="http://egel.pl/thesis-in-latex-part-1.html" rel="alternate"></link><updated>2014-10-12T19:00:05+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-10-12:thesis-in-latex-part-1.html</id><summary type="html">&lt;!-- Summary: --&gt;
+&lt;p&gt;...well, fun will be guarantee ;)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Sun, 19 Oct 2014 12:21:49 +0200</pubDate><guid>tag:blog.loc,2014-10-19:thesis-in-latex-part-2.html</guid><category>latex</category><category>university</category></item><item><title>Thesis in LaTeX - part 1</title><link>http://blog.loc/thesis-in-latex-part-1.html</link><description>&lt;!-- Summary: --&gt;
 
 &lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="LaTeX logo" src="http://blog.loc/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;In one simple sentence, LaTeX it is an extension of TeX language, although TeX
 in real life is a collation of macros. This is not a official definition, rather
@@ -1852,7 +1852,7 @@ ready-made solution (although it also can work in this way), but as a handy help
 to begin your journey with Vim. If you are wondering or hesitating (like I was)
 it is worth to begin long learnign journey with Vim I highly suggest you to read
 my another article called
-&lt;a href="http://egel.pl/is-worth-to-know-the-vim-editor-and-why.html"&gt;Is&amp;nbsp;worth&amp;nbsp;to&amp;nbsp;know&amp;nbsp;the&amp;nbsp;Vim&amp;nbsp;editor&amp;nbsp;an&amp;nbsp;why&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="http://blog.loc/is-worth-to-know-the-vim-editor-and-why.html"&gt;Is&amp;nbsp;worth&amp;nbsp;to&amp;nbsp;know&amp;nbsp;the&amp;nbsp;Vim&amp;nbsp;editor&amp;nbsp;an&amp;nbsp;why&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;From the GUI type, my favorite one is &lt;a href="http://www.texstudio.org/"&gt;TeXstudio&lt;/a&gt; and here I
 write another article
 &lt;a href="{filename}configure_texstudio.md"&gt;How&amp;nbsp;to&amp;nbsp;configure&amp;nbsp;TeXstudio&lt;/a&gt;
@@ -1926,12 +1926,12 @@ sudo apt-get install texlive-full biber
 to start with LaTeX. Also obtain answers for those questions that are not easy
 to get.&lt;/p&gt;
 &lt;h3&gt;Next part&lt;/h3&gt;
-&lt;p&gt;But how to start building a LaTeX thesis, I will discuss on next article &lt;a href="http://egel.pl/thesis-in-latex-part-2.html"&gt;Thesis
+&lt;p&gt;But how to start building a LaTeX thesis, I will discuss on next article &lt;a href="http://blog.loc/thesis-in-latex-part-2.html"&gt;Thesis
 in LaTeX - part 2&lt;/a&gt;.  I will based on my
 implementation of &lt;a href="https://github.com/egel/uek-latex-thesis-class"&gt;uekthesis&lt;/a&gt; class which I created for my
 university: Cracow University of Economics, but it can be modified and adjust
-for any other University in a fly.&lt;/p&gt;</summary><category term="latex"></category><category term="university"></category></entry><entry><title>Discover the Sublime Text 3 Beta</title><link href="http://egel.pl/discover-the-sublime-text-3-beta.html" rel="alternate"></link><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:discover-the-sublime-text-3-beta.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/Sublime_Text_Logo.png" /&gt;&lt;/p&gt;
+for any other University in a fly.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Sun, 12 Oct 2014 19:00:05 +0200</pubDate><guid>tag:blog.loc,2014-10-12:thesis-in-latex-part-1.html</guid><category>latex</category><category>university</category></item><item><title>Discover the Sublime Text 3 Beta</title><link>http://blog.loc/discover-the-sublime-text-3-beta.html</link><description>&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://blog.loc/images/Sublime_Text_Logo.png" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Sublime is just amazing text editor. I've loved it since I've taste it. However its uniqueness and some advantage in contrast with other GUI editors that is versatility of usage and huge staff of plug-ins supports user experience.&lt;/p&gt;
 &lt;p&gt;It is also available with free trial version for many popular platforms (Mac, Linux, Windows). But in this article I will focus on configuration most suitable for my daily basics with system from Linux family, naturally based on Debian.&lt;/p&gt;
@@ -2245,8 +2245,8 @@ More info how to achieve this you can find &lt;a href="#settings-user"&gt;Settin
     &lt;span class="p"&gt;],&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="text editor"></category><category term="sublime"></category><category term="gui"></category></entry><entry><title>Install archived app into Linux</title><link href="http://egel.pl/install-archived-app-into-linux.html" rel="alternate"></link><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:install-archived-app-into-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/linux_logo_pinguin.jpg" /&gt;&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Thu, 01 Oct 2015 19:30:00 +0200</pubDate><guid>tag:blog.loc,2014-08-16:discover-the-sublime-text-3-beta.html</guid><category>text editor</category><category>sublime</category><category>gui</category></item><item><title>Install archived app into Linux</title><link>http://blog.loc/install-archived-app-into-linux.html</link><description>&lt;div class="intro-article-image-sm"&gt;
+&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://blog.loc/images/linux_logo_pinguin.jpg" /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;This should be obvious task for average Linux user, but there are hundreds of
 thousands methods how to install program from archive file like &lt;code&gt;.tar&lt;/code&gt;,
@@ -2290,7 +2290,7 @@ database files, you can probably use any other you want to install.&lt;/p&gt;
 &lt;p&gt;If there are any problems with file permissions directly into
 program's directory, that is pretty much it. Good job!&lt;/p&gt;
 &lt;p&gt;You have your external program installed correctly for multiple users and
-probably any graphical interface you have should read it properly.&lt;/p&gt;</summary><category term="linux"></category><category term="install"></category></entry><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or &lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;, &lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
+probably any graphical interface you have should read it properly.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Thu, 01 Oct 2015 19:30:00 +0200</pubDate><guid>tag:blog.loc,2014-08-16:install-archived-app-into-linux.html</guid><category>linux</category><category>install</category></item><item><title>Setup LAMP server with sample domain</title><link>http://blog.loc/setup-lamp-server-with-sample-domain.html</link><description>&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or &lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;, &lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
 &lt;p&gt;Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.&lt;/p&gt;
 &lt;p&gt;In this simple article I'll show you how to build your own simple (and standard in these days) server configuration based on LAMP, but those tools can be easily replaced with others technologies.  For example if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end setup will be made).&lt;/p&gt;
 &lt;p&gt;I think this is good, start example to play with :) Enjoy.&lt;/p&gt;
@@ -2566,7 +2566,7 @@ sudo a2ensite blog.loc.conf
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Next we need to tell the server to use our new ServerName.&lt;/p&gt;
-&lt;p&gt;The best solution I know for development purposes involving &lt;code&gt;dnsmasq&lt;/code&gt;, which I definitely recommend - you can find how to do it into article &lt;a href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html"&gt;How to install dnsmasq&lt;/a&gt; or just add the name of server to the hosts file:&lt;/p&gt;
+&lt;p&gt;The best solution I know for development purposes involving &lt;code&gt;dnsmasq&lt;/code&gt;, which I definitely recommend - you can find how to do it into article &lt;a href="http://blog.loc/install-and-configure-dnsmasq-on-linux.html"&gt;How to install dnsmasq&lt;/a&gt; or just add the name of server to the hosts file:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 blog.loc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -2732,4 +2732,4 @@ sudo chmod -R &lt;span class="m"&gt;775&lt;/span&gt; /home/&lt;span class="nv"&g
 &lt;p&gt;Save it inside &lt;code&gt;/home/$USER/bin&lt;/code&gt; and make it executable using:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo chmod +x /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/bin/public_html_fix.sh
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="apache"></category><category term="mysql"></category><category term="php"></category><category term="domains"></category></entry></feed>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Maciej Sypień</dc:creator><pubDate>Sat, 27 Jun 2015 00:00:00 +0200</pubDate><guid>tag:blog.loc,2014-04-06:setup-lamp-server-with-sample-domain.html</guid><category>apache</category><category>mysql</category><category>php</category><category>domains</category></item></channel></rss>
