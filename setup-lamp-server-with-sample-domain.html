@@ -1,288 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Setup LAMP server with sample domain - The Egel's Blog</title>
-  <!-- Using the latest rendering mode for IE -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <link href="http://egel.pl/extras/favicon.png" rel="icon">
-
-<link rel="canonical" href="http://egel.pl/setup-lamp-server-with-sample-domain.html">
-
-    <meta name="author" content="Maciej Sypień" />
-    <meta name="keywords" content="apache,mysql,php,domains" />
-    <meta name="description" content="We will install standard and secure Linux - Apache - MySQL - PHP configuration with PHPMyAdmin for easy database management and create sample Apache&#39;s VirtualHost. Shall we begin? :)" />
-
-    <meta property="og:site_name" content="The Egel's Blog" />
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Setup LAMP server with sample domain"/>
-    <meta property="og:url" content="http://egel.pl/setup-lamp-server-with-sample-domain.html"/>
-    <meta property="og:description" content="We will install standard and secure Linux - Apache - MySQL - PHP configuration with PHPMyAdmin for easy database management and create sample Apache&#39;s VirtualHost. Shall we begin? :)"/>
-    <meta property="article:published_time" content="2014-04-06" />
-      <meta property="article:section" content="How to" />
-      <meta property="article:tag" content="apache" />
-      <meta property="article:tag" content="mysql" />
-      <meta property="article:tag" content="php" />
-      <meta property="article:tag" content="domains" />
-      <meta property="article:author" content="Maciej Sypień" />
-
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="http://egel.pl/theme/css/styles.css" type="text/css"/>
-  <link href="http://egel.pl/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Egel's Blog ATOM Feed"/>
-</head>
-<body>
-
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="http://egel.pl/" class="navbar-brand">
-The Egel's Blog        </a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-
-          <li ><a href="http://egel.pl">Home</a></li>
-
-            <li ><a href="http://egel.pl/pages/about-me.html">About me</a></li>
-
-          <li >
-            <a href="http://egel.pl/reading-list.html">Reading list</a>
-          </li>
-          <li >
-            <a href="http://egel.pl/archives.html">Archives</a>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div><!--/.container-fluid -->
-  </nav>
-  <header class="intro-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <div class="site-heading">
-            <h1>Do more in less time</h1>
-            <hr class="small">
-            <span class="subheading">Simplicity and clarity of the implementation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3 sidebar sidebar-tablet">
-<div class="aboutme">
-  <h4>About the author</h4>
-    <img class="avatar thumbnail" src="https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=200" />
-  <p>
-    
-Programmer, soundtracks enthusiast, astrophysics fan.
-Occasionally hacking this blog with new articles.
-
-  </p>
-</div>  <ul class="list-group social-list">
-    <li>
-      <ul class="list-inline" id="social">
-        <li ><a href="https://twitter.com/MaciejSypien" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a></li>
-        <li ><a href="https://github.com/egel" target="_blank"><i class="fa fa-github-square fa-lg"></i></a></li>
-        <li ><a href="https://www.linkedin.com/in/maciejsypien" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a></li>
-<li><a href="http://egel.pl/feeds/all.atom.xml" title="Feed atom" target="_blank"><i class="fa fa-lg fa-rss-square"></i></a></li>      </ul>
-    </li>
-  </ul>
-
-
-<section>
-  <ul class="list-group">
-
-
-    <li>
-      <h4>Categories</h4>
-      <ul id="categories">
-        <li>
-          <a href="http://egel.pl/category/diary.html">Diary</a>
-        </li>
-        <li>
-          <a href="http://egel.pl/category/discovery.html">Discovery</a>
-        </li>
-        <li>
-          <a href="http://egel.pl/category/how-to.html">How to</a>
-        </li>
-        <li>
-          <a href="http://egel.pl/category/self-improvement.html">Self improvement</a>
-        </li>
-      </ul>
-    </li>
-
-      <li><h4><span class="icon-label">Tags</span></h4>
-        <ul class="list-inline tagcloud" id="tags">
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/angularjs.html">angularjs</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/apache.html">apache</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/apiary.html">apiary</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/arch.html">arch</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/console.html">console</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/domains.html">domains</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/frontend.html">frontend</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/git.html">git</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/gui.html">gui</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/install.html">install</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/latex.html">latex</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/linux.html">linux</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/mysql.html">mysql</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/nginx.html">nginx</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/osx.html">osx</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/pelican.html">pelican</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/php.html">php</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/sublime.html">sublime</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/terminal.html">terminal</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/text-editor.html">text-editor</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/university.html">university</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/vim.html">vim</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/wordpress.html">wordpress</a>
-          </li>
-        </ul>
-      </li>
-
-
-  </ul>
-</section>
-      </div>
-
-      <div class="col-sm-9">
-
-  <section id="content" class="single-article">
-    <article>
-      <header class="page-header">
-<div class="post-info">
-  <span class="published">
-    <time datetime="2014-04-06T00:00:00+02:00">Apr 6, 2014</time>
-  </span>
-      <span class="published text-muted"> · Modified at Jun 27, 2015</span>
-
-    <span class="published"> · Category</span>
-    <a href="http://egel.pl/category/how-to.html">How to</a>
-
-
-&middot;   <i class="fa fa-tags text-muted"></i>
-  	<a href="http://egel.pl/tag/apache.html">apache</a>,  	<a href="http://egel.pl/tag/mysql.html">mysql</a>,  	<a href="http://egel.pl/tag/php.html">php</a>,  	<a href="http://egel.pl/tag/domains.html">domains</a>  
-</div><!-- /.post-info -->        <h1>
-          Setup LAMP server with sample domain
-          <!-- <a href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="bookmark" title="Permalink to Setup LAMP server with sample domain">
-          </a> -->
-        </h1>
-      </header>
-      <div class="entry-content">
-        <p>Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like <a href="http://jekyllrb.com/">Jekkly</a>, <a href="http://octopress.org/">Octopress</a>, <a href="http://docs.getpelican.com">Pelican</a> or <a href="https://www.staticgen.com/">some others examples</a>). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to <a href="https://www.joomla.com/">Joomla</a>, <a href="https://wordpress.org">Wordpress</a> or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.</p>
-<p>Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.</p>
-<p>In this simple article I'll show you how to build your own simple (and standard in these days) server configuration based on LAMP, but those tools can be easily replaced with others technologies.  For example if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end setup will be made).</p>
-<p>I think this is good, start example to play with :) Enjoy.</p>
-<blockquote>
-<p>The examples are refers to Ubuntu 14.04, but it should also works for other Debian based distros.</p>
-</blockquote>
-<h3>Table of content</h3>
-<ul>
-<li><a href="#apache-2">Apache 2</a><ul>
-<li><a href="#add-user-to-www-data-group">Add user to www-data group</a></li>
-</ul>
-</li>
-<li><a href="#mysql">MySQL</a></li>
-<li><a href="#php">PHP</a></li>
-<li><a href="#phpmyadmin">PHPMyAdmin</a></li>
-<li><a href="#common-problems">Common problems</a></li>
-</ul>
-<p>Good <a href="http://www.ubuntu-pomoc.org/instalacja-apache-php5-mysql/">Polish article</a> and <a href="https://library.linode.com/web-servers/apache/installation/ubuntu-12.04-precise-pangolin">English article</a>.</p>
-<p>Let's begin from updating our Debian based system (Ubuntu):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo apt-get update
-</pre></div>
-</td></tr></table>
-
-<h3>Apache</h3>
-<p>Installation Apache 2.4 with its useful dependencies:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
-</pre></div>
-</td></tr></table>
-
-<p>Then restart the service with:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo service apache2 restart
-</pre></div>
-</td></tr></table>
-
-<p>Or also you can use good, old school <a href="https://en.wikipedia.org/wiki/Daemon_%28computing%29">daemon</a> <code>sudo /etc/init.d/apache2 restart</code>.</p>
-<p>Now we take a peek on our server's version by writing <code>apache2 -v</code> in your console.</p>
-<p>Now, if all went well, you could start your web browser with <code>http://localhost/</code> to check if "It works!" appears to you :)</p>
-<blockquote>
-<p>"It works!" page is actually simple <code>index.html</code> file stored in <code>/var/www/html/</code> directory, but details comes later :)</p>
-</blockquote>
-<h4>Add user to www-data group</h4>
-<p>Now we'd like to add your current user (<code>$USER</code>)  to <code>www-data</code> group used by apache server. We will do this to prevent you from some error-access failures like user owner.</p>
-<p>To check if your current user belongs to <code>www-data</code> group simply do:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>groups <span class="nv">$USER</span>
-</pre></div>
-</td></tr></table>
-
-<p>Now add existing user to <code>www-data</code> group.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo usermod -a -G <span class="nv">$USER</span> www-data
-</pre></div>
-</td></tr></table>
-
-<blockquote>
-<p><strong>Hint</strong>: Somtimes it is a good practice to check <code>SERVER_CONFIG_FILE</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<html lang=en> <head><title>Setup LAMP server with sample domain - The Egel's Blog</title><!-- Using the latest rendering mode for IE --><meta http-equiv=X-UA-Compatible content=IE=edge><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1.0"><link href=http://egel.pl/extras/favicon.png rel=icon><link rel=canonical href=http://egel.pl/setup-lamp-server-with-sample-domain.html><meta name=author content="Maciej Sypień"><meta name=keywords content=apache,mysql,php,domains><meta name=description content="We will install standard and secure Linux - Apache - MySQL - PHP configuration with PHPMyAdmin for easy database management and create sample Apache's VirtualHost. Shall we begin? :)"><meta property=og:site_name content="The Egel's Blog"><meta property=og:type content=article><meta property=og:title content="Setup LAMP server with sample domain"><meta property=og:url content=http://egel.pl/setup-lamp-server-with-sample-domain.html><meta property=og:description content="We will install standard and secure Linux - Apache - MySQL - PHP configuration with PHPMyAdmin for easy database management and create sample Apache's VirtualHost. Shall we begin? :)"><meta property=article:published_time content=2014-04-06><meta property=article:section content="How to"><meta property=article:tag content=apache><meta property=article:tag content=mysql><meta property=article:tag content=php><meta property=article:tag content=domains><meta property=article:author content="Maciej Sypień"><!-- Bootstrap --><link rel=stylesheet href=http://egel.pl/theme/css/styles.css type=text/css><link href=http://egel.pl/feeds/all.atom.xml type=application/atom+xml rel=alternate title="The Egel's Blog ATOM Feed"></head> <body> <nav class="navbar navbar-default"> <div class=container-fluid> <div class=navbar-header> <button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a href=http://egel.pl/ class=navbar-brand> The Egel's Blog </a> </div> <div id=navbar class="navbar-collapse collapse"> <ul class="nav navbar-nav navbar-right"> <li><a href=http://egel.pl>Home</a></li> <li><a href=http://egel.pl/pages/about-me.html>About me</a></li> <li> <a href=http://egel.pl/reading-list.html>Reading list</a> </li> <li> <a href=http://egel.pl/archives.html>Archives</a> </li> </ul> </div><!--/.nav-collapse --> </div><!--/.container-fluid --> </nav> <header class=intro-header> <div class=container> <div class=row> <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> <div class=site-heading> <h1>Do more in less time</h1> <hr class=small> <span class=subheading>Simplicity and clarity of the implementation</span> </div> </div> </div> </div> </header> <div class=container> <div class=row> <div class="col-sm-3 sidebar sidebar-tablet"> <div class=aboutme> <h4>About the author</h4> <img class="avatar thumbnail" src=https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=200> <p> Programmer, soundtracks enthusiast, astrophysics fan. Occasionally hacking this blog with new articles. </p> </div> <ul class="list-group social-list"> <li> <ul class=list-inline id=social> <li><a href=https://twitter.com/MaciejSypien target=_blank><i class="fa fa-twitter-square fa-lg"></i></a></li> <li><a href=https://github.com/egel target=_blank><i class="fa fa-github-square fa-lg"></i></a></li> <li><a href=https://www.linkedin.com/in/maciejsypien target=_blank><i class="fa fa-linkedin-square fa-lg"></i></a></li> <li><a href=http://egel.pl/feeds/all.atom.xml title="Feed atom" target=_blank><i class="fa fa-lg fa-rss-square"></i></a></li> </ul> </li> </ul> <section> <ul class=list-group> <li> <h4>Categories</h4> <ul id=categories> <li> <a href=http://egel.pl/category/diary.html>Diary</a> </li> <li> <a href=http://egel.pl/category/discovery.html>Discovery</a> </li> <li> <a href=http://egel.pl/category/how-to.html>How to</a> </li> <li> <a href=http://egel.pl/category/self-improvement.html>Self improvement</a> </li> </ul> </li> <li><h4><span class=icon-label>Tags</span></h4> <ul class="list-inline tagcloud" id=tags> <li class=tag-4> <a href=http://egel.pl/tag/angularjs.html>angularjs</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/apache.html>apache</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/apiary.html>apiary</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/arch.html>arch</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/console.html>console</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/domains.html>domains</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/frontend.html>frontend</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/git.html>git</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/gui.html>gui</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/install.html>install</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/latex.html>latex</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/linux.html>linux</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/mysql.html>mysql</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/nginx.html>nginx</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/osx.html>osx</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/pelican.html>pelican</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/php.html>php</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/sublime.html>sublime</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/terminal.html>terminal</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/text-editor.html>text-editor</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/university.html>university</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/vim.html>vim</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/wordpress.html>wordpress</a> </li> </ul> </li> </ul> </section> </div> <div class=col-sm-9> <section id=content class=single-article> <article> <header class=page-header> <div class=post-info> <span class=published> <time datetime=2014-04-06T00:00:00+02:00>Apr 6, 2014</time> </span> <span class="published text-muted"> · Modified at Jun 27, 2015</span> <span class=published> · Category</span> <a href=http://egel.pl/category/how-to.html>How to</a> &middot; <i class="fa fa-tags text-muted"></i> <a href=http://egel.pl/tag/apache.html>apache</a>, <a href=http://egel.pl/tag/mysql.html>mysql</a>, <a href=http://egel.pl/tag/php.html>php</a>, <a href=http://egel.pl/tag/domains.html>domains</a> </div><!-- /.post-info --> <h1> Setup LAMP server with sample domain <!-- <a href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="bookmark" title="Permalink to Setup LAMP server with sample domain">
+          </a> --> </h1> </header> <div class=entry-content> <p>Every young IT person will at last faced with the challenge of creating his own website. It could be a simple static site, managed by some static site generator (like <a href=http://jekyllrb.com/ >Jekkly</a>, <a href=http://octopress.org/ >Octopress</a>, <a href=http://docs.getpelican.com>Pelican</a> or <a href=https://www.staticgen.com/ >some others examples</a>). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to <a href=https://www.joomla.com/ >Joomla</a>, <a href=https://wordpress.org>Wordpress</a> or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.</p> <p>Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.</p> <p>In this simple article I'll show you how to build your own simple (and standard in these days) server configuration based on LAMP, but those tools can be easily replaced with others technologies. For example if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end setup will be made).</p> <p>I think this is good, start example to play with :) Enjoy.</p> <blockquote> <p>The examples are refers to Ubuntu 14.04, but it should also works for other Debian based distros.</p> </blockquote> <h3>Table of content</h3> <ul> <li><a href=#apache-2>Apache 2</a><ul> <li><a href=#add-user-to-www-data-group>Add user to www-data group</a></li> </ul> </li> <li><a href=#mysql>MySQL</a></li> <li><a href=#php>PHP</a></li> <li><a href=#phpmyadmin>PHPMyAdmin</a></li> <li><a href=#common-problems>Common problems</a></li> </ul> <p>Good <a href=http://www.ubuntu-pomoc.org/instalacja-apache-php5-mysql/ >Polish article</a> and <a href=https://library.linode.com/web-servers/apache/installation/ubuntu-12.04-precise-pangolin>English article</a>.</p> <p>Let's begin from updating our Debian based system (Ubuntu):</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo apt-get update
+</pre></div> </td></tr></table> <h3>Apache</h3> <p>Installation Apache 2.4 with its useful dependencies:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
+</pre></div> </td></tr></table> <p>Then restart the service with:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo service apache2 restart
+</pre></div> </td></tr></table> <p>Or also you can use good, old school <a href=https://en.wikipedia.org/wiki/Daemon_%28computing%29>daemon</a> <code>sudo /etc/init.d/apache2 restart</code>.</p> <p>Now we take a peek on our server's version by writing <code>apache2 -v</code> in your console.</p> <p>Now, if all went well, you could start your web browser with <code>http://localhost/</code> to check if "It works!" appears to you :)</p> <blockquote> <p>"It works!" page is actually simple <code>index.html</code> file stored in <code>/var/www/html/</code> directory, but details comes later :)</p> </blockquote> <h4>Add user to www-data group</h4> <p>Now we'd like to add your current user (<code>$USER</code>) to <code>www-data</code> group used by apache server. We will do this to prevent you from some error-access failures like user owner.</p> <p>To check if your current user belongs to <code>www-data</code> group simply do:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>groups <span class=nv>$USER</span>
+</pre></div> </td></tr></table> <p>Now add existing user to <code>www-data</code> group.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo usermod -a -G <span class=nv>$USER</span> www-data
+</pre></div> </td></tr></table> <blockquote> <p><strong>Hint</strong>: Somtimes it is a good practice to check <code>SERVER_CONFIG_FILE</code>.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -292,22 +15,18 @@ Occasionally hacking this blog with new articles.
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>/usr/sbin/apache2 -V
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.633874 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_LOCK_DIR</span><span class="si">}</span> is not defined
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.633903 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_PID_FILE</span><span class="si">}</span> is not defined
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.633910 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_RUN_USER</span><span class="si">}</span> is not defined
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.633913 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_RUN_GROUP</span><span class="si">}</span> is not defined
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.633920 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span> is not defined
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.636829 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span> is not defined
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.636921 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span> is not defined
-<span class="o">[</span>Tue Nov <span class="m">08</span> 21:38:06.636927 2016<span class="o">]</span> <span class="o">[</span>core:warn<span class="o">]</span> <span class="o">[</span>pid 8973<span class="o">]</span> AH00111: Config variable <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span> is not defined
-AH00526: Syntax error on line <span class="m">74</span> of /etc/apache2/apache2.conf:
-Invalid Mutex directory in argument file:<span class="si">${</span><span class="nv">APACHE_LOCK_DIR</span><span class="si">}</span>
-</pre></div>
-</td></tr></table>
-
-<p>To fix that you need to:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+11</pre></div></td><td class=code><div class=highlight><pre><span class=nv>$ </span>/usr/sbin/apache2 -V
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.633874 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_LOCK_DIR</span><span class=si>}</span> is not defined
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.633903 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_PID_FILE</span><span class=si>}</span> is not defined
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.633910 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_RUN_USER</span><span class=si>}</span> is not defined
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.633913 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_RUN_GROUP</span><span class=si>}</span> is not defined
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.633920 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span> is not defined
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.636829 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span> is not defined
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.636921 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span> is not defined
+<span class=o>[</span>Tue Nov <span class=m>08</span> 21:38:06.636927 2016<span class=o>]</span> <span class=o>[</span>core:warn<span class=o>]</span> <span class=o>[</span>pid 8973<span class=o>]</span> AH00111: Config variable <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span> is not defined
+AH00526: Syntax error on line <span class=m>74</span> of /etc/apache2/apache2.conf:
+Invalid Mutex directory in argument file:<span class=si>${</span><span class=nv>APACHE_LOCK_DIR</span><span class=si>}</span>
+</pre></div> </td></tr></table> <p>To fix that you need to:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -335,143 +54,68 @@ Invalid Mutex directory in argument file:<span class="si">${</span><span class="
 26
 27
 28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">source</span> /etc/apache2/envvars
-<span class="nv">$ </span>/usr/sbin/apache2 -V
+29</pre></div></td><td class=code><div class=highlight><pre><span class=nv>$ </span><span class=nb>source</span> /etc/apache2/envvars
+<span class=nv>$ </span>/usr/sbin/apache2 -V
 
-Server version: Apache/2.4.7 <span class="o">(</span>Ubuntu<span class="o">)</span>
-Server built:   Jul <span class="m">15</span> <span class="m">2016</span> 15:34:04
-Server<span class="err">&#39;</span>s Module Magic Number: 20120211:27
+Server version: Apache/2.4.7 <span class=o>(</span>Ubuntu<span class=o>)</span>
+Server built:   Jul <span class=m>15</span> <span class=m>2016</span> 15:34:04
+Server<span class=err>&#39;</span>s Module Magic Number: 20120211:27
 Server loaded:  APR 1.5.1-dev, APR-UTIL 1.5.3
 Compiled using: APR 1.5.1-dev, APR-UTIL 1.5.3
 Architecture:   64-bit
 Server MPM:     prefork
   threaded:     no
-    forked:     yes <span class="o">(</span>variable process count<span class="o">)</span>
+    forked:     yes <span class=o>(</span>variable process count<span class=o>)</span>
 Server compiled with....
  -D APR_HAS_SENDFILE
  -D APR_HAS_MMAP
- -D APR_HAVE_IPV6 <span class="o">(</span>IPv4-mapped addresses enabled<span class="o">)</span>
+ -D APR_HAVE_IPV6 <span class=o>(</span>IPv4-mapped addresses enabled<span class=o>)</span>
  -D APR_USE_SYSVSEM_SERIALIZE
  -D APR_USE_PTHREAD_SERIALIZE
  -D SINGLE_LISTEN_UNSERIALIZED_ACCEPT
  -D APR_HAS_OTHER_CHILD
  -D AP_HAVE_RELIABLE_PIPED_LOGS
- -D <span class="nv">DYNAMIC_MODULE_LIMIT</span><span class="o">=</span>256
- -D <span class="nv">HTTPD_ROOT</span><span class="o">=</span><span class="s2">&quot;/etc/apache2&quot;</span>
- -D <span class="nv">SUEXEC_BIN</span><span class="o">=</span><span class="s2">&quot;/usr/lib/apache2/suexec&quot;</span>
- -D <span class="nv">DEFAULT_PIDLOG</span><span class="o">=</span><span class="s2">&quot;/var/run/apache2.pid&quot;</span>
- -D <span class="nv">DEFAULT_SCOREBOARD</span><span class="o">=</span><span class="s2">&quot;logs/apache_runtime_status&quot;</span>
- -D <span class="nv">DEFAULT_ERRORLOG</span><span class="o">=</span><span class="s2">&quot;logs/error_log&quot;</span>
- -D <span class="nv">AP_TYPES_CONFIG_FILE</span><span class="o">=</span><span class="s2">&quot;mime.types&quot;</span>
- -D <span class="nv">SERVER_CONFIG_FILE</span><span class="o">=</span><span class="s2">&quot;apache2.conf&quot;</span>
-</pre></div>
-</td></tr></table>
-
-<p>Should be something like <code>-D SERVER_CONFIG_FILE="apache2.conf"</code></p>
-</blockquote>
-<h4>Add a name to the server</h4>
-<p>Basic apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+ -D <span class=nv>DYNAMIC_MODULE_LIMIT</span><span class=o>=</span>256
+ -D <span class=nv>HTTPD_ROOT</span><span class=o>=</span><span class=s2>&quot;/etc/apache2&quot;</span>
+ -D <span class=nv>SUEXEC_BIN</span><span class=o>=</span><span class=s2>&quot;/usr/lib/apache2/suexec&quot;</span>
+ -D <span class=nv>DEFAULT_PIDLOG</span><span class=o>=</span><span class=s2>&quot;/var/run/apache2.pid&quot;</span>
+ -D <span class=nv>DEFAULT_SCOREBOARD</span><span class=o>=</span><span class=s2>&quot;logs/apache_runtime_status&quot;</span>
+ -D <span class=nv>DEFAULT_ERRORLOG</span><span class=o>=</span><span class=s2>&quot;logs/error_log&quot;</span>
+ -D <span class=nv>AP_TYPES_CONFIG_FILE</span><span class=o>=</span><span class=s2>&quot;mime.types&quot;</span>
+ -D <span class=nv>SERVER_CONFIG_FILE</span><span class=o>=</span><span class=s2>&quot;apache2.conf&quot;</span>
+</pre></div> </td></tr></table> <p>Should be something like <code>-D SERVER_CONFIG_FILE="apache2.conf"</code></p> </blockquote> <h4>Add a name to the server</h4> <p>Basic apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre> * Restarting web server apache2
-AH00558: apache2: Could not reliably determine the server<span class="s1">&#39;s fully qualified domain name, using 127.0.1.1. Set the &#39;</span>ServerName<span class="err">&#39;</span> directive globally to suppress this message
+3</pre></div></td><td class=code><div class=highlight><pre> * Restarting web server apache2
+AH00558: apache2: Could not reliably determine the server<span class=s1>&#39;s fully qualified domain name, using 127.0.1.1. Set the &#39;</span>ServerName<span class=err>&#39;</span> directive globally to suppress this message
  ...done.
-</pre></div>
-</td></tr></table>
-
-<p>That's why we will name it :)</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;ServerName localhost&quot;</span> <span class="p">|</span> sudo tee /etc/apache2/conf-available/servername.conf
-</pre></div>
-</td></tr></table>
-
-<p>Then we're enable its name in for apache config by</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo a2enconf servername
-</pre></div>
-</td></tr></table>
-
-<p>Just restart the server to make sure that all is done correctly.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</pre></div> </td></tr></table> <p>That's why we will name it :)</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre><span class=nb>echo</span> <span class=s2>&quot;ServerName localhost&quot;</span> <span class=p>|</span> sudo tee /etc/apache2/conf-available/servername.conf
+</pre></div> </td></tr></table> <p>Then we're enable its name in for apache config by</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo a2enconf servername
+</pre></div> </td></tr></table> <p>Just restart the server to make sure that all is done correctly.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre>sudo service apache2 restart
+3</pre></div></td><td class=code><div class=highlight><pre>sudo service apache2 restart
  * Restarting web server apache2
   ...done.
-</pre></div>
-</td></tr></table>
-
-<p>...and now full smile should appear on your face :)</p>
-<h3>MySQL</h3>
-<p>MySQL is one of the most popular databases on the website market. So we will install it along.</p>
-<p>During the installation process program ask you for the root password, so we write it and <strong>remeber it</strong> for later use.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo apt-get install mysql-server
-</pre></div>
-</td></tr></table>
-
-<p>Check the installed version</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>mysql -V
-</pre></div>
-</td></tr></table>
-
-<p>That's it for the database server :)</p>
-<h3>PHP</h3>
-<p>Installation of the PHP interpreter isn't hard. One important thing is to install all modules related to our new setup, enable it, and configure to suite your needs. I'll show you most commonly used setup to save your precious time searching it through Internet.</p>
-<h4>Installation of PHP interpreter</h4>
-<p>Below we will install all useful modules, and enable them Apache server and PHP.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</pre></div> </td></tr></table> <p>...and now full smile should appear on your face :)</p> <h3>MySQL</h3> <p>MySQL is one of the most popular databases on the website market. So we will install it along.</p> <p>During the installation process program ask you for the root password, so we write it and <strong>remeber it</strong> for later use.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo apt-get install mysql-server
+</pre></div> </td></tr></table> <p>Check the installed version</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>mysql -V
+</pre></div> </td></tr></table> <p>That's it for the database server :)</p> <h3>PHP</h3> <p>Installation of the PHP interpreter isn't hard. One important thing is to install all modules related to our new setup, enable it, and configure to suite your needs. I'll show you most commonly used setup to save your precious time searching it through Internet.</p> <h4>Installation of PHP interpreter</h4> <p>Below we will install all useful modules, and enable them Apache server and PHP.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
-<span class="nv">$ </span>sudo a2enmod php5
-<span class="nv">$ </span>sudo a2enmod rewrite
-<span class="nv">$ </span>sudo php5enmod mcrypt   <span class="c"># required by phpMyAdmin</span>
-</pre></div>
-</td></tr></table>
-
-<h4>Configuration files</h4>
-<p>Into below Apache's PHP configuration file stored at <code>/etc/php5/apache2/php.ini</code>, it is worth to change the default parameters according to those presented below. There are most commonly changed variables for PHP for development purposes.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+4</pre></div></td><td class=code><div class=highlight><pre><span class=nv>$ </span>sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
+<span class=nv>$ </span>sudo a2enmod php5
+<span class=nv>$ </span>sudo a2enmod rewrite
+<span class=nv>$ </span>sudo php5enmod mcrypt   <span class=c># required by phpMyAdmin</span>
+</pre></div> </td></tr></table> <h4>Configuration files</h4> <p>Into below Apache's PHP configuration file stored at <code>/etc/php5/apache2/php.ini</code>, it is worth to change the default parameters according to those presented below. There are most commonly changed variables for PHP for development purposes.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span class="na">upload_max_filesize</span> <span class="o">=</span> <span class="s">50M</span>
-<span class="na">post_max_size</span> <span class="o">=</span> <span class="s">50M</span>
-<span class="na">display_errors</span> <span class="o">=</span> <span class="s">On</span>
-<span class="na">display_startup_errors</span> <span class="o">=</span> <span class="s">On</span>
-<span class="na">track_errors</span> <span class="o">=</span> <span class="s">On</span>
-</pre></div>
-</td></tr></table>
-
-<h4>Other useful configuration files</h4>
-<ul>
-<li><code>/etc/apache2/sites-available/default</code>
-<!--- <code>/home/$USER/apache/conf/httpd.conf</code>--></li>
-</ul>
-<h3>PHPMyAdmin</h3>
-<p>Installation of PHPMyAdmin is trivial.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo apt-get install phpmyadmin
-</pre></div>
-</td></tr></table>
-
-<p>During the installation, wizard will ask you for:</p>
-<ol>
-<li>Which WWW Server would you like to choose. We mark (with space key) <code>apache2</code>.</li>
-<li>Next window is the configuration of phpMyAdmin package and integration with current database. We mark <code>Yes</code>.</li>
-</ol>
-<blockquote>
-<p>Sometimes we made mistake during this installation process, so command to reopen this configuration wizard is <code>sudo dpkg-reconfigure phpmyadmin</code>.</p>
-</blockquote>
-<h3>Add VirtualHost</h3>
-<blockquote>
-<p><strong>Good practice:</strong> If you want to create site ex: <code>egel.pl</code>, write config file like this <code>egel.pl.conf</code></p>
-</blockquote>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
-</pre></div>
-</td></tr></table>
-
-<p>And create something like this</p>
-<blockquote>
-<p>I like to use <code>.loc</code> for my local domains. I not use <code>.dev</code> anymore due to now it is a real, official domain extension.</p>
-</blockquote>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+5</pre></div></td><td class=code><div class=highlight><pre><span class=na>upload_max_filesize</span> <span class=o>=</span> <span class=s>50M</span>
+<span class=na>post_max_size</span> <span class=o>=</span> <span class=s>50M</span>
+<span class=na>display_errors</span> <span class=o>=</span> <span class=s>On</span>
+<span class=na>display_startup_errors</span> <span class=o>=</span> <span class=s>On</span>
+<span class=na>track_errors</span> <span class=o>=</span> <span class=s>On</span>
+</pre></div> </td></tr></table> <h4>Other useful configuration files</h4> <ul> <li><code>/etc/apache2/sites-available/default</code> <!--- <code>/home/$USER/apache/conf/httpd.conf</code>--></li> </ul> <h3>PHPMyAdmin</h3> <p>Installation of PHPMyAdmin is trivial.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo apt-get install phpmyadmin
+</pre></div> </td></tr></table> <p>During the installation, wizard will ask you for:</p> <ol> <li>Which WWW Server would you like to choose. We mark (with space key) <code>apache2</code>.</li> <li>Next window is the configuration of phpMyAdmin package and integration with current database. We mark <code>Yes</code>.</li> </ol> <blockquote> <p>Sometimes we made mistake during this installation process, so command to reopen this configuration wizard is <code>sudo dpkg-reconfigure phpmyadmin</code>.</p> </blockquote> <h3>Add VirtualHost</h3> <blockquote> <p><strong>Good practice:</strong> If you want to create site ex: <code>egel.pl</code>, write config file like this <code>egel.pl.conf</code></p> </blockquote> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
+</pre></div> </td></tr></table> <p>And create something like this</p> <blockquote> <p>I like to use <code>.loc</code> for my local domains. I not use <code>.dev</code> anymore due to now it is a real, official domain extension.</p> </blockquote> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -481,47 +125,22 @@ AH00558: apache2: Could not reliably determine the server<span class="s1">&#39;s
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
-    <span class="nb">ServerAdmin</span> admin@example.com
-    <span class="nb">ServerName</span> blog.loc
-    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/blog.loc/public_html/</span>
-    <span class="nt">&lt;Directory</span> <span class="s">/var/www/blog.loc/public_html/</span><span class="nt">&gt;</span>
-        <span class="nb">AllowOverride</span> <span class="k">All</span>
-    <span class="nt">&lt;/Directory&gt;</span>
+11</pre></div></td><td class=code><div class=highlight><pre><span class=nt>&lt;VirtualHost</span> <span class=s>*:80</span><span class=nt>&gt;</span>
+    <span class=nb>ServerAdmin</span> admin@example.com
+    <span class=nb>ServerName</span> blog.loc
+    <span class=nb>DocumentRoot</span> <span class=sx>/var/www/blog.loc/public_html/</span>
+    <span class=nt>&lt;Directory</span> <span class=s>/var/www/blog.loc/public_html/</span><span class=nt>&gt;</span>
+        <span class=nb>AllowOverride</span> <span class=k>All</span>
+    <span class=nt>&lt;/Directory&gt;</span>
 
-    <span class="nb">ErrorLog</span> ${APACHE_LOG_DIR}/error.log
-    <span class="nb">CustomLog</span> ${APACHE_LOG_DIR}/access.log combined
-<span class="nt">&lt;/VirtualHost&gt;</span>
-</pre></div>
-</td></tr></table>
-
-<p>Save it.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre>sudo ln -s <span class="nv">$HOME</span>/workspace/blog/output/ /var/www/blog.loc/public_html
+    <span class=nb>ErrorLog</span> ${APACHE_LOG_DIR}/error.log
+    <span class=nb>CustomLog</span> ${APACHE_LOG_DIR}/access.log combined
+<span class=nt>&lt;/VirtualHost&gt;</span>
+</pre></div> </td></tr></table> <p>Save it.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
+2</pre></div></td><td class=code><div class=highlight><pre>sudo ln -s <span class=nv>$HOME</span>/workspace/blog/output/ /var/www/blog.loc/public_html
 sudo a2ensite blog.loc.conf
-</pre></div>
-</td></tr></table>
-
-<p>Next we need to tell the server to use our new ServerName.</p>
-<p>The best solution I know for development purposes involving <code>dnsmasq</code>, which I definitely recommend - you can find how to do it into article <a href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html">How to install dnsmasq</a> or just add the name of server to the hosts file:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;127.0.0.1 blog.loc&quot;</span> <span class="p">|</span> sudo tee /etc/hosts
-</pre></div>
-</td></tr></table>
-
-<p>Then <code>sudo service apache2 reload</code> and open</p>
-<h3>Creating public_html directory for the user</h3>
-<p>Some people not agree with it (mainly by security issues it can cause) but apache also support the old user catalog usually stored at <code>~/public_html</code>, and it can be working like <code>/var/www/html</code>.</p>
-<p>There are 2 different approaches for creating this directory.</p>
-<ol>
-<li>First one assumes that User's catalog (~/public_html) should be owned by <a href="https://en.wikipedia.org/wiki/Hir_%28disambiguation%29">hir</a> and hir alone, also with files permissions.</li>
-<li>The second one, presuppose that all files should be owned by <code>www-data</code> user. This solution is a bit better because other files migration not cause the access collisions.</li>
-</ol>
-<blockquote>
-<p>Personally, I prefer the second approach.</p>
-</blockquote>
-<p>To enable this magical directory we need to edit <code>/etc/apache2/mods-enabled/php5.conf</code> (it may require <code>sudo</code> privileges to save it).</p>
-<p>Into this file we need to comment some lines (<code>##</code>) like in below snippet.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+</pre></div> </td></tr></table> <p>Next we need to tell the server to use our new ServerName.</p> <p>The best solution I know for development purposes involving <code>dnsmasq</code>, which I definitely recommend - you can find how to do it into article <a href=http://egel.pl/install-and-configure-dnsmasq-on-linux.html>How to install dnsmasq</a> or just add the name of server to the hosts file:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre><span class=nb>echo</span> <span class=s2>&quot;127.0.0.1 blog.loc&quot;</span> <span class=p>|</span> sudo tee /etc/hosts
+</pre></div> </td></tr></table> <p>Then <code>sudo service apache2 reload</code> and open</p> <h3>Creating public_html directory for the user</h3> <p>Some people not agree with it (mainly by security issues it can cause) but apache also support the old user catalog usually stored at <code>~/public_html</code>, and it can be working like <code>/var/www/html</code>.</p> <p>There are 2 different approaches for creating this directory.</p> <ol> <li>First one assumes that User's catalog (~/public_html) should be owned by <a href=https://en.wikipedia.org/wiki/Hir_%28disambiguation%29>hir</a> and hir alone, also with files permissions.</li> <li>The second one, presuppose that all files should be owned by <code>www-data</code> user. This solution is a bit better because other files migration not cause the access collisions.</li> </ol> <blockquote> <p>Personally, I prefer the second approach.</p> </blockquote> <p>To enable this magical directory we need to edit <code>/etc/apache2/mods-enabled/php5.conf</code> (it may require <code>sudo</code> privileges to save it).</p> <p>Into this file we need to comment some lines (<code>##</code>) like in below snippet.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -547,136 +166,71 @@ sudo a2ensite blog.loc.conf
 24
 25
 26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;FilesMatch</span> <span class="s">&quot;.+\.ph(p[345]?|t|tml)$&quot;</span><span class="nt">&gt;</span>
-    <span class="nb">SetHandler</span> application/x-httpd-php
-<span class="nt">&lt;/FilesMatch&gt;</span>
-<span class="nt">&lt;FilesMatch</span> <span class="s">&quot;.+\.phps$&quot;</span><span class="nt">&gt;</span>
-    <span class="nb">SetHandler</span> application/x-httpd-php-source
-    <span class="c"># Deny access to raw php sources by default</span>
-    <span class="c"># To re-enable it&#39;s recommended to enable access to the files</span>
-    <span class="c"># only in specific virtual host or directory</span>
-    <span class="nb">Order</span> Deny,Allow
-    <span class="nb">Deny</span> from <span class="k">all</span>
-<span class="nt">&lt;/FilesMatch&gt;</span>
-<span class="c"># Deny access to files without filename (e.g. &#39;.php&#39;)</span>
-<span class="nt">&lt;FilesMatch</span> <span class="s">&quot;^\.ph(p[345]?|t|tml|ps)$&quot;</span><span class="nt">&gt;</span>
-    <span class="nb">Order</span> Deny,Allow
-    <span class="nb">Deny</span> from <span class="k">all</span>
-<span class="nt">&lt;/FilesMatch&gt;</span>
+27</pre></div></td><td class=code><div class=highlight><pre><span class=nt>&lt;FilesMatch</span> <span class=s>&quot;.+\.ph(p[345]?|t|tml)$&quot;</span><span class=nt>&gt;</span>
+    <span class=nb>SetHandler</span> application/x-httpd-php
+<span class=nt>&lt;/FilesMatch&gt;</span>
+<span class=nt>&lt;FilesMatch</span> <span class=s>&quot;.+\.phps$&quot;</span><span class=nt>&gt;</span>
+    <span class=nb>SetHandler</span> application/x-httpd-php-source
+    <span class=c># Deny access to raw php sources by default</span>
+    <span class=c># To re-enable it&#39;s recommended to enable access to the files</span>
+    <span class=c># only in specific virtual host or directory</span>
+    <span class=nb>Order</span> Deny,Allow
+    <span class=nb>Deny</span> from <span class=k>all</span>
+<span class=nt>&lt;/FilesMatch&gt;</span>
+<span class=c># Deny access to files without filename (e.g. &#39;.php&#39;)</span>
+<span class=nt>&lt;FilesMatch</span> <span class=s>&quot;^\.ph(p[345]?|t|tml|ps)$&quot;</span><span class=nt>&gt;</span>
+    <span class=nb>Order</span> Deny,Allow
+    <span class=nb>Deny</span> from <span class=k>all</span>
+<span class=nt>&lt;/FilesMatch&gt;</span>
 
-<span class="c"># Running PHP scripts in user directories is disabled by default</span>
-<span class="c">#</span>
-<span class="c"># To re-enable PHP in user directories comment the following lines</span>
-<span class="c"># (from &lt;IfModule ...&gt; to &lt;/IfModule&gt;.) Do NOT set it to On as it</span>
-<span class="c"># prevents .htaccess files from disabling it.</span>
-<span class="c">##&lt;IfModule mod_userdir.c&gt;</span>
-<span class="c">##    &lt;Directory /home/*/public_html&gt;</span>
-<span class="c">##        php_admin_flag engine Off</span>
-<span class="c">##    &lt;/Directory&gt;</span>
-<span class="c">##&lt;/IfModule&gt;</span>
-</pre></div>
-</td></tr></table>
-
-<p>Now we set server, so that we can throw files into the <code>~/public_html</code> directory. It maybe necessary to give the appropriate rights for the directory, so we need to take this under consideration as well.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<span class=c># Running PHP scripts in user directories is disabled by default</span>
+<span class=c>#</span>
+<span class=c># To re-enable PHP in user directories comment the following lines</span>
+<span class=c># (from &lt;IfModule ...&gt; to &lt;/IfModule&gt;.) Do NOT set it to On as it</span>
+<span class=c># prevents .htaccess files from disabling it.</span>
+<span class=c>##&lt;IfModule mod_userdir.c&gt;</span>
+<span class=c>##    &lt;Directory /home/*/public_html&gt;</span>
+<span class=c>##        php_admin_flag engine Off</span>
+<span class=c>##    &lt;/Directory&gt;</span>
+<span class=c>##&lt;/IfModule&gt;</span>
+</pre></div> </td></tr></table> <p>Now we set server, so that we can throw files into the <code>~/public_html</code> directory. It maybe necessary to give the appropriate rights for the directory, so we need to take this under consideration as well.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre>mkdir ~/public_html
-chmod <span class="m">775</span> ~/public_html
+3</pre></div></td><td class=code><div class=highlight><pre>mkdir ~/public_html
+chmod <span class=m>775</span> ~/public_html
 sudo a2enmod userdir
-</pre></div>
-</td></tr></table>
-
-<p>Now restart the apache and since this moment we can easily use <code>~/public_html</code> in all user's catalogs like the server's one.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo /etc/init.d/apache2 restart
-</pre></div>
-</td></tr></table>
-
-<h5>Setup the httpd.conf</h5>
-<p>We locate our <code>httpd.conf</code> file.</p>
-<blockquote>
-<p><strong> For the different systems vary called </strong>, for example, for Ubuntu 14.04 64-bit is a <code>apache2.conf</code></p>
-</blockquote>
-<p>We remember the path for running apache2</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>ps -ef <span class="p">|</span> grep apache
-apache   <span class="m">12846</span> <span class="m">14590</span>  <span class="m">0</span> Oct20 ?        00:00:00 /usr/sbin/apache2
-</pre></div>
-</td></tr></table>
-
-<p>Now we add <code>-V</code> flag</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>/usr/sbin/apache2 -V <span class="p">|</span> grep SERVER_CONFIG_FILE
--D <span class="nv">SERVER_CONFIG_FILE</span><span class="o">=</span><span class="s2">&quot;/etc/apache2/apache2.conf&quot;</span>
-</pre></div>
-</td></tr></table>
-
-<p>Next we are open the file and we can add our path to <code>public_html</code> inside:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</pre></div> </td></tr></table> <p>Now restart the apache and since this moment we can easily use <code>~/public_html</code> in all user's catalogs like the server's one.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo /etc/init.d/apache2 restart
+</pre></div> </td></tr></table> <h5>Setup the httpd.conf</h5> <p>We locate our <code>httpd.conf</code> file.</p> <blockquote> <p><strong> For the different systems vary called </strong>, for example, for Ubuntu 14.04 64-bit is a <code>apache2.conf</code></p> </blockquote> <p>We remember the path for running apache2</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
+2</pre></div></td><td class=code><div class=highlight><pre><span class=nv>$ </span>ps -ef <span class=p>|</span> grep apache
+apache   <span class=m>12846</span> <span class=m>14590</span>  <span class=m>0</span> Oct20 ?        00:00:00 /usr/sbin/apache2
+</pre></div> </td></tr></table> <p>Now we add <code>-V</code> flag</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
+2</pre></div></td><td class=code><div class=highlight><pre><span class=nv>$ </span>/usr/sbin/apache2 -V <span class=p>|</span> grep SERVER_CONFIG_FILE
+-D <span class=nv>SERVER_CONFIG_FILE</span><span class=o>=</span><span class=s2>&quot;/etc/apache2/apache2.conf&quot;</span>
+</pre></div> </td></tr></table> <p>Next we are open the file and we can add our path to <code>public_html</code> inside:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;Directory</span> <span class="s">/home/maciej/public_html/</span><span class="nt">&gt;</span>
-    <span class="nb">Options</span> Indexes FollowSymLinks
-    <span class="nb">AllowOverride</span> <span class="k">All</span>
-    <span class="nb">Require</span> <span class="k">all</span> granted
-<span class="nt">&lt;/Directory&gt;</span>
-</pre></div>
-</td></tr></table>
-
-<p>Restart and we are home.</p>
-<h5>May occur the problem like "index.php not found"</h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+5</pre></div></td><td class=code><div class=highlight><pre><span class=nt>&lt;Directory</span> <span class=s>/home/maciej/public_html/</span><span class=nt>&gt;</span>
+    <span class=nb>Options</span> Indexes FollowSymLinks
+    <span class=nb>AllowOverride</span> <span class=k>All</span>
+    <span class=nb>Require</span> <span class=k>all</span> granted
+<span class=nt>&lt;/Directory&gt;</span>
+</pre></div> </td></tr></table> <p>Restart and we are home.</p> <h5>May occur the problem like "index.php not found"</h5> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre>Not Found
+3</pre></div></td><td class=code><div class=highlight><pre>Not Found
 
 The requested URL /index.php was not found on this server.
-</pre></div>
-</td></tr></table>
-
-<p>Probably the cause of that is rewriting the URL into for example:</p>
-<ul>
-<li>Joomla: <code>Global config</code> &gt; <code>Adjust rewriting URLs</code> and set for <strong>OFF</strong></li>
-</ul>
-<h3>Problem #1</h3>
-<p>Once you install the module, the module will be available in the <code>/etc/apache2/mods-available</code> directory. You can use the <code>a2enmod</code> command to enable a module. You can use the <code>a2dismod</code> command to disable a module. Once you enable the module, the module will be available in the <code>/etc/apache2/mods-enabled</code> directory.</p>
-<p>Example: <code>sudo a2enmod rewrite</code></p>
-<h3>Problem #2</h3>
-<p><a href="http://stackoverflow.com/questions/6245895/apache2-on-ubuntu-php-files-downloading">Apache2 on ubuntu - PHP downloading files insteed of run</a></p>
-<h3>Problem #3</h3>
-<p><strong>Files</strong> should have permissions rights <strong>664</strong>, while <strong>directories 755</strong>.</p>
-<blockquote>
-<p>The exceptions are, of course, executable files.</p>
-</blockquote>
-<p>Example of changes for both types, files and directories (recursively)</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>find ~/public_html -type d -exec chmod <span class="m">755</span> <span class="o">{}</span> <span class="se">\;</span>
-<span class="nv">$ </span>find ~/public_html -type f -exec chmod <span class="m">644</span> <span class="o">{}</span> <span class="se">\;</span>
-</pre></div>
-</td></tr></table>
-
-<h3>Problem #4</h3>
-<p>Updating all folders and files for <code>www-data</code> user into the <code>public_html</code> directory.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</pre></div> </td></tr></table> <p>Probably the cause of that is rewriting the URL into for example:</p> <ul> <li>Joomla: <code>Global config</code> &gt; <code>Adjust rewriting URLs</code> and set for <strong>OFF</strong></li> </ul> <h3>Problem #1</h3> <p>Once you install the module, the module will be available in the <code>/etc/apache2/mods-available</code> directory. You can use the <code>a2enmod</code> command to enable a module. You can use the <code>a2dismod</code> command to disable a module. Once you enable the module, the module will be available in the <code>/etc/apache2/mods-enabled</code> directory.</p> <p>Example: <code>sudo a2enmod rewrite</code></p> <h3>Problem #2</h3> <p><a href=http://stackoverflow.com/questions/6245895/apache2-on-ubuntu-php-files-downloading>Apache2 on ubuntu - PHP downloading files insteed of run</a></p> <h3>Problem #3</h3> <p><strong>Files</strong> should have permissions rights <strong>664</strong>, while <strong>directories 755</strong>.</p> <blockquote> <p>The exceptions are, of course, executable files.</p> </blockquote> <p>Example of changes for both types, files and directories (recursively)</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
+2</pre></div></td><td class=code><div class=highlight><pre><span class=nv>$ </span>find ~/public_html -type d -exec chmod <span class=m>755</span> <span class=o>{}</span> <span class=se>\;</span>
+<span class=nv>$ </span>find ~/public_html -type f -exec chmod <span class=m>644</span> <span class=o>{}</span> <span class=se>\;</span>
+</pre></div> </td></tr></table> <h3>Problem #4</h3> <p>Updating all folders and files for <code>www-data</code> user into the <code>public_html</code> directory.</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
-sudo adduser <span class="nv">$USER</span> www-data
-sudo chown -R www-data:www-data /home/<span class="nv">$USER</span>/public_html
-sudo chmod -R <span class="m">775</span> /home/<span class="nv">$USER</span>/public_html
-</pre></div>
-</td></tr></table>
-
-<p>Save it inside <code>/home/$USER/bin</code> and make it executable using:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>sudo chmod +x /home/<span class="nv">$USER</span>/bin/public_html_fix.sh
-</pre></div>
-</td></tr></table>
-      </div>
-      <!-- /.entry-content -->
-  <hr/>
-  <section class="comments" id="comments">
-    <h2>Comments</h2>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
+4</pre></div></td><td class=code><div class=highlight><pre><span class=c>#!/bin/bash</span>
+sudo adduser <span class=nv>$USER</span> www-data
+sudo chown -R www-data:www-data /home/<span class=nv>$USER</span>/public_html
+sudo chmod -R <span class=m>775</span> /home/<span class=nv>$USER</span>/public_html
+</pre></div> </td></tr></table> <p>Save it inside <code>/home/$USER/bin</code> and make it executable using:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre>1</pre></div></td><td class=code><div class=highlight><pre>sudo chmod +x /home/<span class=nv>$USER</span>/bin/public_html_fix.sh
+</pre></div> </td></tr></table> </div> <!-- /.entry-content --> <hr> <section class=comments id=comments> <h2>Comments</h2> <div id=disqus_thread></div> <script type=text/javascript>
       var disqus_shortname = "egel";
       /* * * DON'T EDIT BELOW THIS LINE * * */
       (function () {
@@ -687,159 +241,7 @@ sudo chmod -R <span class="m">775</span> /home/<span class="nv">$USER</span>/pub
         s.setAttribute('data-timestamp', +new Date());
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
       }());
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-    <!-- End Disqus Code -->
-
-  </section>
-    </article>
-  </section>
-      </div>
-    </div>
-  </div>
-
-  <div class="container sidebar-phone">
-    <div class="row">
-      <div class="col-xs-12 sidebar">
-<div class="aboutme">
-  <h4>About the author</h4>
-    <img class="avatar thumbnail" src="https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=200" />
-  <p>
-    
-Programmer, soundtracks enthusiast, astrophysics fan.
-Occasionally hacking this blog with new articles.
-
-  </p>
-</div>  <ul class="list-group social-list">
-    <li>
-      <ul class="list-inline" id="social">
-        <li ><a href="https://twitter.com/MaciejSypien" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a></li>
-        <li ><a href="https://github.com/egel" target="_blank"><i class="fa fa-github-square fa-lg"></i></a></li>
-        <li ><a href="https://www.linkedin.com/in/maciejsypien" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a></li>
-<li><a href="http://egel.pl/feeds/all.atom.xml" title="Feed atom" target="_blank"><i class="fa fa-lg fa-rss-square"></i></a></li>      </ul>
-    </li>
-  </ul>
-
-
-<section>
-  <ul class="list-group">
-
-
-    <li>
-      <h4>Categories</h4>
-      <ul id="categories">
-        <li>
-          <a href="http://egel.pl/category/diary.html">Diary</a>
-        </li>
-        <li>
-          <a href="http://egel.pl/category/discovery.html">Discovery</a>
-        </li>
-        <li>
-          <a href="http://egel.pl/category/how-to.html">How to</a>
-        </li>
-        <li>
-          <a href="http://egel.pl/category/self-improvement.html">Self improvement</a>
-        </li>
-      </ul>
-    </li>
-
-      <li><h4><span class="icon-label">Tags</span></h4>
-        <ul class="list-inline tagcloud" id="tags">
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/angularjs.html">angularjs</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/apache.html">apache</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/apiary.html">apiary</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/arch.html">arch</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/console.html">console</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/domains.html">domains</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/frontend.html">frontend</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/git.html">git</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/gui.html">gui</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/install.html">install</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/latex.html">latex</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/linux.html">linux</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/mysql.html">mysql</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/nginx.html">nginx</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/osx.html">osx</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/pelican.html">pelican</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/php.html">php</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/sublime.html">sublime</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/terminal.html">terminal</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/text-editor.html">text-editor</a>
-          </li>
-          <li class="tag-1">
-            <a href="http://egel.pl/tag/university.html">university</a>
-          </li>
-          <li class="tag-4">
-            <a href="http://egel.pl/tag/vim.html">vim</a>
-          </li>
-          <li class="tag-2">
-            <a href="http://egel.pl/tag/wordpress.html">wordpress</a>
-          </li>
-        </ul>
-      </li>
-
-
-  </ul>
-</section>
-      </div>
-    </div>
-  </div>
-
-<footer class="footer">
-   <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <a href="#" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
-          <p>
-            &copy; Copyright 2016 &middot; The Egel's Blog &middot; The <a href="https://en.wikipedia.org/wiki/KISS_principle" title="Keep it stupid simple" target="_blank">KISS</a> Principle &middot; Build with <a href="http://docs.getpelican.com/" target="_blank">pelican</a>.
-          </p>
-        </div>
-      </div>
-   </div>
-</footer>
-  <script src="http://egel.pl/theme/js/scripts.min.js"></script>
-
-    <!-- Google Analytics -->
-    <script type="text/javascript">
+    </script> <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript rel=nofollow>comments powered by Disqus.</a></noscript> <!-- End Disqus Code --> </section> </article> </section> </div> </div> </div> <div class="container sidebar-phone"> <div class=row> <div class="col-xs-12 sidebar"> <div class=aboutme> <h4>About the author</h4> <img class="avatar thumbnail" src=https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=200> <p> Programmer, soundtracks enthusiast, astrophysics fan. Occasionally hacking this blog with new articles. </p> </div> <ul class="list-group social-list"> <li> <ul class=list-inline id=social> <li><a href=https://twitter.com/MaciejSypien target=_blank><i class="fa fa-twitter-square fa-lg"></i></a></li> <li><a href=https://github.com/egel target=_blank><i class="fa fa-github-square fa-lg"></i></a></li> <li><a href=https://www.linkedin.com/in/maciejsypien target=_blank><i class="fa fa-linkedin-square fa-lg"></i></a></li> <li><a href=http://egel.pl/feeds/all.atom.xml title="Feed atom" target=_blank><i class="fa fa-lg fa-rss-square"></i></a></li> </ul> </li> </ul> <section> <ul class=list-group> <li> <h4>Categories</h4> <ul id=categories> <li> <a href=http://egel.pl/category/diary.html>Diary</a> </li> <li> <a href=http://egel.pl/category/discovery.html>Discovery</a> </li> <li> <a href=http://egel.pl/category/how-to.html>How to</a> </li> <li> <a href=http://egel.pl/category/self-improvement.html>Self improvement</a> </li> </ul> </li> <li><h4><span class=icon-label>Tags</span></h4> <ul class="list-inline tagcloud" id=tags> <li class=tag-4> <a href=http://egel.pl/tag/angularjs.html>angularjs</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/apache.html>apache</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/apiary.html>apiary</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/arch.html>arch</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/console.html>console</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/domains.html>domains</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/frontend.html>frontend</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/git.html>git</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/gui.html>gui</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/install.html>install</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/latex.html>latex</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/linux.html>linux</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/mysql.html>mysql</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/nginx.html>nginx</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/osx.html>osx</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/pelican.html>pelican</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/php.html>php</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/sublime.html>sublime</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/terminal.html>terminal</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/text-editor.html>text-editor</a> </li> <li class=tag-1> <a href=http://egel.pl/tag/university.html>university</a> </li> <li class=tag-4> <a href=http://egel.pl/tag/vim.html>vim</a> </li> <li class=tag-2> <a href=http://egel.pl/tag/wordpress.html>wordpress</a> </li> </ul> </li> </ul> </section> </div> </div> </div> <footer class=footer> <div class=container> <div class=row> <div class=col-xs-12> <a href=# class=scrollToTop><i class="fa fa-arrow-up"></i></a> <p> &copy; Copyright 2016 &middot; The Egel's Blog &middot; The <a href=https://en.wikipedia.org/wiki/KISS_principle title="Keep it stupid simple" target=_blank>KISS</a> Principle &middot; Build with <a href=http://docs.getpelican.com/ target=_blank>pelican</a>. </p> </div> </div> </div> </footer> <script src=http://egel.pl/theme/js/scripts.min.js></script> <!-- Google Analytics --> <script type=text/javascript>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -847,12 +249,4 @@ Occasionally hacking this blog with new articles.
 
       ga('create', 'UA-26456669-2', 'auto');
       ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics Code -->
-
-    <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=True"></script>
-</div>
-  </div>
-</body>
-</html>
+    </script> <!-- End Google Analytics Code --> <script type=text/javascript>var addthis_config = {"data_track_addressbar": true};</script> <script type=text/javascript src=//s7.addthis.com/js/300/addthis_widget.js#pubid=True></script> </div> </div> </body> </html>
