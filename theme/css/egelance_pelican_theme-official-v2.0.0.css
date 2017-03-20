@@ -11444,6 +11444,10 @@ nav.navbar {
   border: none;
 }
 
+.articles-list article .single-tag {
+  margin-left: 30px;
+}
+
 .articles-list ul, .articles-list ol {
   list-style-position: inside;
 }

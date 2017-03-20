@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/all-en.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-18T00:00:00+01:00</updated><entry><title>Tasting of Arch Linux</title><link href="http://egel.pl/tasting-of-arch-linux.html" rel="alternate"></link><published>2016-11-18T00:00:00+01:00</published><updated>2016-11-18T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-18:/tasting-of-arch-linux.html</id><summary type="html">&lt;p&gt;Whole process of installation and my reflections upon the Arch Linux.&lt;/p&gt;</summary><content type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Linux logo" src="http://egel.pl/images/archlinux_logo.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/all-en.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-18T00:00:00+01:00</updated><entry><title>Tasting of Arch Linux</title><link href="http://egel.pl/tasting-of-arch-linux.html" rel="alternate"></link><published>2016-11-18T00:00:00+01:00</published><updated>2016-11-18T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-18:/tasting-of-arch-linux.html</id><summary type="html">&lt;p&gt;Whole process of installation and my reflections upon the Arch Linux.&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Linux logo]({filename}/images/archlinux_logo.png)
 &lt;/div&gt;
+--&gt;
+
 &lt;p&gt;I have to admit that installation of Arch Linux can be difficult for many people, but that exactly is real fun!&lt;/p&gt;
 &lt;p&gt;Few days ago I've tried to install Arch on my virtual machine then on my laptop and I could not find anything that I didn't like. Yeah, I agree that there are many decisions you have to decide during installation of Arch. For example: manual setting up of partitions, current date, downloading all related packages, then finally install whole system. For many (unfortunately) it's just the beginning, because after the installation you have a bare system - console and that is it. You need to install and configure GUI and other important stuff on your own, but actually that is real fun!&lt;/p&gt;
 &lt;p&gt;The longest part for me was the downloading and installation packages from the Net. This took me around 45 minutes to download the system and GUI interface (gnome).&lt;/p&gt;
@@ -233,69 +236,7 @@ PING wp.loc (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.036 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.038 ms
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="linux"></category><category term="frontend"></category></entry><entry><title>Install and configure dnsmasq on Mac OSX</title><link href="http://egel.pl/install-and-configure-dnsmasq-on-mac-osx.html" rel="alternate"></link><published>2016-11-05T00:00:00+01:00</published><updated>2016-11-05T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-05:/install-and-configure-dnsmasq-on-mac-osx.html</id><summary type="html">&lt;p&gt;In few small steps I will try to show you how to setup your own instance of dnsmasq.&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
-&lt;h3&gt;Installation of program&lt;/h3&gt;
-&lt;p&gt;Using the &lt;code&gt;apt-get&lt;/code&gt; manager we will install core program.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;brew install dnsmasq
-sudo cp -v &lt;span class="k"&gt;$(&lt;/span&gt;brew --prefix dnsmasq&lt;span class="k"&gt;)&lt;/span&gt;/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;h3&gt;Adding resolver to loc domain&lt;/h3&gt;
-&lt;p&gt;Nowadays there are so many new domains like &lt;code&gt;dev&lt;/code&gt;, &lt;code&gt;build&lt;/code&gt;, etc., so that I prefere &lt;code&gt;loc&lt;/code&gt; (which stands for &lt;code&gt;local&lt;/code&gt; or &lt;code&gt;localhost&lt;/code&gt;)&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt; -d /etc/resolver &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; sudo mkdir -v /etc/resolver
-sudo bash -c &lt;span class="s1"&gt;&amp;#39;echo &amp;quot;nameserver 127.0.0.1&amp;quot; &amp;gt; /etc/resolver/loc&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;h3&gt;Add service to start with system&lt;/h3&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
-sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;h3&gt;Configuring dnsmasq as DNS server&lt;/h3&gt;
-&lt;p&gt;Then when we have program installed, now we can get strict to the configuration. But before further actions, we will create backup file.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;In the example we want to use &lt;code&gt;loc&lt;/code&gt; domain as our local domain (I not use &lt;code&gt;.dev&lt;/code&gt; anymore due to now it is into standard global domains) and into &lt;code&gt;/etc/dnsmasq.conf&lt;/code&gt; file we add:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;listen-address=127.0.0.1
-address=/loc/127.0.0.1
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;That is pretty much it. Next restart the service by:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Last thing we probably need to to is to reset &lt;code&gt;mDNSResponser&lt;/code&gt;&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
-sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Final check if everything is ok and you are good to go.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ping example.loc
-PING example.loc (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.010 ms
-64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.016 ms
-64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.036 ms
-64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.038 ms
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="osx"></category><category term="dnsmasq"></category><category term="terminal"></category></entry><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><published>2016-10-10T00:00:00+02:00</published><updated>2016-10-10T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:/how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;I will show you how to compile and install vim from source files.
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="linux"></category><category term="frontend"></category></entry><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><published>2016-10-10T00:00:00+02:00</published><updated>2016-10-10T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:/how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;I will show you how to compile and install vim from source files.
 You will see how simple it can be.&lt;/p&gt;</summary><content type="html">&lt;p&gt;You may wonder why to install vim from source files if there are precompiled, ready to install packages available in your package managers. Yeah that is true, but there are also few "however".&lt;/p&gt;
 &lt;p&gt;If you compile and install from the source, the program is then the best suited to your system its software and also for the hardware. Moreover you can also use the latest versions, especially those not avaiable in the package managers.&lt;/p&gt;
 &lt;p&gt;There are also some light and dark side of doing it from the source, but for vim I think is the best possible way to have blazing fast text editor.&lt;/p&gt;
