@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/angularjs.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-04-13T12:44:00+02:00</updated><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - angularjs</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/angularjs.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-04-13T12:44:00+02:00</updated><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><published>2016-04-13T12:44:00+02:00</published><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:/nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
 &lt;/div&gt;
+--&gt;
+
 &lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
- &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and
-&lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real
-backend was being built.&lt;/p&gt;
+ &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and &lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real backend was being built.&lt;/p&gt;
+&lt;p&gt;The main gole for proper nginx configuration was to serve &lt;code&gt;*.example.dev&lt;/code&gt;
+domains, but with some …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
+&lt;/div&gt;
+--&gt;
+
+&lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
+ &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and &lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real backend was being built.&lt;/p&gt;
 &lt;p&gt;The main gole for proper nginx configuration was to serve &lt;code&gt;*.example.dev&lt;/code&gt;
 domains, but with some exceptions (restrictions) for subdomains:&lt;/p&gt;
 &lt;ul&gt;
@@ -93,7 +103,7 @@ and it looks like this snippet presented at the bottom.&lt;/p&gt;
 58
 59
 60
-61&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+61&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="p"&gt;~&lt;/span&gt;&lt;span class="sr"&gt;^(?:(?!www)(?!api)(?!tests))(.*)\.example\.dev$;&lt;/span&gt;
   &lt;span class="s"&gt;access_log&lt;/span&gt; &lt;span class="s"&gt;/tmp/subdomains.example.dev.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -155,4 +165,4 @@ and it looks like this snippet presented at the bottom.&lt;/p&gt;
   &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/ABSOLUTE_PATH_TO_WORKING_DIR/example-subdomain-frontend/tests/test-coverage/PhantomJS&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="s"&gt;.1.1&lt;/span&gt; &lt;span class="s"&gt;(Mac&lt;/span&gt; &lt;span class="s"&gt;OS&lt;/span&gt; &lt;span class="s"&gt;X&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="s"&gt;.0.0)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry></feed>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry></feed>

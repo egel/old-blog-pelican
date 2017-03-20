@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/wordpress.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-03-14T00:00:00+01:00</updated><entry><title>Migrating blog content</title><link href="http://egel.pl/migrating-blog-content.html" rel="alternate"></link><updated>2016-03-14T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-03-14:migrating-blog-content.html</id><summary type="html">&lt;p&gt;Currently, I am in a phase of migrating my content from legacy Wordpress to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - wordpress</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/wordpress.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-03-14T00:00:00+01:00</updated><entry><title>Migrating blog content</title><link href="http://egel.pl/migrating-blog-content.html" rel="alternate"></link><published>2016-03-14T00:00:00+01:00</published><updated>2016-03-14T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-03-14:/migrating-blog-content.html</id><summary type="html">&lt;p&gt;Currently, I am in a phase of migrating my content from legacy Wordpress to
+Pelican. To finally complete this, I have to translate all content from Polish
+to English to reach further audience.&lt;/p&gt;
+&lt;p&gt;Unfortunately, at this moment I suffer for lack of free time. There are many
+posts to process …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Currently, I am in a phase of migrating my content from legacy Wordpress to
 Pelican. To finally complete this, I have to translate all content from Polish
 to English to reach further audience.&lt;/p&gt;
 &lt;p&gt;Unfortunately, at this moment I suffer for lack of free time. There are many
@@ -8,7 +12,8 @@ level of well written article.&lt;/p&gt;
 &lt;p&gt;As soon as I finish transfer of my articles, I will post it here. By this
 moment, I would like to invite you take a look on actual a list, you may find
 something interesting here.&lt;/p&gt;
-&lt;p&gt;Thank you for your indulgence and stay tuned :)&lt;/p&gt;</summary><category term="pelican"></category><category term="wordpress"></category></entry><entry><title>Moving from Wordpress to Pelican</title><link href="http://egel.pl/moving-from-wordpress-to-pelican.html" rel="alternate"></link><updated>2016-02-25T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-25:moving-from-wordpress-to-pelican.html</id><summary type="html">&lt;p&gt;I have to start with words "I used wordpress for 2 yeas constantly". During
+&lt;p&gt;Thank you for your indulgence and stay tuned :)&lt;/p&gt;</content><category term="pelican"></category><category term="wordpress"></category></entry><entry><title>Moving from Wordpress to Pelican</title><link href="http://egel.pl/moving-from-wordpress-to-pelican.html" rel="alternate"></link><published>2016-02-25T00:00:00+01:00</published><updated>2016-02-25T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-25:/moving-from-wordpress-to-pelican.html</id><summary type="html">&lt;p&gt;I'm talking a bit about "why I migrate my blog from wordpress to
+pelican", the static pages web framework.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have to start with words "I used wordpress for 2 yeas constantly". During
 this period of time, several times I had problems with many basic stuff like
 uploading and managing images, insert some code snippets (like simple &lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; or
 &lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; elements), constantly updating framework core, but is not the point.&lt;/p&gt;
@@ -70,4 +75,4 @@ depends on user preferences and language taste, then just start writing in it :)
 &lt;p&gt;If you want to just write blog or blog-like page in easy to write syntax (like
 markdown) I definitely say YES, it is worth the time.&lt;/p&gt;
 &lt;p&gt;But if you expect whole next level of writing articles like you do in CMS, turn
-around and go back to your stuff, you will waste your time implement it.&lt;/p&gt;</summary><category term="wordpress"></category><category term="pelican"></category></entry></feed>
+around and go back to your stuff, you will waste your time implement it.&lt;/p&gt;</content><category term="wordpress"></category><category term="pelican"></category></entry></feed>

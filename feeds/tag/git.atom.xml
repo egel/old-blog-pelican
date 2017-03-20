@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/git.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-05-16T00:00:00+02:00</updated><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:git-push-guardian.html</id><summary type="html">&lt;!-- Summary: --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - git</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/git.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-05-16T00:00:00+02:00</updated><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><published>2016-05-16T00:00:00+02:00</published><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:/git-push-guardian.html</id><summary type="html">&lt;!--
+Summary:
+--&gt;
 
-&lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/git_logo-mini.png" /&gt;&lt;/p&gt;
+&lt;!--
+&lt;div class="intro-article-image-md" markdown="1"&gt;
+  ![LaTeX logo]({filename}/images/git_logo-mini.png)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;Recently I wondering how to improve my workflow with Git. I came across the Web
+and found some article which pointed on git hooks and were introduced in
+version 1.8.2.&lt;/p&gt;
+&lt;p&gt;That cool feature, allows to execute some code before/after some actions made in
+git. My team have …&lt;/p&gt;</summary><content type="html">&lt;!--
+Summary:
+--&gt;
+
+&lt;!--
+&lt;div class="intro-article-image-md" markdown="1"&gt;
+  ![LaTeX logo]({filename}/images/git_logo-mini.png)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;Recently I wondering how to improve my workflow with Git. I came across the Web
 and found some article which pointed on git hooks and were introduced in
 version 1.8.2.&lt;/p&gt;
@@ -67,12 +86,12 @@ but I also paste this snippet here, to make the article complete.&lt;/p&gt;
 28
 29
 30
-31&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+31&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
-&lt;span class="c"&gt;# General colors&lt;/span&gt;
+&lt;span class="c1"&gt;# General colors&lt;/span&gt;
 &lt;span class="nv"&gt;black&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;30m&amp;#39;&lt;/span&gt;
 &lt;span class="nv"&gt;red&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;31m&amp;#39;&lt;/span&gt;
-&lt;span class="nv"&gt;green&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;32m&amp;#39;&lt;/span&gt; &lt;span class="c"&gt;# &amp;#39;\e[1;32m&amp;#39; is too bright for white bg.&lt;/span&gt;
+&lt;span class="nv"&gt;green&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;32m&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# &amp;#39;\e[1;32m&amp;#39; is too bright for white bg.&lt;/span&gt;
 &lt;span class="nv"&gt;blue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[1;34m&amp;#39;&lt;/span&gt;
 &lt;span class="nv"&gt;yellow&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[0;33m&amp;#39;&lt;/span&gt;
 &lt;span class="nv"&gt;purple&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\x1B[1;35m&amp;#39;&lt;/span&gt;
@@ -91,13 +110,13 @@ but I also paste this snippet here, to make the article complete.&lt;/p&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;REPLY&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; egrep -E &lt;span class="s1"&gt;&amp;#39;^[yY]$&amp;#39;&lt;/span&gt; &amp;gt; /dev/null
     &lt;span class="k"&gt;then&lt;/span&gt;
       &lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;Continue of pushing to &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;red&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;endColor&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-      &lt;span class="nb"&gt;exit &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c"&gt;# push will execute&lt;/span&gt;
+      &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;# push will execute&lt;/span&gt;
     &lt;span class="k"&gt;fi&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; -en &lt;span class="s2"&gt;&amp;quot;Abort pushing to &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;red&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;endColor&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;\n&amp;quot;&lt;/span&gt;
-    &lt;span class="nb"&gt;exit &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="c"&gt;# push will not execute&lt;/span&gt;
+    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# push will not execute&lt;/span&gt;
   &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
-&lt;span class="nb"&gt;exit &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c"&gt;# push will execute when won&amp;#39;t match protected_branches&lt;/span&gt;
+&lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;# push will execute when won&amp;#39;t match protected_branches&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -111,4 +130,4 @@ older then 1.8.2). Then save above file as
 &lt;/blockquote&gt;
 &lt;p&gt;Now every time you will push to one of &lt;code&gt;protected_branches&lt;/code&gt; listed into the
 file, Git will ask you is that was your intend action. For git masters, this
-little trick can save a day ;)&lt;/p&gt;</summary><category term="git"></category><category term="terminal"></category></entry></feed>
+little trick can save a day ;)&lt;/p&gt;</content><category term="git"></category><category term="terminal"></category></entry></feed>

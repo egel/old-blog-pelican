@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/university.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-04-06T00:00:00+02:00</updated><entry><title>Thesis in LaTeX - part 3</title><link href="http://egel.pl/thesis-in-latex-part-3.html" rel="alternate"></link><updated>2015-04-06T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-04-06:thesis-in-latex-part-3.html</id><summary type="html">&lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - university</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/university.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-04-06T00:00:00+02:00</updated><entry><title>Thesis in LaTeX - part 3</title><link href="http://egel.pl/thesis-in-latex-part-3.html" rel="alternate"></link><published>2015-04-06T00:00:00+02:00</published><updated>2015-04-06T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-04-06:/thesis-in-latex-part-3.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-md" markdown="1"&gt;
+  ![LaTeX logo]({filename}/images/LaTeX_logo.png)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;In this article I will try to explain how to prepare front page for our thesis in LaTeX. I&amp;nbsp;will also say something about good practices in writing and how to proper format the content into LaTeX files using the built-in commands. Furthermore I will show you how to use …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-md" markdown="1"&gt;
+  ![LaTeX logo]({filename}/images/LaTeX_logo.png)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;In this article I will try to explain how to prepare front page for our thesis in LaTeX. I&amp;nbsp;will also say something about good practices in writing and how to proper format the content into LaTeX files using the built-in commands. Furthermore I will show you how to use other commands provided by additional packages for LaTeX.&lt;/p&gt;
 &lt;p&gt;I assume, that for this moment, you have read previous both articles &lt;a href="http://egel.pl/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;, &lt;a href="http://egel.pl/thesis-in-latex-part-2.html"&gt;part 2&lt;/a&gt; and also you have prepared your computer's work space.&lt;/p&gt;
 &lt;p&gt;Dear Reader, you have come one of the hardest paths, which was mandatory to begin becoming &lt;strong&gt;LaTeX Ninja&lt;/strong&gt;. You have interested and spent your time to understand LaTeX better and by this fact LaTeX will repay you with (related with time you have spent) fabulously enjoyable writing even the biggest and the most complicated documents. Believe me or not but, that is big, even if you not realize it yet.&lt;/p&gt;
@@ -26,12 +35,12 @@
 &lt;h3&gt;The uekthesis class&lt;/h3&gt;
 &lt;p&gt;The class contains a set of few configurable options allows to adjust individual parts of the document for get the desired results.&lt;/p&gt;
 &lt;p&gt;Option should be entered in the main file for our document. In our case, the file is &lt;code&gt;main.tex&lt;/code&gt;, while the line configuration is, of course:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[nazwy_opcji_odzielone_przecinkami]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;uekthesis&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[nazwy_opcji_odzielone_przecinkami]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;uekthesis&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;So in the example we will have:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[male, authorStatement, indexNumber, fileVersion, ]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;uekthesis&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[male, authorStatement, indexNumber, fileVersion, ]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;uekthesis&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -72,7 +81,7 @@
 12
 13
 14
-15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\globalFullAuthor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Maciej Sypień&lt;span class="nb"&gt;}&lt;/span&gt;    &lt;span class="c"&gt;% Pełna nazwa autora pracy&lt;/span&gt;
+15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\globalFullAuthor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Maciej Sypień&lt;span class="nb"&gt;}&lt;/span&gt;    &lt;span class="c"&gt;% Pełna nazwa autora pracy&lt;/span&gt;
 &lt;span class="k"&gt;\globalShortAuthor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;M. Sypień&lt;span class="nb"&gt;}&lt;/span&gt;       &lt;span class="c"&gt;% Autor - zwięzła forma wydruku&lt;/span&gt;
 &lt;span class="k"&gt;\globalFullTitle&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Projekt i implementacja autorskiego systemu zarządzania treścią&lt;span class="nb"&gt;}&lt;/span&gt;  &lt;span class="c"&gt;% Pełny tytuł pracy&lt;/span&gt;
 &lt;span class="k"&gt;\globalShortTitle&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Projekt i implementacja autorskiego CMS&lt;span class="nb"&gt;}&lt;/span&gt;  &lt;span class="c"&gt;% Krótki, zwięzły tytuł pracy&lt;/span&gt;
@@ -104,7 +113,7 @@
 3
 4
 5
-6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[male, indexNumber, fileVersion, twoside, ]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;uekthesis&lt;span class="nb"&gt;}&lt;/span&gt;
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[male, indexNumber, fileVersion, twoside, ]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;uekthesis&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[utf8]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inputenc&lt;span class="nb"&gt;}&lt;/span&gt;
 ...
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;graphicx&lt;span class="nb"&gt;}&lt;/span&gt;
@@ -120,13 +129,13 @@
 &lt;h3&gt;graphicx&lt;/h3&gt;
 &lt;p&gt;This package is created to easily manipulate images in TeX files. It has simple construction and it should not be intellectual challenge while using commands from its interface.&lt;/p&gt;
 &lt;h4&gt;Example 1.1&lt;/h4&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[scale=0.5]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;images/lion&lt;span class="nb"&gt;_&lt;/span&gt;1.jpg&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[scale=0.5]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;images/lion&lt;span class="nb"&gt;_&lt;/span&gt;1.jpg&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;This short line attach image into the document and scales it to 50% of its default size. The source of the image takes the path: &lt;code&gt;images/lion_1.jpg&lt;/code&gt;.&lt;/p&gt;
 &lt;h4&gt;Example 1.2&lt;/h4&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=12cm]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;images/lion&lt;span class="nb"&gt;_&lt;/span&gt;2.jpg&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=12cm]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;images/lion&lt;span class="nb"&gt;_&lt;/span&gt;2.jpg&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -135,7 +144,7 @@
 &lt;p&gt;Of course, the bigger the picture, the better final quality (because image has a certain size), but increasing the quality will be paid for with an increase in the weight of the resulting file work.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;It is also possible there are other very useful options instead of sample "12cm" put the width of the command:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=\textwidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;images/lion&lt;span class="nb"&gt;_&lt;/span&gt;2.jpg&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=\textwidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;images/lion&lt;span class="nb"&gt;_&lt;/span&gt;2.jpg&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -154,7 +163,7 @@
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;Here is a very long paragraph shorting one specific idea of the author &lt;span class="k"&gt;\dots&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Here is a very long paragraph shorting one specific idea of the author &lt;span class="k"&gt;\dots&lt;/span&gt;
 
 And for another, the insanely long paragraph containing another author&amp;#39;s another thought.
 
@@ -181,7 +190,7 @@ And for another, the insanely long paragraph containing another author&amp;#39;s
 13
 14
 15
-16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;This is plain text that contains &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bold font&lt;span class="nb"&gt;}&lt;/span&gt;, but also the written
+16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is plain text that contains &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bold font&lt;span class="nb"&gt;}&lt;/span&gt;, but also the written
 &lt;span class="k"&gt;\textit&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;italic&lt;span class="nb"&gt;}&lt;/span&gt;. In contrast, this text will be &lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\large&lt;/span&gt; adequately larger&lt;span class="nb"&gt;}&lt;/span&gt;
 and the &lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\small&lt;/span&gt; reduced accordingly&lt;span class="nb"&gt;}&lt;/span&gt;.
 
@@ -202,20 +211,33 @@ Below appears a tiny table:
 
 &lt;h4&gt;Convert tabs to spaces&lt;/h4&gt;
 &lt;p&gt;This practice allows convenient editing of the text, both in the text editor of your choice (God forbid, I'm not talking about the Microsoft Word!) and other text editors. Each editor has a different interpretation of the default sizes tabs to spaces - for some it is 2, 4 or even 8 spaces. Hence, the text could looking really nice in your editor, but if someone else open it (for example your supervisor) it could look like "Nightmare on Elm Street".&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;I think that as a beginner level of difficulty for the article, so should be enough. I would like to thank you for your attention and will remain with me until last phrases.&lt;/p&gt;
 &lt;p&gt;Full example for this article you will find into link below. It includes a complete, working code.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.sharelatex.com/project/543abd9e69870b1d3e39c3f8" title="Full online example" class="btn btn-primary"&gt;Full online example&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;At this point, I invite you to the next and probably the final 4th part of creating a thesis:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;overview of existing bibliographic applied (for all but especially for Polish);&lt;/li&gt;
 &lt;li&gt;we will implement the full bibliographic system with &lt;code&gt;biblatex&lt;/code&gt; + &lt;code&gt;biber&lt;/code&gt; for our document;&lt;/li&gt;
 &lt;li&gt;and will join at the end of the document lists of: bibliography, figures and tables.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This will be one of the most interesting articles in a series, as it works with ready examples of implementation of the &lt;code&gt;biblatex&lt;/code&gt; and &lt;code&gt;biber&lt;/code&gt; is RARE (in particular Polish LaTeX community). At the date of publication of this article, the above combination seems to be the most effective solution for storing and formatting bibliographies. At this moment I would love to, to invite you for next article from this series :)&lt;/p&gt;</summary><category term="latex"></category><category term="university"></category></entry><entry><title>Thesis in LaTeX - part 2</title><link href="http://egel.pl/thesis-in-latex-part-2.html" rel="alternate"></link><updated>2014-10-19T12:21:49+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-10-19:thesis-in-latex-part-2.html</id><summary type="html">&lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;This will be one of the most interesting articles in a series, as it works with ready examples of implementation of the &lt;code&gt;biblatex&lt;/code&gt; and &lt;code&gt;biber&lt;/code&gt; is RARE (in particular Polish LaTeX community). At the date of publication of this article, the above combination seems to be the most effective solution for storing and formatting bibliographies. At this moment I would love to, to invite you for next article from this series :)&lt;/p&gt;</content><category term="latex"></category><category term="university"></category></entry><entry><title>Thesis in LaTeX - part 2</title><link href="http://egel.pl/thesis-in-latex-part-2.html" rel="alternate"></link><published>2014-10-19T12:21:49+02:00</published><updated>2014-10-19T12:21:49+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-10-19:/thesis-in-latex-part-2.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-md" markdown="1"&gt;
+  ![LaTeX logo]({filename}/images/LaTeX_logo.png)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;I assume, that at the moment of reading this second part of writing thesis in
+LaTeX, you have already red the previous &lt;a href="http://egel.pl/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;
+and install required software. If you do, then perfect carry on, but if not you
+should catch up.&lt;/p&gt;
+&lt;p&gt;I this part I will try to make …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-md" markdown="1"&gt;
+  ![LaTeX logo]({filename}/images/LaTeX_logo.png)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;I assume, that at the moment of reading this second part of writing thesis in
 LaTeX, you have already red the previous &lt;a href="http://egel.pl/thesis-in-latex-part-1.html"&gt;part 1&lt;/a&gt;
 and install required software. If you do, then perfect carry on, but if not you
@@ -316,7 +338,7 @@ to this below:&lt;/p&gt;
 5
 6
 7
-8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[12pt, oneside, a4paper]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;report&lt;span class="nb"&gt;}&lt;/span&gt;
+8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[12pt, oneside, a4paper]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;report&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[OT4, plmath]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;polski&lt;span class="nb"&gt;}&lt;/span&gt;  &lt;span class="c"&gt;% definition of using platex&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[utf8]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inputenc&lt;span class="nb"&gt;}&lt;/span&gt;       &lt;span class="c"&gt;% UTF-8 for multiple languages&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[OT4]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fontenc&lt;span class="nb"&gt;}&lt;/span&gt;
@@ -408,7 +430,7 @@ like the example below:&lt;/p&gt;
 49
 50
 51
-52&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
+52&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;span class="k"&gt;\maketitle&lt;/span&gt;
 
 &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;abstract&lt;span class="nb"&gt;}&lt;/span&gt;
@@ -496,7 +518,7 @@ parts, that every single chapter will be put into separate file.&lt;/p&gt;
 22
 23
 24
-25&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[12pt, oneside, a4paper]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;report&lt;span class="nb"&gt;}&lt;/span&gt;
+25&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[12pt, oneside, a4paper]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;report&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[OT4, plmath]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;polski&lt;span class="nb"&gt;}&lt;/span&gt;        &lt;span class="c"&gt;% definition of platex&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[utf8]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inputenc&lt;span class="nb"&gt;}&lt;/span&gt;             &lt;span class="c"&gt;% UTF-8 encoding&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[OT4]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fontenc&lt;span class="nb"&gt;}&lt;/span&gt;
@@ -533,7 +555,7 @@ need, to fill the content. For better visualization of this situation I will
 paste some snippets.&lt;/p&gt;
 &lt;p&gt;Prologue, &lt;strong&gt;chap_intro.tex&lt;/strong&gt;:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\chapter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Wstęp&lt;span class="nb"&gt;}&lt;/span&gt;
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\chapter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Wstęp&lt;span class="nb"&gt;}&lt;/span&gt;
 Here will be the place of prologue for our extensive thesis :)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -556,7 +578,7 @@ Here will be the place of prologue for our extensive thesis :)
 15
 16
 17
-18&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;% 1st section&lt;/span&gt;
+18&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;% 1st section&lt;/span&gt;
 &lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Text&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\label&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;sec:text&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;span class="k"&gt;\LaTeX\ &lt;/span&gt;allows to the author to manage numbering of section, lists, refering for tables, pictures and other elements. I~easy way we can refer to the formula &lt;span class="k"&gt;\ref&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;eqn:equation1&lt;span class="nb"&gt;}&lt;/span&gt;.
 
@@ -587,7 +609,7 @@ where
  7
  8
  9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\chapter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Our second chapter&lt;span class="nb"&gt;}&lt;/span&gt;
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\chapter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Our second chapter&lt;span class="nb"&gt;}&lt;/span&gt;
 This is very long content of second chapter.
 
 &lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Sekcja rozdziału drugiego&lt;span class="nb"&gt;}&lt;/span&gt;
@@ -610,7 +632,7 @@ This is very long content of subsection of second chapter.
  7
  8
  9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;\chapter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Our third chapter&lt;span class="nb"&gt;}&lt;/span&gt;
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\chapter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Our third chapter&lt;span class="nb"&gt;}&lt;/span&gt;
 This is very long content of third chapter.
 
 &lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Section of third chapter&lt;span class="nb"&gt;}&lt;/span&gt;
@@ -630,7 +652,7 @@ work organization while writing (ex.: when you want to omit some chapters, you
 just comment &lt;code&gt;\include{}&lt;/code&gt; command with &lt;code&gt;%&lt;/code&gt; sign, the recompile the document and done.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.sharelatex.com/project/543aad2f69870b1d3e39c26b" title="Full online example" class="btn btn-primary"&gt;Full online example&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I think that pretty much it for this part. Thank you for attention and leave comment if you like this.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;But if you do not hate LaTeX yet, and you still want to get know it better I
 will be pleased to invite to to next, third part and it will contain:&lt;/p&gt;
 &lt;ul&gt;
@@ -639,11 +661,21 @@ will be pleased to invite to to next, third part and it will contain:&lt;/p&gt;
 &lt;li&gt;basic &lt;strong&gt;good practices&lt;/strong&gt; during writing in LaTeX&lt;/li&gt;
 &lt;li&gt;and we will make the title page for our thesis&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;...well, fun will be guarantee ;)&lt;/p&gt;</summary><category term="latex"></category><category term="university"></category></entry><entry><title>Thesis in LaTeX - part 1</title><link href="http://egel.pl/thesis-in-latex-part-1.html" rel="alternate"></link><updated>2014-10-12T19:00:05+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-10-12:thesis-in-latex-part-1.html</id><summary type="html">&lt;!-- Summary: --&gt;
+&lt;p&gt;...well, fun will be guarantee ;)&lt;/p&gt;</content><category term="latex"></category><category term="university"></category></entry><entry><title>Thesis in LaTeX - part 1</title><link href="http://egel.pl/thesis-in-latex-part-1.html" rel="alternate"></link><published>2014-10-12T19:00:05+02:00</published><updated>2014-10-12T19:00:05+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-10-12:/thesis-in-latex-part-1.html</id><summary type="html">&lt;!-- Summary: --&gt;
 
-&lt;div class="intro-article-image-md"&gt;
-&lt;p&gt;&lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png" /&gt;&lt;/p&gt;
-&lt;/div&gt;
+&lt;!-- &lt;div class="intro-article-image-md" markdown="1"&gt; --&gt;
+
+&lt;p&gt;&lt;!-- &lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png"&gt; --&gt;
+&lt;!-- &lt;/div&gt; --&gt;&lt;/p&gt;
+&lt;p&gt;In one simple sentence, LaTeX it is an extension of TeX language, although TeX
+in real life is a collation of macros. This is not a official definition, rather
+some sort of visualization - but what it is actually, we will get later.&lt;/p&gt;
+&lt;p&gt;I say this all, because in this small …&lt;/p&gt;</summary><content type="html">&lt;!-- Summary: --&gt;
+
+&lt;!-- &lt;div class="intro-article-image-md" markdown="1"&gt; --&gt;
+
+&lt;p&gt;&lt;!-- &lt;img alt="LaTeX logo" src="http://egel.pl/images/LaTeX_logo.png"&gt; --&gt;
+&lt;!-- &lt;/div&gt; --&gt;&lt;/p&gt;
 &lt;p&gt;In one simple sentence, LaTeX it is an extension of TeX language, although TeX
 in real life is a collation of macros. This is not a official definition, rather
 some sort of visualization - but what it is actually, we will get later.&lt;/p&gt;
@@ -865,7 +897,7 @@ be difficult to debug).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;For Linux users full installation looks even simpler:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Debian based systems&lt;/span&gt;
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Debian based systems&lt;/span&gt;
 sudo apt-get install texlive-full biber
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -878,4 +910,4 @@ to get.&lt;/p&gt;
 in LaTeX - part 2&lt;/a&gt;.  I will based on my
 implementation of &lt;a href="https://github.com/egel/uek-latex-thesis-class"&gt;uekthesis&lt;/a&gt; class which I created for my
 university: Cracow University of Economics, but it can be modified and adjust
-for any other University in a fly.&lt;/p&gt;</summary><category term="latex"></category><category term="university"></category></entry></feed>
+for any other University in a fly.&lt;/p&gt;</content><category term="latex"></category><category term="university"></category></entry></feed>

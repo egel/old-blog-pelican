@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/mysql.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-06-27T00:00:00+02:00</updated><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or &lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;, &lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - mysql</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/mysql.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2015-06-27T00:00:00+02:00</updated><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><published>2014-04-06T00:00:00+02:00</published><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:/setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;We will install standard and secure Linux - Apache - MySQL - PHP
+configuration with PHPMyAdmin for easy database management and
+create sample Apache's VirtualHost. Shall we begin? :)&lt;/p&gt;</summary><content type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or &lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;, &lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
 &lt;p&gt;Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.&lt;/p&gt;
 &lt;p&gt;In this simple article I'll show you how to build your own simple (and standard in these days) server configuration based on LAMP, but those tools can be easily replaced with others technologies.  For example if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end setup will be made).&lt;/p&gt;
 &lt;p&gt;I think this is good, start example to play with :) Enjoy.&lt;/p&gt;
@@ -19,18 +21,18 @@
 &lt;/ul&gt;
 &lt;p&gt;Good &lt;a href="http://www.ubuntu-pomoc.org/instalacja-apache-php5-mysql/"&gt;Polish article&lt;/a&gt; and &lt;a href="https://library.linode.com/web-servers/apache/installation/ubuntu-12.04-precise-pangolin"&gt;English article&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Let's begin from updating our Debian based system (Ubuntu):&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get update
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;h3&gt;Apache&lt;/h3&gt;
 &lt;p&gt;Installation Apache 2.4 with its useful dependencies:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Then restart the service with:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service apache2 restart
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service apache2 restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -43,12 +45,12 @@
 &lt;h4&gt;Add user to www-data group&lt;/h4&gt;
 &lt;p&gt;Now we'd like to add your current user (&lt;code&gt;$USER&lt;/code&gt;)  to &lt;code&gt;www-data&lt;/code&gt; group used by apache server. We will do this to prevent you from some error-access failures like user owner.&lt;/p&gt;
 &lt;p&gt;To check if your current user belongs to &lt;code&gt;www-data&lt;/code&gt; group simply do:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;groups &lt;span class="nv"&gt;$USER&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;groups &lt;span class="nv"&gt;$USER&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now add existing user to &lt;code&gt;www-data&lt;/code&gt; group.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo usermod -a -G &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo usermod -a -G &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -64,15 +66,15 @@
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633874 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633903 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_PID_FILE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633910 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633913 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_GROUP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633920 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636829 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636921 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636927 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /usr/sbin/apache2 -V
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633874 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633903 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_PID_FILE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633910 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633913 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_GROUP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633920 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.636829 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.636921 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.636927 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
 AH00526: Syntax error on line &lt;span class="m"&gt;74&lt;/span&gt; of /etc/apache2/apache2.conf:
 Invalid Mutex directory in argument file:&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -107,15 +109,15 @@ Invalid Mutex directory in argument file:&lt;span class="si"&gt;${&lt;/span&gt;&
 26
 27
 28
-29&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; /etc/apache2/envvars
-&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V
+29&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; /etc/apache2/envvars
+$ /usr/sbin/apache2 -V
 
 Server version: Apache/2.4.7 &lt;span class="o"&gt;(&lt;/span&gt;Ubuntu&lt;span class="o"&gt;)&lt;/span&gt;
-Server built:   Jul &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; 15:34:04
-Server&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s Module Magic Number: 20120211:27
-Server loaded:  APR 1.5.1-dev, APR-UTIL 1.5.3
-Compiled using: APR 1.5.1-dev, APR-UTIL 1.5.3
-Architecture:   64-bit
+Server built:   Jul &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:34:04
+Server&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s Module Magic Number: &lt;span class="m"&gt;20120211&lt;/span&gt;:27
+Server loaded:  APR &lt;span class="m"&gt;1&lt;/span&gt;.5.1-dev, APR-UTIL &lt;span class="m"&gt;1&lt;/span&gt;.5.3
+Compiled using: APR &lt;span class="m"&gt;1&lt;/span&gt;.5.1-dev, APR-UTIL &lt;span class="m"&gt;1&lt;/span&gt;.5.3
+Architecture:   &lt;span class="m"&gt;64&lt;/span&gt;-bit
 Server MPM:     prefork
   threaded:     no
     forked:     yes &lt;span class="o"&gt;(&lt;/span&gt;variable process count&lt;span class="o"&gt;)&lt;/span&gt;
@@ -128,7 +130,7 @@ Server compiled with....
  -D SINGLE_LISTEN_UNSERIALIZED_ACCEPT
  -D APR_HAS_OTHER_CHILD
  -D AP_HAVE_RELIABLE_PIPED_LOGS
- -D &lt;span class="nv"&gt;DYNAMIC_MODULE_LIMIT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;256
+ -D &lt;span class="nv"&gt;DYNAMIC_MODULE_LIMIT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;256&lt;/span&gt;
  -D &lt;span class="nv"&gt;HTTPD_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/apache2&amp;quot;&lt;/span&gt;
  -D &lt;span class="nv"&gt;SUEXEC_BIN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/lib/apache2/suexec&amp;quot;&lt;/span&gt;
  -D &lt;span class="nv"&gt;DEFAULT_PIDLOG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/run/apache2.pid&amp;quot;&lt;/span&gt;
@@ -145,26 +147,26 @@ Server compiled with....
 &lt;p&gt;Basic apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; * Restarting web server apache2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; * Restarting web server apache2
 AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;&amp;#39;s fully qualified domain name, using 127.0.1.1. Set the &amp;#39;&lt;/span&gt;ServerName&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; directive globally to suppress this message
  ...done.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;That's why we will name it :)&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ServerName localhost&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/apache2/conf-available/servername.conf
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ServerName localhost&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/apache2/conf-available/servername.conf
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Then we're enable its name in for apache config by&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo a2enconf servername
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo a2enconf servername
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Just restart the server to make sure that all is done correctly.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service apache2 restart
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service apache2 restart
  * Restarting web server apache2
   ...done.
 &lt;/pre&gt;&lt;/div&gt;
@@ -174,12 +176,12 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;h3&gt;MySQL&lt;/h3&gt;
 &lt;p&gt;MySQL is one of the most popular databases on the website market. So we will install it along.&lt;/p&gt;
 &lt;p&gt;During the installation process program ask you for the root password, so we write it and &lt;strong&gt;remeber it&lt;/strong&gt; for later use.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install mysql-server
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install mysql-server
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Check the installed version&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mysql -V
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mysql -V
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -191,10 +193,10 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo a2enmod php5
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo a2enmod rewrite
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo php5enmod mcrypt   &lt;span class="c"&gt;# required by phpMyAdmin&lt;/span&gt;
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
+$ sudo a2enmod php5
+$ sudo a2enmod rewrite
+$ sudo php5enmod mcrypt   &lt;span class="c1"&gt;# required by phpMyAdmin&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -204,7 +206,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="na"&gt;upload_max_filesize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="na"&gt;upload_max_filesize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
 &lt;span class="na"&gt;post_max_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
 &lt;span class="na"&gt;display_errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;On&lt;/span&gt;
 &lt;span class="na"&gt;display_startup_errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;On&lt;/span&gt;
@@ -219,7 +221,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;/ul&gt;
 &lt;h3&gt;PHPMyAdmin&lt;/h3&gt;
 &lt;p&gt;Installation of PHPMyAdmin is trivial.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install phpmyadmin
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install phpmyadmin
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -235,7 +237,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Good practice:&lt;/strong&gt; If you want to create site ex: &lt;code&gt;egel.pl&lt;/code&gt;, write config file like this &lt;code&gt;egel.pl.conf&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -253,7 +255,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nb"&gt;ServerAdmin&lt;/span&gt; admin@example.com
     &lt;span class="nb"&gt;ServerName&lt;/span&gt; blog.loc
     &lt;span class="nb"&gt;DocumentRoot&lt;/span&gt; &lt;span class="sx"&gt;/var/www/blog.loc/public_html/&lt;/span&gt;
@@ -269,14 +271,14 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 
 &lt;p&gt;Save it.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s &lt;span class="nv"&gt;$HOME&lt;/span&gt;/workspace/blog/output/ /var/www/blog.loc/public_html
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ln -s &lt;span class="nv"&gt;$HOME&lt;/span&gt;/workspace/blog/output/ /var/www/blog.loc/public_html
 sudo a2ensite blog.loc.conf
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Next we need to tell the server to use our new ServerName.&lt;/p&gt;
-&lt;p&gt;The best solution I know for development purposes involving &lt;code&gt;dnsmasq&lt;/code&gt;, which I definitely recommend - you can find how to do it into article &lt;a href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html"&gt;How to install dnsmasq&lt;/a&gt; or just add the name of server to the hosts file:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 blog.loc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
+&lt;p&gt;The best solution I know for development purposes involving &lt;code&gt;dnsmasq&lt;/code&gt;, which I definitely recommend - you can find how to do it into article &lt;a href="{filename}install_dnsmask_linux.md"&gt;How to install dnsmasq&lt;/a&gt; or just add the name of server to the hosts file:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 blog.loc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -319,7 +321,7 @@ sudo a2ensite blog.loc.conf
 24
 25
 26
-27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.ph(p[345]?|t|tml)$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.ph(p[345]?|t|tml)$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nb"&gt;SetHandler&lt;/span&gt; application/x-httpd-php
 &lt;span class="nt"&gt;&amp;lt;/FilesMatch&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.phps$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -352,14 +354,14 @@ sudo a2ensite blog.loc.conf
 &lt;p&gt;Now we set server, so that we can throw files into the &lt;code&gt;~/public_html&lt;/code&gt; directory. It maybe necessary to give the appropriate rights for the directory, so we need to take this under consideration as well.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mkdir ~/public_html
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir ~/public_html
 chmod &lt;span class="m"&gt;775&lt;/span&gt; ~/public_html
 sudo a2enmod userdir
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now restart the apache and since this moment we can easily use &lt;code&gt;~/public_html&lt;/code&gt; in all user's catalogs like the server's one.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo /etc/init.d/apache2 restart
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo /etc/init.d/apache2 restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -370,14 +372,14 @@ sudo a2enmod userdir
 &lt;/blockquote&gt;
 &lt;p&gt;We remember the path for running apache2&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ps -ef &lt;span class="p"&gt;|&lt;/span&gt; grep apache
-apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt; Oct20 ?        00:00:00 /usr/sbin/apache2
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps -ef &lt;span class="p"&gt;|&lt;/span&gt; grep apache
+apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt; Oct20 ?        &lt;span class="m"&gt;00&lt;/span&gt;:00:00 /usr/sbin/apache2
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now we add &lt;code&gt;-V&lt;/code&gt; flag&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V &lt;span class="p"&gt;|&lt;/span&gt; grep SERVER_CONFIG_FILE
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /usr/sbin/apache2 -V &lt;span class="p"&gt;|&lt;/span&gt; grep SERVER_CONFIG_FILE
 -D &lt;span class="nv"&gt;SERVER_CONFIG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/apache2/apache2.conf&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -387,7 +389,7 @@ apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/home/maciej/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/home/maciej/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nb"&gt;Options&lt;/span&gt; Indexes FollowSymLinks
     &lt;span class="nb"&gt;AllowOverride&lt;/span&gt; &lt;span class="k"&gt;All&lt;/span&gt;
     &lt;span class="nb"&gt;Require&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; granted
@@ -399,7 +401,7 @@ apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt
 &lt;h5&gt;May occur the problem like "index.php not found"&lt;/h5&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;Not Found
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Not Found
 
 The requested URL /index.php was not found on this server.
 &lt;/pre&gt;&lt;/div&gt;
@@ -421,8 +423,8 @@ The requested URL /index.php was not found on this server.
 &lt;/blockquote&gt;
 &lt;p&gt;Example of changes for both types, files and directories (recursively)&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;find ~/public_html -type d -exec chmod &lt;span class="m"&gt;755&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;find ~/public_html -type f -exec chmod &lt;span class="m"&gt;644&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find ~/public_html -type d -exec chmod &lt;span class="m"&gt;755&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+$ find ~/public_html -type f -exec chmod &lt;span class="m"&gt;644&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -431,7 +433,7 @@ The requested URL /index.php was not found on this server.
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 sudo adduser &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
 sudo chown -R www-data:www-data /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/public_html
 sudo chmod -R &lt;span class="m"&gt;775&lt;/span&gt; /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/public_html
@@ -439,6 +441,6 @@ sudo chmod -R &lt;span class="m"&gt;775&lt;/span&gt; /home/&lt;span class="nv"&g
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Save it inside &lt;code&gt;/home/$USER/bin&lt;/code&gt; and make it executable using:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo chmod +x /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/bin/public_html_fix.sh
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo chmod +x /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/bin/public_html_fix.sh
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="apache"></category><category term="mysql"></category><category term="php"></category><category term="domains"></category></entry></feed>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="apache"></category><category term="mysql"></category><category term="php"></category><category term="domains"></category></entry></feed>

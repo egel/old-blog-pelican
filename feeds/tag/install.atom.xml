@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/install.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-10-10T00:00:00+02:00</updated><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><updated>2016-10-10T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;You may wonder why to install vim from source files if there are precompiled, ready to install packages available in your package managers. Yeah that is true, but there are also few "however".&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - install</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/install.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-10-10T00:00:00+02:00</updated><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><published>2016-10-10T00:00:00+02:00</published><updated>2016-10-10T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:/how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;I will show you how to compile and install vim from source files.
+You will see how simple it can be.&lt;/p&gt;</summary><content type="html">&lt;p&gt;You may wonder why to install vim from source files if there are precompiled, ready to install packages available in your package managers. Yeah that is true, but there are also few "however".&lt;/p&gt;
 &lt;p&gt;If you compile and install from the source, the program is then the best suited to your system its software and also for the hardware. Moreover you can also use the latest versions, especially those not avaiable in the package managers.&lt;/p&gt;
 &lt;p&gt;There are also some light and dark side of doing it from the source, but for vim I think is the best possible way to have blazing fast text editor.&lt;/p&gt;
 &lt;h3&gt;Before you start&lt;/h3&gt;
@@ -12,20 +13,20 @@
 &lt;/ul&gt;
 &lt;p&gt;The results of checking I present below, because I think that it might be helpful for many beginners as I was once ;)&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;lua -v
-Lua 5.2.3  Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; 1994-2013 Lua.org, PUC-Rio
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lua -v
+Lua &lt;span class="m"&gt;5&lt;/span&gt;.2.3  Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;1994&lt;/span&gt;-2013 Lua.org, PUC-Rio
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;luajit -v
-LuaJIT 2.0.2 -- Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; 2005-2013 Mike Pall. http://luajit.org/
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ luajit -v
+LuaJIT &lt;span class="m"&gt;2&lt;/span&gt;.0.2 -- Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;2005&lt;/span&gt;-2013 Mike Pall. http://luajit.org/
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby -v
-ruby 2.2.1p85 &lt;span class="o"&gt;(&lt;/span&gt;2015-02-26 revision 49769&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;x86_64-linux&lt;span class="o"&gt;]&lt;/span&gt;
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ruby -v
+ruby &lt;span class="m"&gt;2&lt;/span&gt;.2.1p85 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2015&lt;/span&gt;-02-26 revision &lt;span class="m"&gt;49769&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;x86_64-linux&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -41,15 +42,15 @@ ruby 2.2.1p85 &lt;span class="o"&gt;(&lt;/span&gt;2015-02-26 revision 49769&lt;s
 10
 11
 12
-13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;perl -v
+13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ perl -v
 
-This is perl 5, version 18, subversion &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;v5.18.2&lt;span class="o"&gt;)&lt;/span&gt; built &lt;span class="k"&gt;for&lt;/span&gt; x86_64-linux-gnu-thread-multi
+This is perl &lt;span class="m"&gt;5&lt;/span&gt;, version &lt;span class="m"&gt;18&lt;/span&gt;, subversion &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;v5.18.2&lt;span class="o"&gt;)&lt;/span&gt; built &lt;span class="k"&gt;for&lt;/span&gt; x86_64-linux-gnu-thread-multi
 &lt;span class="o"&gt;(&lt;/span&gt;with &lt;span class="m"&gt;44&lt;/span&gt; registered patches, see perl -V &lt;span class="k"&gt;for&lt;/span&gt; more detail&lt;span class="o"&gt;)&lt;/span&gt;
 
-Copyright 1987-2013, Larry Wall
+Copyright &lt;span class="m"&gt;1987&lt;/span&gt;-2013, Larry Wall
 
 Perl may be copied only under the terms of either the Artistic License or the
-GNU General Public License, which may be found in the Perl &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="nb"&gt;source &lt;/span&gt;kit.
+GNU General Public License, which may be found in the Perl &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="nb"&gt;source&lt;/span&gt; kit.
 
 Complete documentation &lt;span class="k"&gt;for&lt;/span&gt; Perl, including FAQ lists, should be found on
 this system using &lt;span class="s2"&gt;&amp;quot;man perl&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;perldoc perl&amp;quot;&lt;/span&gt;.  If you have access to the
@@ -58,13 +59,13 @@ Internet, point your browser at http://www.perl.org/, the Perl Home Page.
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;which python
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ which python
 /usr/bin/python
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;which python3
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ which python3
 /usr/bin/python3
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -77,7 +78,7 @@ Internet, point your browser at http://www.perl.org/, the Perl Home Page.
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;find /usr/lib/python2.7 -type d -name &lt;span class="s2"&gt;&amp;quot;config*&amp;quot;&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find /usr/lib/python2.7 -type d -name &lt;span class="s2"&gt;&amp;quot;config*&amp;quot;&lt;/span&gt;
 /usr/lib/python2.7/dist-packages/configobj-4.7.2.egg-info
 /usr/lib/python2.7/dist-packages/configglue-1.1.2.egg-info
 /usr/lib/python2.7/dist-packages/configglue
@@ -113,9 +114,9 @@ Internet, point your browser at http://www.perl.org/, the Perl Home Page.
 17
 18
 19
-20&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /tmp
+20&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /tmp
 git clone https://github.com/vim/vim
-&lt;span class="nb"&gt;cd &lt;/span&gt;vim/
+&lt;span class="nb"&gt;cd&lt;/span&gt; vim/
 ./configure --with-features&lt;span class="o"&gt;=&lt;/span&gt;huge &lt;span class="se"&gt;\&lt;/span&gt;
             --enable-gui&lt;span class="o"&gt;=&lt;/span&gt;auto &lt;span class="se"&gt;\&lt;/span&gt;
             --enable-cscope &lt;span class="se"&gt;\&lt;/span&gt;
@@ -183,9 +184,9 @@ sudo make install
 44
 45
 46
-47&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;vim --version
-VIM - Vi IMproved 8.0 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2016&lt;/span&gt; Sep 12, compiled Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; 19:09:12&lt;span class="o"&gt;)&lt;/span&gt;
-Included patches: 1-5
+47&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vim --version
+VIM - Vi IMproved &lt;span class="m"&gt;8&lt;/span&gt;.0 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2016&lt;/span&gt; Sep &lt;span class="m"&gt;12&lt;/span&gt;, compiled Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; &lt;span class="m"&gt;19&lt;/span&gt;:09:12&lt;span class="o"&gt;)&lt;/span&gt;
+Included patches: &lt;span class="m"&gt;1&lt;/span&gt;-5
 Compiled by root@forge
 Huge version with GTK2 GUI.  Features included &lt;span class="o"&gt;(&lt;/span&gt;+&lt;span class="o"&gt;)&lt;/span&gt; or not &lt;span class="o"&gt;(&lt;/span&gt;-&lt;span class="o"&gt;)&lt;/span&gt;:
 +acl             +file_in_path    +mouse_sgr       +tag_old_static
@@ -228,14 +229,27 @@ Huge version with GTK2 GUI.  Features included &lt;span class="o"&gt;(&lt;/span&
        defaults file: &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIMRUNTIME&lt;/span&gt;&lt;span class="s2"&gt;/defaults.vim&amp;quot;&lt;/span&gt;
     system menu file: &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIMRUNTIME&lt;/span&gt;&lt;span class="s2"&gt;/menu.vim&amp;quot;&lt;/span&gt;
   fall-back &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$VIM&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;/usr/share/vim&amp;quot;&lt;/span&gt;
-Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/harfbuzz     -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE&lt;span class="o"&gt;=&lt;/span&gt;1
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/harfbuzz     -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
 Linking: gcc   -L. -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-E   -L/usr/local/lib -Wl,--as-needed -o vim   -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfontconfig -lgobject-2.0 -lglib-2.0 -lfreetype   -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE  -lm -ltinfo -lnsl  -lselinux   -ldl  -L/usr/lib/x86_64-linux-gnu -lluajit-5.1 -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.18/CORE -lperl -ldl -lm -lpthread -lcrypt    -Wl,-R/home/maciej/.rvm/rubies/ruby-2.2.1/lib -L/home/maciej/.rvm/rubies/ruby-2.2.1/lib -lruby -lpthread -ldl -lcrypt -lm  -L/home/maciej/.rvm/rubies/ruby-2.2.1/lib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;Awesome, now you are ready to discover the vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</summary><category term="text-editor"></category><category term="latex"></category><category term="install"></category></entry><entry><title>Install archived app into Linux</title><link href="http://egel.pl/install-archived-app-into-linux.html" rel="alternate"></link><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:install-archived-app-into-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/linux_logo_pinguin.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Awesome, now you are ready to discover the vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</content><category term="text-editor"></category><category term="latex"></category><category term="install"></category></entry><entry><title>Install archived app into Linux</title><link href="http://egel.pl/install-archived-app-into-linux.html" rel="alternate"></link><published>2014-08-16T12:31:00+02:00</published><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:/install-archived-app-into-linux.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/linux_logo_pinguin.jpg)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;This should be obvious task for average Linux user, but there are hundreds of
+thousands methods how to install program from archive file like &lt;code&gt;.tar&lt;/code&gt;,
+&lt;code&gt;.tar.gz&lt;/code&gt;, &lt;code&gt;.zip&lt;/code&gt; or any other.&lt;/p&gt;
+&lt;p&gt;When I use Debian based Linux distros, I most often install external software
+into &lt;code&gt;/opt&lt;/code&gt; directory. This is because …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/linux_logo_pinguin.jpg)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;This should be obvious task for average Linux user, but there are hundreds of
 thousands methods how to install program from archive file like &lt;code&gt;.tar&lt;/code&gt;,
 &lt;code&gt;.tar.gz&lt;/code&gt;, &lt;code&gt;.zip&lt;/code&gt; or any other.&lt;/p&gt;
@@ -260,7 +274,7 @@ database files, you can probably use any other you want to install.&lt;/p&gt;
  7
  8
  9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;Desktop Entry&lt;span class="o"&gt;]&lt;/span&gt;
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;Desktop Entry&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="nv"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;SqliteStudio
 &lt;span class="nv"&gt;Comment&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;SQLite editor
 &lt;span class="nv"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/opt/SQLiteStudio/sqlitestudio
@@ -278,4 +292,4 @@ database files, you can probably use any other you want to install.&lt;/p&gt;
 &lt;p&gt;If there are any problems with file permissions directly into
 program's directory, that is pretty much it. Good job!&lt;/p&gt;
 &lt;p&gt;You have your external program installed correctly for multiple users and
-probably any graphical interface you have should read it properly.&lt;/p&gt;</summary><category term="linux"></category><category term="install"></category></entry></feed>
+probably any graphical interface you have should read it properly.&lt;/p&gt;</content><category term="linux"></category><category term="install"></category></entry></feed>

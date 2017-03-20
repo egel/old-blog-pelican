@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/frontend.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-05T00:00:00+01:00</updated><entry><title>Install and configure dnsmasq on linux</title><link href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html" rel="alternate"></link><updated>2016-11-05T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-05:install-and-configure-dnsmasq-on-linux.html</id><summary type="html">&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - frontend</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/frontend.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-05T00:00:00+01:00</updated><entry><title>Install and configure dnsmasq on Linux</title><link href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html" rel="alternate"></link><published>2016-11-05T00:00:00+01:00</published><updated>2016-11-05T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-05:/install-and-configure-dnsmasq-on-linux.html</id><summary type="html">&lt;p&gt;In few small steps I will try to show you how to setup your own instance of dnsmasq.&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
 &lt;h3&gt;Installation process&lt;/h3&gt;
 &lt;p&gt;Using the &lt;code&gt;apt-get&lt;/code&gt; manager we will install core program.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install dnsmasq
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install dnsmasq
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;h3&gt;Configuring dnsmasq as DNS server&lt;/h3&gt;
 &lt;p&gt;Then when we have program installed, now we can get strict to the configuration. But before we will create backup file.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;In the example we want to use &lt;code&gt;loc&lt;/code&gt; domain as our local domain (I not use &lt;code&gt;.dev&lt;/code&gt; anymore due to now it is into standard global domains) and into &lt;code&gt;/etc/dnsmasq.conf&lt;/code&gt; file we add:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;listen-address=127.0.0.1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;listen-address=127.0.0.1
 address=/loc/127.0.0.1
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;That is pretty much it. Next restart the service by:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service dnsmasq restart
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service dnsmasq restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -30,20 +30,30 @@ address=/loc/127.0.0.1
 3
 4
 5
-6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;ping wp.loc
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ping wp.loc
 PING wp.loc (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.010 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.016 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.036 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.038 ms
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="linux"></category><category term="frontend"></category></entry><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="linux"></category><category term="frontend"></category></entry><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><published>2016-04-13T12:44:00+02:00</published><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:/nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
 &lt;/div&gt;
+--&gt;
+
 &lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
- &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and
-&lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real
-backend was being built.&lt;/p&gt;
+ &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and &lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real backend was being built.&lt;/p&gt;
+&lt;p&gt;The main gole for proper nginx configuration was to serve &lt;code&gt;*.example.dev&lt;/code&gt;
+domains, but with some …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
+&lt;/div&gt;
+--&gt;
+
+&lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
+ &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and &lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real backend was being built.&lt;/p&gt;
 &lt;p&gt;The main gole for proper nginx configuration was to serve &lt;code&gt;*.example.dev&lt;/code&gt;
 domains, but with some exceptions (restrictions) for subdomains:&lt;/p&gt;
 &lt;ul&gt;
@@ -131,7 +141,7 @@ and it looks like this snippet presented at the bottom.&lt;/p&gt;
 58
 59
 60
-61&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+61&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="p"&gt;~&lt;/span&gt;&lt;span class="sr"&gt;^(?:(?!www)(?!api)(?!tests))(.*)\.example\.dev$;&lt;/span&gt;
   &lt;span class="s"&gt;access_log&lt;/span&gt; &lt;span class="s"&gt;/tmp/subdomains.example.dev.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -193,4 +203,4 @@ and it looks like this snippet presented at the bottom.&lt;/p&gt;
   &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/ABSOLUTE_PATH_TO_WORKING_DIR/example-subdomain-frontend/tests/test-coverage/PhantomJS&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="s"&gt;.1.1&lt;/span&gt; &lt;span class="s"&gt;(Mac&lt;/span&gt; &lt;span class="s"&gt;OS&lt;/span&gt; &lt;span class="s"&gt;X&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="s"&gt;.0.0)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry></feed>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry></feed>

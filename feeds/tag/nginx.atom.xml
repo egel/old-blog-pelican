@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/nginx.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-04-13T12:44:00+02:00</updated><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - nginx</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/nginx.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-04-13T12:44:00+02:00</updated><entry><title>Nginx configuration for AngularJS cloud project with Apiary</title><link href="http://egel.pl/nginx-configuration-for-angularjs-cloud-project-with-apiary.html" rel="alternate"></link><published>2016-04-13T12:44:00+02:00</published><updated>2016-04-13T12:44:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-04-13:/nginx-configuration-for-angularjs-cloud-project-with-apiary.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
 &lt;/div&gt;
+--&gt;
+
 &lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
- &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and
-&lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real
-backend was being built.&lt;/p&gt;
+ &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and &lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real backend was being built.&lt;/p&gt;
+&lt;p&gt;The main gole for proper nginx configuration was to serve &lt;code&gt;*.example.dev&lt;/code&gt;
+domains, but with some …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
+&lt;/div&gt;
+--&gt;
+
+&lt;p&gt;Recently I have been working on some cloud project with my coworkers. We used
+ &lt;a href="https://angularjs.org/"&gt;AngularJS&lt;/a&gt; as frontend framework and &lt;a href="https://apiary.io/"&gt;Apiary&lt;/a&gt; as a backend bridge for RESTful API, while the real backend was being built.&lt;/p&gt;
 &lt;p&gt;The main gole for proper nginx configuration was to serve &lt;code&gt;*.example.dev&lt;/code&gt;
 domains, but with some exceptions (restrictions) for subdomains:&lt;/p&gt;
 &lt;ul&gt;
@@ -93,7 +103,7 @@ and it looks like this snippet presented at the bottom.&lt;/p&gt;
 58
 59
 60
-61&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+61&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kn"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="kn"&gt;server_name&lt;/span&gt; &lt;span class="p"&gt;~&lt;/span&gt;&lt;span class="sr"&gt;^(?:(?!www)(?!api)(?!tests))(.*)\.example\.dev$;&lt;/span&gt;
   &lt;span class="s"&gt;access_log&lt;/span&gt; &lt;span class="s"&gt;/tmp/subdomains.example.dev.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -155,9 +165,22 @@ and it looks like this snippet presented at the bottom.&lt;/p&gt;
   &lt;span class="kn"&gt;root&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/ABSOLUTE_PATH_TO_WORKING_DIR/example-subdomain-frontend/tests/test-coverage/PhantomJS&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="s"&gt;.1.1&lt;/span&gt; &lt;span class="s"&gt;(Mac&lt;/span&gt; &lt;span class="s"&gt;OS&lt;/span&gt; &lt;span class="s"&gt;X&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="s"&gt;.0.0)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry><entry><title>How to improve nginx setup on Mac OSX</title><link href="http://egel.pl/how-to-improve-nginx-setup-on-mac-osx.html" rel="alternate"></link><updated>2016-02-16T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-16:how-to-improve-nginx-setup-on-mac-osx.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="angularjs"></category><category term="nginx"></category><category term="apiary"></category><category term="frontend"></category></entry><entry><title>How to improve nginx setup on Mac OSX</title><link href="http://egel.pl/how-to-improve-nginx-setup-on-mac-osx.html" rel="alternate"></link><published>2016-02-16T00:00:00+01:00</published><updated>2016-02-16T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-16:/how-to-improve-nginx-setup-on-mac-osx.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;If you store all your configurations for nginx servers on your Mac into single
+file... you probably can do it better.&lt;/p&gt;
+&lt;p&gt;Take a look how to improve your server instances by separating it into folders,
+just like Apache handle with it by &lt;code&gt;sites-enables&lt;/code&gt; and &lt;code&gt;sites-available&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Default nginx installation did not …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;If you store all your configurations for nginx servers on your Mac into single
 file... you probably can do it better.&lt;/p&gt;
 &lt;p&gt;Take a look how to improve your server instances by separating it into folders,
@@ -169,7 +192,7 @@ achieve this.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p /usr/local/etc/nginx/sites-&lt;span class="o"&gt;{&lt;/span&gt;enabled,available&lt;span class="o"&gt;}&lt;/span&gt;
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p /usr/local/etc/nginx/sites-&lt;span class="o"&gt;{&lt;/span&gt;enabled,available&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;span class="nb"&gt;cd&lt;/span&gt; /usr/local/etc/nginx/sites-enabled
 ln -s ../sites-available/default.conf
 ln -s ../sites-available/default-ssl.conf
@@ -182,7 +205,9 @@ ln -s ../sites-available/default-ssl.conf
 &lt;li&gt;&lt;em&gt;default.conf&lt;/em&gt; and &lt;em&gt;default-ssl.conf&lt;/em&gt; to &lt;code&gt;/usr/local/etc/nginx/sites-available&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;homebrew.mxcl.nginx.plist to &lt;code&gt;/Library/LaunchDaemons/&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;For log files you can use &lt;code&gt;/usr/local/var/log/nginx&lt;/code&gt; directory. For example if you have frontend configuration for your static blog configuration &lt;code&gt;blog.loc.conf&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;Improve nginx.conf file&lt;/h3&gt;
+&lt;p&gt;If you use Linux most the time you will feel more familiar with below configuration, just because it try to be very same as Linux's version of nginx implement that.&lt;/p&gt;
 &lt;p&gt;Probably the most important part of this snippet is last two &lt;code&gt;include&lt;/code&gt; methods.&lt;/p&gt;
 &lt;p&gt;Those are enables &lt;code&gt;sites-enabled/&lt;/code&gt; directory to observe every file into it. So
 now you can put separate configurations for your server configurations.&lt;/p&gt;
@@ -216,7 +241,7 @@ type: &lt;code&gt;sudo mkdir -p /Library/Logs/nginx&lt;/code&gt;&lt;/p&gt;
 24
 25
 26
-27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;#user  nobody;&lt;/span&gt;
+27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt; &lt;span class="s"&gt;www-data&lt;/span&gt; &lt;span class="s"&gt;staff&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;worker_processes&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="k"&gt;error_log&lt;/span&gt; &lt;span class="s"&gt;/Library/Logs/nginx/error.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -244,4 +269,4 @@ type: &lt;code&gt;sudo mkdir -p /Library/Logs/nginx&lt;/code&gt;&lt;/p&gt;
   &lt;span class="kn"&gt;include&lt;/span&gt; &lt;span class="s"&gt;/usr/local/etc/nginx/sites-enabled/*.conf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="osx"></category><category term="nginx"></category></entry></feed>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="osx"></category><category term="nginx"></category></entry></feed>

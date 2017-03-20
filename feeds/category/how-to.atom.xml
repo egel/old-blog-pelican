@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/category/how-to.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-05T00:00:00+01:00</updated><entry><title>Install and configure dnsmasq on linux</title><link href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html" rel="alternate"></link><updated>2016-11-05T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-05:install-and-configure-dnsmasq-on-linux.html</id><summary type="html">&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - How to</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/category/how-to.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2016-11-05T00:00:00+01:00</updated><entry><title>Install and configure dnsmasq on Linux</title><link href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html" rel="alternate"></link><published>2016-11-05T00:00:00+01:00</published><updated>2016-11-05T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-05:/install-and-configure-dnsmasq-on-linux.html</id><summary type="html">&lt;p&gt;In few small steps I will try to show you how to setup your own instance of dnsmasq.&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
 &lt;h3&gt;Installation process&lt;/h3&gt;
 &lt;p&gt;Using the &lt;code&gt;apt-get&lt;/code&gt; manager we will install core program.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install dnsmasq
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install dnsmasq
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;h3&gt;Configuring dnsmasq as DNS server&lt;/h3&gt;
 &lt;p&gt;Then when we have program installed, now we can get strict to the configuration. But before we will create backup file.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;In the example we want to use &lt;code&gt;loc&lt;/code&gt; domain as our local domain (I not use &lt;code&gt;.dev&lt;/code&gt; anymore due to now it is into standard global domains) and into &lt;code&gt;/etc/dnsmasq.conf&lt;/code&gt; file we add:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;listen-address=127.0.0.1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;listen-address=127.0.0.1
 address=/loc/127.0.0.1
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;That is pretty much it. Next restart the service by:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service dnsmasq restart
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service dnsmasq restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -30,14 +30,77 @@ address=/loc/127.0.0.1
 3
 4
 5
-6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;ping wp.loc
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ping wp.loc
 PING wp.loc (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.010 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.016 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.036 ms
 64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.038 ms
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="linux"></category><category term="frontend"></category></entry><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><updated>2016-10-10T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;You may wonder why to install vim from source files if there are precompiled, ready to install packages available in your package managers. Yeah that is true, but there are also few "however".&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="linux"></category><category term="frontend"></category></entry><entry><title>Install and configure dnsmasq on Mac OSX</title><link href="http://egel.pl/install-and-configure-dnsmasq-on-mac-osx.html" rel="alternate"></link><published>2016-11-05T00:00:00+01:00</published><updated>2016-11-05T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-11-05:/install-and-configure-dnsmasq-on-mac-osx.html</id><summary type="html">&lt;p&gt;In few small steps I will try to show you how to setup your own instance of dnsmasq.&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you previously using &lt;code&gt;/etc/hosts&lt;/code&gt; to manage your local domains and not heard about more effective way of managing local domains, you should try the old and good &lt;code&gt;dnsmasq&lt;/code&gt; program to improve your development workflow.&lt;/p&gt;
+&lt;h3&gt;Installation of program&lt;/h3&gt;
+&lt;p&gt;Using the &lt;code&gt;apt-get&lt;/code&gt; manager we will install core program.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;brew install dnsmasq
+sudo cp -v &lt;span class="k"&gt;$(&lt;/span&gt;brew --prefix dnsmasq&lt;span class="k"&gt;)&lt;/span&gt;/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Adding resolver to loc domain&lt;/h3&gt;
+&lt;p&gt;Nowadays there are so many new domains like &lt;code&gt;dev&lt;/code&gt;, &lt;code&gt;build&lt;/code&gt;, etc., so that I prefere &lt;code&gt;loc&lt;/code&gt; (which stands for &lt;code&gt;local&lt;/code&gt; or &lt;code&gt;localhost&lt;/code&gt;)&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt; -d /etc/resolver &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; sudo mkdir -v /etc/resolver
+sudo bash -c &lt;span class="s1"&gt;&amp;#39;echo &amp;quot;nameserver 127.0.0.1&amp;quot; &amp;gt; /etc/resolver/loc&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Add service to start with system&lt;/h3&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
+sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Configuring dnsmasq as DNS server&lt;/h3&gt;
+&lt;p&gt;Then when we have program installed, now we can get strict to the configuration. But before further actions, we will create backup file.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;In the example we want to use &lt;code&gt;loc&lt;/code&gt; domain as our local domain (I not use &lt;code&gt;.dev&lt;/code&gt; anymore due to now it is into standard global domains) and into &lt;code&gt;/etc/dnsmasq.conf&lt;/code&gt; file we add:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;listen-address=127.0.0.1
+address=/loc/127.0.0.1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;That is pretty much it. Next restart the service by:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Last thing we probably need to to is to reset &lt;code&gt;mDNSResponser&lt;/code&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Final check if everything is ok and you are good to go.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ping example.loc
+PING example.loc (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.010 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.016 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.036 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.038 ms
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="osx"></category><category term="dnsmasq"></category><category term="terminal"></category></entry><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><published>2016-10-10T00:00:00+02:00</published><updated>2016-10-10T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:/how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;I will show you how to compile and install vim from source files.
+You will see how simple it can be.&lt;/p&gt;</summary><content type="html">&lt;p&gt;You may wonder why to install vim from source files if there are precompiled, ready to install packages available in your package managers. Yeah that is true, but there are also few "however".&lt;/p&gt;
 &lt;p&gt;If you compile and install from the source, the program is then the best suited to your system its software and also for the hardware. Moreover you can also use the latest versions, especially those not avaiable in the package managers.&lt;/p&gt;
 &lt;p&gt;There are also some light and dark side of doing it from the source, but for vim I think is the best possible way to have blazing fast text editor.&lt;/p&gt;
 &lt;h3&gt;Before you start&lt;/h3&gt;
@@ -50,20 +113,20 @@ PING wp.loc (127.0.0.1) 56(84) bytes of data.
 &lt;/ul&gt;
 &lt;p&gt;The results of checking I present below, because I think that it might be helpful for many beginners as I was once ;)&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;lua -v
-Lua 5.2.3  Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; 1994-2013 Lua.org, PUC-Rio
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lua -v
+Lua &lt;span class="m"&gt;5&lt;/span&gt;.2.3  Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;1994&lt;/span&gt;-2013 Lua.org, PUC-Rio
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;luajit -v
-LuaJIT 2.0.2 -- Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; 2005-2013 Mike Pall. http://luajit.org/
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ luajit -v
+LuaJIT &lt;span class="m"&gt;2&lt;/span&gt;.0.2 -- Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;2005&lt;/span&gt;-2013 Mike Pall. http://luajit.org/
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby -v
-ruby 2.2.1p85 &lt;span class="o"&gt;(&lt;/span&gt;2015-02-26 revision 49769&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;x86_64-linux&lt;span class="o"&gt;]&lt;/span&gt;
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ruby -v
+ruby &lt;span class="m"&gt;2&lt;/span&gt;.2.1p85 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2015&lt;/span&gt;-02-26 revision &lt;span class="m"&gt;49769&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;x86_64-linux&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -79,15 +142,15 @@ ruby 2.2.1p85 &lt;span class="o"&gt;(&lt;/span&gt;2015-02-26 revision 49769&lt;s
 10
 11
 12
-13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;perl -v
+13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ perl -v
 
-This is perl 5, version 18, subversion &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;v5.18.2&lt;span class="o"&gt;)&lt;/span&gt; built &lt;span class="k"&gt;for&lt;/span&gt; x86_64-linux-gnu-thread-multi
+This is perl &lt;span class="m"&gt;5&lt;/span&gt;, version &lt;span class="m"&gt;18&lt;/span&gt;, subversion &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;v5.18.2&lt;span class="o"&gt;)&lt;/span&gt; built &lt;span class="k"&gt;for&lt;/span&gt; x86_64-linux-gnu-thread-multi
 &lt;span class="o"&gt;(&lt;/span&gt;with &lt;span class="m"&gt;44&lt;/span&gt; registered patches, see perl -V &lt;span class="k"&gt;for&lt;/span&gt; more detail&lt;span class="o"&gt;)&lt;/span&gt;
 
-Copyright 1987-2013, Larry Wall
+Copyright &lt;span class="m"&gt;1987&lt;/span&gt;-2013, Larry Wall
 
 Perl may be copied only under the terms of either the Artistic License or the
-GNU General Public License, which may be found in the Perl &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="nb"&gt;source &lt;/span&gt;kit.
+GNU General Public License, which may be found in the Perl &lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="nb"&gt;source&lt;/span&gt; kit.
 
 Complete documentation &lt;span class="k"&gt;for&lt;/span&gt; Perl, including FAQ lists, should be found on
 this system using &lt;span class="s2"&gt;&amp;quot;man perl&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;perldoc perl&amp;quot;&lt;/span&gt;.  If you have access to the
@@ -96,13 +159,13 @@ Internet, point your browser at http://www.perl.org/, the Perl Home Page.
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;which python
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ which python
 /usr/bin/python
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;which python3
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ which python3
 /usr/bin/python3
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -115,7 +178,7 @@ Internet, point your browser at http://www.perl.org/, the Perl Home Page.
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;find /usr/lib/python2.7 -type d -name &lt;span class="s2"&gt;&amp;quot;config*&amp;quot;&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find /usr/lib/python2.7 -type d -name &lt;span class="s2"&gt;&amp;quot;config*&amp;quot;&lt;/span&gt;
 /usr/lib/python2.7/dist-packages/configobj-4.7.2.egg-info
 /usr/lib/python2.7/dist-packages/configglue-1.1.2.egg-info
 /usr/lib/python2.7/dist-packages/configglue
@@ -151,9 +214,9 @@ Internet, point your browser at http://www.perl.org/, the Perl Home Page.
 17
 18
 19
-20&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /tmp
+20&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /tmp
 git clone https://github.com/vim/vim
-&lt;span class="nb"&gt;cd &lt;/span&gt;vim/
+&lt;span class="nb"&gt;cd&lt;/span&gt; vim/
 ./configure --with-features&lt;span class="o"&gt;=&lt;/span&gt;huge &lt;span class="se"&gt;\&lt;/span&gt;
             --enable-gui&lt;span class="o"&gt;=&lt;/span&gt;auto &lt;span class="se"&gt;\&lt;/span&gt;
             --enable-cscope &lt;span class="se"&gt;\&lt;/span&gt;
@@ -221,9 +284,9 @@ sudo make install
 44
 45
 46
-47&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;vim --version
-VIM - Vi IMproved 8.0 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2016&lt;/span&gt; Sep 12, compiled Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; 19:09:12&lt;span class="o"&gt;)&lt;/span&gt;
-Included patches: 1-5
+47&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vim --version
+VIM - Vi IMproved &lt;span class="m"&gt;8&lt;/span&gt;.0 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2016&lt;/span&gt; Sep &lt;span class="m"&gt;12&lt;/span&gt;, compiled Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; &lt;span class="m"&gt;19&lt;/span&gt;:09:12&lt;span class="o"&gt;)&lt;/span&gt;
+Included patches: &lt;span class="m"&gt;1&lt;/span&gt;-5
 Compiled by root@forge
 Huge version with GTK2 GUI.  Features included &lt;span class="o"&gt;(&lt;/span&gt;+&lt;span class="o"&gt;)&lt;/span&gt; or not &lt;span class="o"&gt;(&lt;/span&gt;-&lt;span class="o"&gt;)&lt;/span&gt;:
 +acl             +file_in_path    +mouse_sgr       +tag_old_static
@@ -266,14 +329,27 @@ Huge version with GTK2 GUI.  Features included &lt;span class="o"&gt;(&lt;/span&
        defaults file: &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIMRUNTIME&lt;/span&gt;&lt;span class="s2"&gt;/defaults.vim&amp;quot;&lt;/span&gt;
     system menu file: &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$VIMRUNTIME&lt;/span&gt;&lt;span class="s2"&gt;/menu.vim&amp;quot;&lt;/span&gt;
   fall-back &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$VIM&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;/usr/share/vim&amp;quot;&lt;/span&gt;
-Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/harfbuzz     -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE&lt;span class="o"&gt;=&lt;/span&gt;1
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/harfbuzz     -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
 Linking: gcc   -L. -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-E   -L/usr/local/lib -Wl,--as-needed -o vim   -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfontconfig -lgobject-2.0 -lglib-2.0 -lfreetype   -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE  -lm -ltinfo -lnsl  -lselinux   -ldl  -L/usr/lib/x86_64-linux-gnu -lluajit-5.1 -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.18/CORE -lperl -ldl -lm -lpthread -lcrypt    -Wl,-R/home/maciej/.rvm/rubies/ruby-2.2.1/lib -L/home/maciej/.rvm/rubies/ruby-2.2.1/lib -lruby -lpthread -ldl -lcrypt -lm  -L/home/maciej/.rvm/rubies/ruby-2.2.1/lib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;Awesome, now you are ready to discover the vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</summary><category term="text-editor"></category><category term="latex"></category><category term="install"></category></entry><entry><title>How to improve nginx setup on Mac OSX</title><link href="http://egel.pl/how-to-improve-nginx-setup-on-mac-osx.html" rel="alternate"></link><updated>2016-02-16T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-16:how-to-improve-nginx-setup-on-mac-osx.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/nginx_logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Awesome, now you are ready to discover the vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</content><category term="text-editor"></category><category term="latex"></category><category term="install"></category></entry><entry><title>How to improve nginx setup on Mac OSX</title><link href="http://egel.pl/how-to-improve-nginx-setup-on-mac-osx.html" rel="alternate"></link><published>2016-02-16T00:00:00+01:00</published><updated>2016-02-16T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-02-16:/how-to-improve-nginx-setup-on-mac-osx.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;If you store all your configurations for nginx servers on your Mac into single
+file... you probably can do it better.&lt;/p&gt;
+&lt;p&gt;Take a look how to improve your server instances by separating it into folders,
+just like Apache handle with it by &lt;code&gt;sites-enables&lt;/code&gt; and &lt;code&gt;sites-available&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Default nginx installation did not …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/nginx_logo.png)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;If you store all your configurations for nginx servers on your Mac into single
 file... you probably can do it better.&lt;/p&gt;
 &lt;p&gt;Take a look how to improve your server instances by separating it into folders,
@@ -285,7 +361,7 @@ achieve this.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p /usr/local/etc/nginx/sites-&lt;span class="o"&gt;{&lt;/span&gt;enabled,available&lt;span class="o"&gt;}&lt;/span&gt;
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p /usr/local/etc/nginx/sites-&lt;span class="o"&gt;{&lt;/span&gt;enabled,available&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;span class="nb"&gt;cd&lt;/span&gt; /usr/local/etc/nginx/sites-enabled
 ln -s ../sites-available/default.conf
 ln -s ../sites-available/default-ssl.conf
@@ -298,7 +374,9 @@ ln -s ../sites-available/default-ssl.conf
 &lt;li&gt;&lt;em&gt;default.conf&lt;/em&gt; and &lt;em&gt;default-ssl.conf&lt;/em&gt; to &lt;code&gt;/usr/local/etc/nginx/sites-available&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;homebrew.mxcl.nginx.plist to &lt;code&gt;/Library/LaunchDaemons/&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;For log files you can use &lt;code&gt;/usr/local/var/log/nginx&lt;/code&gt; directory. For example if you have frontend configuration for your static blog configuration &lt;code&gt;blog.loc.conf&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;Improve nginx.conf file&lt;/h3&gt;
+&lt;p&gt;If you use Linux most the time you will feel more familiar with below configuration, just because it try to be very same as Linux's version of nginx implement that.&lt;/p&gt;
 &lt;p&gt;Probably the most important part of this snippet is last two &lt;code&gt;include&lt;/code&gt; methods.&lt;/p&gt;
 &lt;p&gt;Those are enables &lt;code&gt;sites-enabled/&lt;/code&gt; directory to observe every file into it. So
 now you can put separate configurations for your server configurations.&lt;/p&gt;
@@ -332,7 +410,7 @@ type: &lt;code&gt;sudo mkdir -p /Library/Logs/nginx&lt;/code&gt;&lt;/p&gt;
 24
 25
 26
-27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;#user  nobody;&lt;/span&gt;
+27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt; &lt;span class="s"&gt;www-data&lt;/span&gt; &lt;span class="s"&gt;staff&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;worker_processes&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="k"&gt;error_log&lt;/span&gt; &lt;span class="s"&gt;/Library/Logs/nginx/error.log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -360,9 +438,21 @@ type: &lt;code&gt;sudo mkdir -p /Library/Logs/nginx&lt;/code&gt;&lt;/p&gt;
   &lt;span class="kn"&gt;include&lt;/span&gt; &lt;span class="s"&gt;/usr/local/etc/nginx/sites-enabled/*.conf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="osx"></category><category term="nginx"></category></entry><entry><title>Install the latest nVidia drivers for Linux</title><link href="http://egel.pl/install-the-latest-nvidia-drivers-for-linux.html" rel="alternate"></link><updated>2015-11-02T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-11-02:install-the-latest-nvidia-drivers-for-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Tmux" src="http://egel.pl/images/terminal_icon.png" /&gt;&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="osx"></category><category term="nginx"></category></entry><entry><title>Install the latest nVidia drivers for Linux</title><link href="http://egel.pl/install-the-latest-nvidia-drivers-for-linux.html" rel="alternate"></link><published>2015-11-02T00:00:00+01:00</published><updated>2015-11-02T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-11-02:/install-the-latest-nvidia-drivers-for-linux.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Tmux]({filename}/images/terminal_icon.png)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;The time has come that I had to face with reinstall of the Nvidia driver on my Mint
+17 distribution.&lt;/p&gt;
+&lt;p&gt;Well, while using my distro, there appear couple of problems with "Nvidia proprietary drivers".
+As a pro Linux guy (laugh),  I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;F1&lt;/code&gt;, and got a black screen …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Tmux]({filename}/images/terminal_icon.png)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;The time has come that I had to face with reinstall of the Nvidia driver on my Mint
 17 distribution.&lt;/p&gt;
 &lt;p&gt;Well, while using my distro, there appear couple of problems with "Nvidia proprietary drivers".
@@ -371,12 +461,12 @@ As a pro Linux guy (laugh),  I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt
 &lt;blockquote&gt;
 &lt;p&gt;Please remember, backup always go first!&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo cp /etc/default/grub /etc/default/grub.bak
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp /etc/default/grub /etc/default/grub.bak
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now edit the grub file by entering&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo vim /etc/default/grub
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vim /etc/default/grub
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -385,18 +475,18 @@ As a pro Linux guy (laugh),  I pressed &lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt
 &lt;p&gt;If your monitor support better resolutions you can change &lt;code&gt;GRUB_GFXMODE&lt;/code&gt; for another value, my highest was &lt;code&gt;1024x768&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;GRUB_TERMINAL=console
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;GRUB_TERMINAL=console
 GRUB_GFXMODE=640x480
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Save the file and run &lt;code&gt;update-grub&lt;/code&gt; to implement the changes&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo update-grub
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo update-grub
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now, I had to resolve which display manager do I have on my Mint?&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cat /etc/X11/default-display-manager
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat /etc/X11/default-display-manager
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -404,16 +494,29 @@ GRUB_GFXMODE=640x480
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service mdm stop
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service mdm stop
 chmod +x /path/to/downloaded/driver/NVIDIA-Linux-x86_64-*.run
 sudo sh /path/to/downloaded/driver/NVIDIA-Linux-x86_64-*.run
 sudo service mdm start
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</summary><category term="linux"></category><category term="terminal"></category><category term="console"></category></entry><entry><title>Install archived app into Linux</title><link href="http://egel.pl/install-archived-app-into-linux.html" rel="alternate"></link><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:install-archived-app-into-linux.html</id><summary type="html">&lt;div class="intro-article-image-sm"&gt;
-&lt;p&gt;&lt;img alt="Logo of Sublime Text 3" src="http://egel.pl/images/linux_logo_pinguin.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;That's it. After pressing &lt;code&gt;Alt&lt;/code&gt; + &lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;F8&lt;/code&gt; the graphical interface showed up as well as a smile on my face :)&lt;/p&gt;</content><category term="linux"></category><category term="terminal"></category><category term="console"></category></entry><entry><title>Install archived app into Linux</title><link href="http://egel.pl/install-archived-app-into-linux.html" rel="alternate"></link><published>2014-08-16T12:31:00+02:00</published><updated>2015-10-01T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-08-16:/install-archived-app-into-linux.html</id><summary type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/linux_logo_pinguin.jpg)
 &lt;/div&gt;
+--&gt;
+
+&lt;p&gt;This should be obvious task for average Linux user, but there are hundreds of
+thousands methods how to install program from archive file like &lt;code&gt;.tar&lt;/code&gt;,
+&lt;code&gt;.tar.gz&lt;/code&gt;, &lt;code&gt;.zip&lt;/code&gt; or any other.&lt;/p&gt;
+&lt;p&gt;When I use Debian based Linux distros, I most often install external software
+into &lt;code&gt;/opt&lt;/code&gt; directory. This is because …&lt;/p&gt;</summary><content type="html">&lt;!--
+&lt;div class="intro-article-image-sm" markdown="1"&gt;
+  ![Logo of Sublime Text 3]({filename}/images/linux_logo_pinguin.jpg)
+&lt;/div&gt;
+--&gt;
+
 &lt;p&gt;This should be obvious task for average Linux user, but there are hundreds of
 thousands methods how to install program from archive file like &lt;code&gt;.tar&lt;/code&gt;,
 &lt;code&gt;.tar.gz&lt;/code&gt;, &lt;code&gt;.zip&lt;/code&gt; or any other.&lt;/p&gt;
@@ -438,7 +541,7 @@ database files, you can probably use any other you want to install.&lt;/p&gt;
  7
  8
  9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;Desktop Entry&lt;span class="o"&gt;]&lt;/span&gt;
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;Desktop Entry&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="nv"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;SqliteStudio
 &lt;span class="nv"&gt;Comment&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;SQLite editor
 &lt;span class="nv"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/opt/SQLiteStudio/sqlitestudio
@@ -456,7 +559,9 @@ database files, you can probably use any other you want to install.&lt;/p&gt;
 &lt;p&gt;If there are any problems with file permissions directly into
 program's directory, that is pretty much it. Good job!&lt;/p&gt;
 &lt;p&gt;You have your external program installed correctly for multiple users and
-probably any graphical interface you have should read it properly.&lt;/p&gt;</summary><category term="linux"></category><category term="install"></category></entry><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or &lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;, &lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
+probably any graphical interface you have should read it properly.&lt;/p&gt;</content><category term="linux"></category><category term="install"></category></entry><entry><title>Setup LAMP server with sample domain</title><link href="http://egel.pl/setup-lamp-server-with-sample-domain.html" rel="alternate"></link><published>2014-04-06T00:00:00+02:00</published><updated>2015-06-27T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2014-04-06:/setup-lamp-server-with-sample-domain.html</id><summary type="html">&lt;p&gt;We will install standard and secure Linux - Apache - MySQL - PHP
+configuration with PHPMyAdmin for easy database management and
+create sample Apache's VirtualHost. Shall we begin? :)&lt;/p&gt;</summary><content type="html">&lt;p&gt;Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like &lt;a href="http://jekyllrb.com/"&gt;Jekkly&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, &lt;a href="http://docs.getpelican.com"&gt;Pelican&lt;/a&gt; or &lt;a href="https://www.staticgen.com/"&gt;some others examples&lt;/a&gt;). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to &lt;a href="https://www.joomla.com/"&gt;Joomla&lt;/a&gt;, &lt;a href="https://wordpress.org"&gt;Wordpress&lt;/a&gt; or even use a professional, enterprise class frameworks like Laravel, Symfony or Zend.&lt;/p&gt;
 &lt;p&gt;Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.&lt;/p&gt;
 &lt;p&gt;In this simple article I'll show you how to build your own simple (and standard in these days) server configuration based on LAMP, but those tools can be easily replaced with others technologies.  For example if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end setup will be made).&lt;/p&gt;
 &lt;p&gt;I think this is good, start example to play with :) Enjoy.&lt;/p&gt;
@@ -476,18 +581,18 @@ probably any graphical interface you have should read it properly.&lt;/p&gt;</su
 &lt;/ul&gt;
 &lt;p&gt;Good &lt;a href="http://www.ubuntu-pomoc.org/instalacja-apache-php5-mysql/"&gt;Polish article&lt;/a&gt; and &lt;a href="https://library.linode.com/web-servers/apache/installation/ubuntu-12.04-precise-pangolin"&gt;English article&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Let's begin from updating our Debian based system (Ubuntu):&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get update
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;h3&gt;Apache&lt;/h3&gt;
 &lt;p&gt;Installation Apache 2.4 with its useful dependencies:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Then restart the service with:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service apache2 restart
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service apache2 restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -500,12 +605,12 @@ probably any graphical interface you have should read it properly.&lt;/p&gt;</su
 &lt;h4&gt;Add user to www-data group&lt;/h4&gt;
 &lt;p&gt;Now we'd like to add your current user (&lt;code&gt;$USER&lt;/code&gt;)  to &lt;code&gt;www-data&lt;/code&gt; group used by apache server. We will do this to prevent you from some error-access failures like user owner.&lt;/p&gt;
 &lt;p&gt;To check if your current user belongs to &lt;code&gt;www-data&lt;/code&gt; group simply do:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;groups &lt;span class="nv"&gt;$USER&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;groups &lt;span class="nv"&gt;$USER&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now add existing user to &lt;code&gt;www-data&lt;/code&gt; group.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo usermod -a -G &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo usermod -a -G &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -521,15 +626,15 @@ probably any graphical interface you have should read it properly.&lt;/p&gt;</su
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633874 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633903 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_PID_FILE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633910 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633913 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_GROUP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.633920 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636829 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636921 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
-&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; 21:38:06.636927 2016&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid 8973&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /usr/sbin/apache2 -V
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633874 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633903 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_PID_FILE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633910 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633913 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_RUN_GROUP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.633920 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.636829 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.636921 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
+&lt;span class="o"&gt;[&lt;/span&gt;Tue Nov &lt;span class="m"&gt;08&lt;/span&gt; &lt;span class="m"&gt;21&lt;/span&gt;:38:06.636927 &lt;span class="m"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;core:warn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;pid &lt;span class="m"&gt;8973&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; AH00111: Config variable &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; is not defined
 AH00526: Syntax error on line &lt;span class="m"&gt;74&lt;/span&gt; of /etc/apache2/apache2.conf:
 Invalid Mutex directory in argument file:&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;APACHE_LOCK_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -564,15 +669,15 @@ Invalid Mutex directory in argument file:&lt;span class="si"&gt;${&lt;/span&gt;&
 26
 27
 28
-29&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; /etc/apache2/envvars
-&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V
+29&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; /etc/apache2/envvars
+$ /usr/sbin/apache2 -V
 
 Server version: Apache/2.4.7 &lt;span class="o"&gt;(&lt;/span&gt;Ubuntu&lt;span class="o"&gt;)&lt;/span&gt;
-Server built:   Jul &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; 15:34:04
-Server&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s Module Magic Number: 20120211:27
-Server loaded:  APR 1.5.1-dev, APR-UTIL 1.5.3
-Compiled using: APR 1.5.1-dev, APR-UTIL 1.5.3
-Architecture:   64-bit
+Server built:   Jul &lt;span class="m"&gt;15&lt;/span&gt; &lt;span class="m"&gt;2016&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:34:04
+Server&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s Module Magic Number: &lt;span class="m"&gt;20120211&lt;/span&gt;:27
+Server loaded:  APR &lt;span class="m"&gt;1&lt;/span&gt;.5.1-dev, APR-UTIL &lt;span class="m"&gt;1&lt;/span&gt;.5.3
+Compiled using: APR &lt;span class="m"&gt;1&lt;/span&gt;.5.1-dev, APR-UTIL &lt;span class="m"&gt;1&lt;/span&gt;.5.3
+Architecture:   &lt;span class="m"&gt;64&lt;/span&gt;-bit
 Server MPM:     prefork
   threaded:     no
     forked:     yes &lt;span class="o"&gt;(&lt;/span&gt;variable process count&lt;span class="o"&gt;)&lt;/span&gt;
@@ -585,7 +690,7 @@ Server compiled with....
  -D SINGLE_LISTEN_UNSERIALIZED_ACCEPT
  -D APR_HAS_OTHER_CHILD
  -D AP_HAVE_RELIABLE_PIPED_LOGS
- -D &lt;span class="nv"&gt;DYNAMIC_MODULE_LIMIT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;256
+ -D &lt;span class="nv"&gt;DYNAMIC_MODULE_LIMIT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;256&lt;/span&gt;
  -D &lt;span class="nv"&gt;HTTPD_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/apache2&amp;quot;&lt;/span&gt;
  -D &lt;span class="nv"&gt;SUEXEC_BIN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/lib/apache2/suexec&amp;quot;&lt;/span&gt;
  -D &lt;span class="nv"&gt;DEFAULT_PIDLOG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/run/apache2.pid&amp;quot;&lt;/span&gt;
@@ -602,26 +707,26 @@ Server compiled with....
 &lt;p&gt;Basic apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; * Restarting web server apache2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; * Restarting web server apache2
 AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;&amp;#39;s fully qualified domain name, using 127.0.1.1. Set the &amp;#39;&lt;/span&gt;ServerName&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; directive globally to suppress this message
  ...done.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;That's why we will name it :)&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ServerName localhost&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/apache2/conf-available/servername.conf
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ServerName localhost&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/apache2/conf-available/servername.conf
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Then we're enable its name in for apache config by&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo a2enconf servername
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo a2enconf servername
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Just restart the server to make sure that all is done correctly.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo service apache2 restart
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo service apache2 restart
  * Restarting web server apache2
   ...done.
 &lt;/pre&gt;&lt;/div&gt;
@@ -631,12 +736,12 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;h3&gt;MySQL&lt;/h3&gt;
 &lt;p&gt;MySQL is one of the most popular databases on the website market. So we will install it along.&lt;/p&gt;
 &lt;p&gt;During the installation process program ask you for the root password, so we write it and &lt;strong&gt;remeber it&lt;/strong&gt; for later use.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install mysql-server
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install mysql-server
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Check the installed version&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mysql -V
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mysql -V
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -648,10 +753,10 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo a2enmod php5
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo a2enmod rewrite
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo php5enmod mcrypt   &lt;span class="c"&gt;# required by phpMyAdmin&lt;/span&gt;
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
+$ sudo a2enmod php5
+$ sudo a2enmod rewrite
+$ sudo php5enmod mcrypt   &lt;span class="c1"&gt;# required by phpMyAdmin&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -661,7 +766,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="na"&gt;upload_max_filesize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="na"&gt;upload_max_filesize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
 &lt;span class="na"&gt;post_max_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;50M&lt;/span&gt;
 &lt;span class="na"&gt;display_errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;On&lt;/span&gt;
 &lt;span class="na"&gt;display_startup_errors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;On&lt;/span&gt;
@@ -676,7 +781,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;/ul&gt;
 &lt;h3&gt;PHPMyAdmin&lt;/h3&gt;
 &lt;p&gt;Installation of PHPMyAdmin is trivial.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install phpmyadmin
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install phpmyadmin
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -692,7 +797,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Good practice:&lt;/strong&gt; If you want to create site ex: &lt;code&gt;egel.pl&lt;/code&gt;, write config file like this &lt;code&gt;egel.pl.conf&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -710,7 +815,7 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="s"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nb"&gt;ServerAdmin&lt;/span&gt; admin@example.com
     &lt;span class="nb"&gt;ServerName&lt;/span&gt; blog.loc
     &lt;span class="nb"&gt;DocumentRoot&lt;/span&gt; &lt;span class="sx"&gt;/var/www/blog.loc/public_html/&lt;/span&gt;
@@ -726,14 +831,14 @@ AH00558: apache2: Could not reliably determine the server&lt;span class="s1"&gt;
 
 &lt;p&gt;Save it.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s &lt;span class="nv"&gt;$HOME&lt;/span&gt;/workspace/blog/output/ /var/www/blog.loc/public_html
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ln -s &lt;span class="nv"&gt;$HOME&lt;/span&gt;/workspace/blog/output/ /var/www/blog.loc/public_html
 sudo a2ensite blog.loc.conf
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Next we need to tell the server to use our new ServerName.&lt;/p&gt;
-&lt;p&gt;The best solution I know for development purposes involving &lt;code&gt;dnsmasq&lt;/code&gt;, which I definitely recommend - you can find how to do it into article &lt;a href="http://egel.pl/install-and-configure-dnsmasq-on-linux.html"&gt;How to install dnsmasq&lt;/a&gt; or just add the name of server to the hosts file:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 blog.loc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
+&lt;p&gt;The best solution I know for development purposes involving &lt;code&gt;dnsmasq&lt;/code&gt;, which I definitely recommend - you can find how to do it into article &lt;a href="{filename}install_dnsmask_linux.md"&gt;How to install dnsmasq&lt;/a&gt; or just add the name of server to the hosts file:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.0.0.1 blog.loc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sudo tee /etc/hosts
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -776,7 +881,7 @@ sudo a2ensite blog.loc.conf
 24
 25
 26
-27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.ph(p[345]?|t|tml)$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+27&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.ph(p[345]?|t|tml)$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nb"&gt;SetHandler&lt;/span&gt; application/x-httpd-php
 &lt;span class="nt"&gt;&amp;lt;/FilesMatch&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.+\.phps$&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -809,14 +914,14 @@ sudo a2ensite blog.loc.conf
 &lt;p&gt;Now we set server, so that we can throw files into the &lt;code&gt;~/public_html&lt;/code&gt; directory. It maybe necessary to give the appropriate rights for the directory, so we need to take this under consideration as well.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;mkdir ~/public_html
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir ~/public_html
 chmod &lt;span class="m"&gt;775&lt;/span&gt; ~/public_html
 sudo a2enmod userdir
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now restart the apache and since this moment we can easily use &lt;code&gt;~/public_html&lt;/code&gt; in all user's catalogs like the server's one.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo /etc/init.d/apache2 restart
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo /etc/init.d/apache2 restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -827,14 +932,14 @@ sudo a2enmod userdir
 &lt;/blockquote&gt;
 &lt;p&gt;We remember the path for running apache2&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ps -ef &lt;span class="p"&gt;|&lt;/span&gt; grep apache
-apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt; Oct20 ?        00:00:00 /usr/sbin/apache2
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps -ef &lt;span class="p"&gt;|&lt;/span&gt; grep apache
+apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt; Oct20 ?        &lt;span class="m"&gt;00&lt;/span&gt;:00:00 /usr/sbin/apache2
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Now we add &lt;code&gt;-V&lt;/code&gt; flag&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;/usr/sbin/apache2 -V &lt;span class="p"&gt;|&lt;/span&gt; grep SERVER_CONFIG_FILE
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /usr/sbin/apache2 -V &lt;span class="p"&gt;|&lt;/span&gt; grep SERVER_CONFIG_FILE
 -D &lt;span class="nv"&gt;SERVER_CONFIG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/apache2/apache2.conf&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -844,7 +949,7 @@ apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/home/maciej/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="s"&gt;/home/maciej/public_html/&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nb"&gt;Options&lt;/span&gt; Indexes FollowSymLinks
     &lt;span class="nb"&gt;AllowOverride&lt;/span&gt; &lt;span class="k"&gt;All&lt;/span&gt;
     &lt;span class="nb"&gt;Require&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; granted
@@ -856,7 +961,7 @@ apache   &lt;span class="m"&gt;12846&lt;/span&gt; &lt;span class="m"&gt;14590&lt
 &lt;h5&gt;May occur the problem like "index.php not found"&lt;/h5&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;Not Found
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Not Found
 
 The requested URL /index.php was not found on this server.
 &lt;/pre&gt;&lt;/div&gt;
@@ -878,8 +983,8 @@ The requested URL /index.php was not found on this server.
 &lt;/blockquote&gt;
 &lt;p&gt;Example of changes for both types, files and directories (recursively)&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;find ~/public_html -type d -exec chmod &lt;span class="m"&gt;755&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;find ~/public_html -type f -exec chmod &lt;span class="m"&gt;644&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find ~/public_html -type d -exec chmod &lt;span class="m"&gt;755&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+$ find ~/public_html -type f -exec chmod &lt;span class="m"&gt;644&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -888,7 +993,7 @@ The requested URL /index.php was not found on this server.
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 sudo adduser &lt;span class="nv"&gt;$USER&lt;/span&gt; www-data
 sudo chown -R www-data:www-data /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/public_html
 sudo chmod -R &lt;span class="m"&gt;775&lt;/span&gt; /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/public_html
@@ -896,6 +1001,6 @@ sudo chmod -R &lt;span class="m"&gt;775&lt;/span&gt; /home/&lt;span class="nv"&g
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Save it inside &lt;code&gt;/home/$USER/bin&lt;/code&gt; and make it executable using:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;sudo chmod +x /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/bin/public_html_fix.sh
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo chmod +x /home/&lt;span class="nv"&gt;$USER&lt;/span&gt;/bin/public_html_fix.sh
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="apache"></category><category term="mysql"></category><category term="php"></category><category term="domains"></category></entry></feed>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="apache"></category><category term="mysql"></category><category term="php"></category><category term="domains"></category></entry></feed>
