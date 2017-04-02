@@ -62,7 +62,7 @@ accept_email &lt;span class="s2"&gt;&amp;quot;johndoe@example.com&amp;quot;&lt;/
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;h4&gt;Installation&lt;/h4&gt;
-&lt;p&gt;Save above snippet save as &lt;code&gt;.git/hooks/pre-commit&lt;/code&gt; into your git repository and &lt;strong&gt;do not forget to make the file executable&lt;/strong&gt; &lt;code&gt;chmod +x .git/hooks/pre-commit&lt;/code&gt;.&lt;/p&gt;</content><category term="git"></category><category term="terminal"></category></entry><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><published>2016-05-16T00:00:00+02:00</published><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:/git-push-guardian.html</id><summary type="html">&lt;!--
+&lt;p&gt;Save above snippet as &lt;code&gt;.git/hooks/pre-commit&lt;/code&gt; into your git repository and &lt;strong&gt;do not forget to make the file executable&lt;/strong&gt; &lt;code&gt;chmod +x .git/hooks/pre-commit&lt;/code&gt;.&lt;/p&gt;</content><category term="git"></category><category term="terminal"></category></entry><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><published>2016-05-16T00:00:00+02:00</published><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:/git-push-guardian.html</id><summary type="html">&lt;!--
 Summary:
 --&gt;
 

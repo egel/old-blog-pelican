@@ -8,11 +8,9 @@
 /**
  *  Import external fonts
  */
-@import url(https://fonts.googleapis.com/css?family=Lato:300);
-@import url(https://fonts.googleapis.com/css?family=PT+Sans);
-@import url(https://fonts.googleapis.com/css?family=Satisfy);
-@import url(https://fonts.googleapis.com/css?family=Lora);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
+@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,800");
+@import url("https://fonts.googleapis.com/css?family=Satisfy");
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -1393,7 +1391,7 @@ html {
 }
 
 body {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.42857;
   color: #333333;
@@ -6858,7 +6856,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6992,7 +6990,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -10720,7 +10718,7 @@ body {
   border: 0;
   outline: 0;
   background-color: #f8f8f8;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
 }
 
 /**
@@ -11271,7 +11269,8 @@ nav.navbar {
 }
 
 .intro-header .site-heading h1 {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
   color: #F4F4F4;
   font-size: 72px;
   /* Small devices (tablets, 768px and down) */
@@ -11296,7 +11295,7 @@ nav.navbar {
 
 .intro-header span.subheading {
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   color: #cf4646;
   font-size: 23.4px;
   /* Small devices (phones only 480px and less) */
@@ -11315,10 +11314,6 @@ nav.navbar {
 
 .intro-header .panel .panel-body {
   padding: 0;
-}
-
-.published {
-  font-family: 'PT Sans', sans-serif;
 }
 
 .summary {
