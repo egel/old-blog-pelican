@@ -11136,9 +11136,6 @@ nav.navbar {
 
 /* Small devices (phones only 480px and less) */
 @media (max-width: 480px) {
-  .navbar .container-fluid {
-    padding: 0;
-  }
   .navbar-brand {
     font-size: 21px;
     padding-top: 20px;
