@@ -1,8 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - git</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/git.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2017-03-20T00:00:00+01:00</updated><entry><title>Git pre commit email blocker</title><link href="http://egel.pl/git-pre-commit-email-blocker.html" rel="alternate"></link><published>2017-03-20T00:00:00+01:00</published><updated>2017-03-20T00:00:00+01:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2017-03-20:/git-pre-commit-email-blocker.html</id><summary type="html">&lt;p&gt;Presenting a simple solution that allows only selected git users to commit.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Since a while, I wondered "how to disable unauthorized git users to commit" for selected repositories. There are many ways how to achieve this task, but in few hours I wrote simple program which (under the hood use git hook) checks git's user email before a real user will commit change.&lt;/p&gt;
-&lt;p&gt;This simple solution and it may save a lot of time (and potential rebase) especially when real user (you) have multiple git accounts - for example is a freelancer and commit to multiple projects.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - git</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/git.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2017-06-23T00:00:00+02:00</updated><entry><title>Git pre commit email blocker</title><link href="http://egel.pl/git-pre-commit-email-blocker.html" rel="alternate"></link><published>2017-03-20T00:00:00+01:00</published><updated>2017-06-23T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2017-03-20:/git-pre-commit-email-blocker.html</id><summary type="html">&lt;p&gt;Presenting a simple solution that allows only selected git users to commit in local copy of repository.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Since quite a while Git exists in the big market of software development. Many users using it in the daily basis as standard way of committing their work for employer and it also became de facto standard way of developing in the Open Source world.&lt;/p&gt;
+&lt;p&gt;I also very much like using Git, but after time I discover my way of working with git especially when need to commit many parts for different employers and almost all the time I have at least 2 local git user (do not confuse with gitlab/github or other user accounts).&lt;/p&gt;
+&lt;p&gt;Due to usually many employers require a specific company credential while communicating with their main repository server, so I figured out that I can have multiple users in same file, but activate each when I need it.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# ~/.gitconfig
+
+[include]
+  # For user, email, ect.
+  ; path = ~/.gitconfig.local   # ; make configuration inactive
+  path = ~/.gitconfig.local_work
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Private configuration
+# ~/.gitconfig.local
+
+[user]
+    name = Maciej Sypień
+    email = firstname.lastname@example.com
+
+[github]
+    user = githubUsername
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Public work configuration
+# ~/.gitconfig.local_work
+
+[user]
+    name = Maciej Sypień
+    email = firstname.lastname@workmail.com
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;This simple solution give me an opportunity to have multiple Git local users with different credentials hidden into files &lt;code&gt;~/.gitconfig.local_&amp;lt;company&amp;gt;&lt;/code&gt; and it can be used for my personal accounts, or for specific employers - the field of usage is almost endless.&lt;/p&gt;
+&lt;p&gt;When I want to switch between different users (for example I am doing something for my personal stuff at weekend and on Monday morning using same laptop begin my work as employer of company ABC) I just commit &lt;code&gt;~/.gitconfig.local&lt;/code&gt; and enable specific config for work &lt;code&gt;~/.gitconfig.local_work&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But hey, no one is infallible, and many times I commit as a wrong user to some repository that I should not commit from personal email address. Therefore, since a while, I wondered:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;"How to disable some not authorized git users to commit in selected local repositories".&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are so many ways how to achieve this task, but I decide to user Git's hooks feature and I wrote simple program, which checks locally enabled Git user's email before a real user will commit.&lt;/p&gt;
+&lt;p&gt;This simple solution may save a lot of your time (and potential rebase) especially when real user (you) have multiple git accounts - for example when you're a freelancer (or project manager) and you need to commit to multiple projects as completely different git user for some reasons.&lt;/p&gt;
+&lt;p&gt;So what might be some solution to this problem?&lt;/p&gt;
 &lt;h3&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Below I present the solution and how to implement this into repository.&lt;/p&gt;
+&lt;p&gt;Below I present some solution and how to implement it using simple pre-commit hook script into any git repository which using git higher then v1.8.4.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -61,8 +119,10 @@ accept_email &lt;span class="s2"&gt;&amp;quot;johndoe@example.com&amp;quot;&lt;/
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
+&lt;p&gt;What it does? Basically before each commit (&lt;code&gt;git commit -m "whatever"&lt;/code&gt;) it checks what are allowed email addresses for this repository and allow or reject user with information that only specific group of emails are allowed to commit in this repository.&lt;/p&gt;
 &lt;h4&gt;Installation&lt;/h4&gt;
-&lt;p&gt;Save above snippet as &lt;code&gt;.git/hooks/pre-commit&lt;/code&gt; into your git repository and &lt;strong&gt;do not forget to make the file executable&lt;/strong&gt; &lt;code&gt;chmod +x .git/hooks/pre-commit&lt;/code&gt;.&lt;/p&gt;</content><category term="git"></category><category term="terminal"></category></entry><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><published>2016-05-16T00:00:00+02:00</published><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:/git-push-guardian.html</id><summary type="html">&lt;!--
+&lt;p&gt;Save above snippet save as &lt;code&gt;.git/hooks/pre-commit&lt;/code&gt; into your git repository and &lt;strong&gt;do not forget to make the file executable&lt;/strong&gt; &lt;code&gt;chmod +x .git/hooks/pre-commit&lt;/code&gt;. Modify the list of email addresses and that's it.&lt;/p&gt;
+&lt;p&gt;Now you can be happy git user with simple pre-commit email guardian :)&lt;/p&gt;</content><category term="git"></category><category term="terminal"></category></entry><entry><title>Git push guardian</title><link href="http://egel.pl/git-push-guardian.html" rel="alternate"></link><published>2016-05-16T00:00:00+02:00</published><updated>2016-05-16T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-05-16:/git-push-guardian.html</id><summary type="html">&lt;!--
 Summary:
 --&gt;
 

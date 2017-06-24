@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - vim</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/vim.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2017-05-03T00:00:00+02:00</updated><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><published>2016-10-10T00:00:00+02:00</published><updated>2017-05-03T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:/how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;I will show you how to compile and install vim from source files.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Egel's Blog - source-files</title><link href="http://egel.pl/" rel="alternate"></link><link href="http://egel.pl/feeds/tag/source-files.atom.xml" rel="self"></link><id>http://egel.pl/</id><updated>2017-05-03T00:00:00+02:00</updated><entry><title>How to install Vim from the source files</title><link href="http://egel.pl/how-to-install-vim-from-the-source-files.html" rel="alternate"></link><published>2016-10-10T00:00:00+02:00</published><updated>2017-05-03T00:00:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2016-10-10:/how-to-install-vim-from-the-source-files.html</id><summary type="html">&lt;p&gt;I will show you how to compile and install vim from source files.
 You will see how simple it can be.&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you reading this article you're probably a Vim user or somebody who has lost. If you're a Vim lady or Vim guy that's great, because I will will say something how to compile your new Vim instance, directly from the source files.&lt;/p&gt;
 &lt;p&gt;You may wonder:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -259,100 +259,4 @@ Linking: gcc   -L. -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-E   -L/u
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;Awesome! Now you are ready to discover the Vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</content><category term="text-editor"></category><category term="vim"></category><category term="linux"></category><category term="source-files"></category><category term="ubuntu"></category></entry><entry><title>Is worth to know the Vim Editor and why?</title><link href="http://egel.pl/is-worth-to-know-the-vim-editor-and-why.html" rel="alternate"></link><published>2015-04-06T10:20:00+02:00</published><updated>2016-07-04T19:30:00+02:00</updated><author><name>Maciej Sypień</name></author><id>tag:egel.pl,2015-04-06:/is-worth-to-know-the-vim-editor-and-why.html</id><summary type="html">&lt;!--
-Summary:    I'll try to gather all my current experience about writing the code, also writing in many text editors and finally express my opinion that is that worth to learn Vi/Vim.
---&gt;
-
-&lt;!--
-&lt;div class="intro-article-image-sm" markdown="1"&gt;
-  ![Logo of Vim]({filename}/images/Vim_logo.png)
-&lt;/div&gt;
---&gt;
-
-&lt;p&gt;This topic has been long on my mind, but in the end I want to share with you with my reflections on the one of the earliest text editors. Yes, I am talking about Vi/Vim.&lt;/p&gt;
-&lt;p&gt;I will also try to answer for a few essential questions for those who …&lt;/p&gt;</summary><content type="html">&lt;!--
-Summary:    I'll try to gather all my current experience about writing the code, also writing in many text editors and finally express my opinion that is that worth to learn Vi/Vim.
---&gt;
-
-&lt;!--
-&lt;div class="intro-article-image-sm" markdown="1"&gt;
-  ![Logo of Vim]({filename}/images/Vim_logo.png)
-&lt;/div&gt;
---&gt;
-
-&lt;p&gt;This topic has been long on my mind, but in the end I want to share with you with my reflections on the one of the earliest text editors. Yes, I am talking about Vi/Vim.&lt;/p&gt;
-&lt;p&gt;I will also try to answer for a few essential questions for those who would like to give it try, like:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Is it worth it to know the Vim editor and why?&lt;/li&gt;
-&lt;li&gt;The knowledge about Vim can be useful for me in real live, and if so, where?&lt;/li&gt;
-&lt;li&gt;Where I should start to quickly become a master ninja of Vim and how long it takes?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Quick review about Vim&lt;/h3&gt;
-&lt;p&gt;If we take some information from popular Wikipedia, we can find out, that Vim is with us since 1991r. Furthermore Vi (the elder brother of Vim) gets the year of 1976. Yeah, it is a lot of time, especially in IT industry!&lt;/p&gt;
-&lt;p&gt;Now, the world takes a lot of changes everyday. Connecting to the Internet network, imprinted a giant leap on software industry, including the software of text editors. There are constantly growing newer and newer text editors projects like:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://www.sublimetext.com/"&gt;Sublime&lt;/a&gt;,&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://notepad-plus-plus.org/"&gt;Notepad++&lt;/a&gt;,&lt;/li&gt;
-&lt;li&gt;or &lt;a href="https://atom.io/"&gt;Atom&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;But, here I won't talk about huge IDEs, like &lt;a href=""&gt;Eclipse&lt;/a&gt;, &lt;a href=""&gt;NetBeans&lt;/a&gt;, &lt;a href=""&gt;VisualStudio&lt;/a&gt;, or &lt;a href=""&gt;JetBrains editors family&lt;/a&gt;. These aren't just common text editors, rather a big &lt;strong&gt;I&lt;/strong&gt;ntegrated &lt;strong&gt;D&lt;/strong&gt;evelopment &lt;strong&gt;E&lt;/strong&gt;nvironments.&lt;/p&gt;
-&lt;p&gt;Now is the time, to ask a question, which finding clear and objective answer can be difficult task.&lt;/p&gt;
-&lt;h3&gt;Is it worth it to know the Vim editor and why?&lt;/h3&gt;
-&lt;p&gt;There is a very good question titled &lt;a href="http://stackoverflow.com/questions/597077/is-learning-vim-worth-the-effort"&gt;Is learning VIM worth the effort?&lt;/a&gt;, that I found on StackOverflow portal. It has a lot fantastic insights and answers about Vim, which I mostly agree. Some opinions may reveal the Vi/Vim religion, which I'm not support. Although I like it very much, I think that fining the reasonable level of application usage is the key.&lt;/p&gt;
-&lt;p&gt;Beside mention of famous StackOverflow article about Vim and its cleaver answers, you may not find clear answer about: "Is this knowledge will give me something in real life". Then probably, you would like to know my personal opinion about Vim. So, &lt;strong&gt;I think it is really worth to know Vim&lt;/strong&gt; and I did not say that, because some other wise men say it so. Learning Vim and get to know how it works, allowed me to better understand some basic aspects how software works a few decades ago (and still do nowadays) when there was no GUI interface or mouse/touchpad, just only console and keyboard to operate.&lt;/p&gt;
-&lt;p&gt;I've also try many text editors before like for example: Emacs, Ed (it's tough!), Mate, Genny, Notepad++, Sublime, Atom and this list is much more long than that, but installation and full configuration of Vim takes me 3 min (downloading my dotfiles and run install - I say about it a bit later).&lt;/p&gt;
-&lt;p&gt;Don't get me wrong, I didn't say that I'm a fanatic of Vim. I very like the Idea it represents and the knowledge about Vim, teach me how to master my IT skills like for example: better servers handling, building better and more sophisticated programs, just simply by understanding how to use it (Vim).&lt;/p&gt;
-&lt;p&gt;Vim also give an ability for a very fluent writing and text editing like any other text editor before for almost any kind of text file I've met. Whether I wrote a program, edit file with unknown extension, configuring some services on remote servers, take notes in markdown or composing my thesis, just anything - Vim will help me to accomplish this tasks perfectly. However this state of joy while writing, appeared to me after some time. You must be aware of it, that if you want feel a real hacking fun of using Vim, you have sacrifice some time to use it.&lt;/p&gt;
-&lt;h3&gt;The pros and cons of Vim&lt;/h3&gt;
-&lt;p&gt;The most popular advantages that stay behind Vim are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;vim is totally free and always will;&lt;/li&gt;
-&lt;li&gt;supports almost any kind of OS you will use;&lt;/li&gt;
-&lt;li&gt;the most configurable of all I've met&lt;ul&gt;
-&lt;li&gt;themes;&lt;/li&gt;
-&lt;li&gt;syntax highlighting;&lt;/li&gt;
-&lt;li&gt;completion;&lt;/li&gt;
-&lt;li&gt;spell checking;&lt;/li&gt;
-&lt;li&gt;regular expressions;&lt;/li&gt;
-&lt;li&gt;sessions (ex: saving state of current tabs);&lt;/li&gt;
-&lt;li&gt;macros;&lt;/li&gt;
-&lt;li&gt;has tons of tested plug-ins for any type action you will do;&lt;/li&gt;
-&lt;li&gt;and many, many more! see &lt;a href="http://vimawesome.com/"&gt;vimawesome.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;you can use it in LUI and GUI version;&lt;/li&gt;
-&lt;li&gt;you can write with it in almost any writing style you like;&lt;/li&gt;
-&lt;li&gt;run with minimal memory usage;&lt;/li&gt;
-&lt;li&gt;can be easily run with multiple instances;&lt;/li&gt;
-&lt;li&gt;optimized to open a very, very, very huge files;&lt;/li&gt;
-&lt;li&gt;works perfectly on slower machines;&lt;/li&gt;
-&lt;li&gt;works well remotely (ex: SSH)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Disadvantages:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;it can be hard to use as IDE;&lt;/li&gt;
-&lt;li&gt;learning curve is difficult for newbies;&lt;/li&gt;
-&lt;li&gt;mastering takes time;&lt;/li&gt;
-&lt;li&gt;find a perfect configuration, which suit your needs, may also take time;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;The knowledge about Vim can be useful for me in real live, and if so, where?&lt;/h3&gt;
-&lt;p&gt;Vim (Vi) is probably the most common text editor spread around world (It is pre-installed by default in almost any kind of machine). This single phrase could be crucial to give it try. But referring to the question, the knowledge about Vim will be useful for you in real live? My answer is &lt;strong&gt;definitely yes&lt;/strong&gt;, in fact that you will bind your live with some kind of IT or educational sector. In other way this knowledge is worth a lot (because not everyone knows Vim!), but probably it won't be appreciated by the environment co-workers or your boss. Shame!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Why is that?&lt;/strong&gt; In my opinion, if your are really interested in network administration, programming or other related field with IT sector, you probably will have to deal with some kind of servers. Usually these kind of staff is stored far away from you (or locked) and can be manage only remotely for ex.: SSH. In these moment any kind of pleasant GUI disappear and you stay alone with blinking console of terminal. For newbies the difficulties begins with some magic that is hidden into terminal console, which in time is forged to daily basics.&lt;/p&gt;
-&lt;p&gt;When you will work with servers, in most cases you will have opportunity to open only Vim, because for example a "funny" admin forecast only this way input (that is actually a real situation from my IT career). For the lazies, sometime you can meet trivial &lt;a href="http://www.nano-editor.org/"&gt;Nano&lt;/a&gt;, but it is best only for simple editing. This kind of real live situation should not rise heart attack, when you know the basics of Vi/Vim. In time, by the practice of using Vim, you will understand and start enjoy working with it - just as I did, and many before me. If you not believe me, so google it ;)&lt;/p&gt;
-&lt;p&gt;I realize, that may sound a bit childish, but this childishness disappears from the face of people that watching you when you suddenly switching between dozen of terminal windows (ex.: tmux/vim). In this moment they might begin to believe and you can hear something like: "Ok, you have some skill" ;)&lt;/p&gt;
-&lt;div class="embed-responsive embed-responsive-16by9"&gt;
-  &lt;iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VZar4VSP0P0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;h3&gt;Where I should start to quickly become a master ninja of Vim and how long it takes?&lt;/h3&gt;
-&lt;p&gt;Practice, this is where you should start. And yes, there is no other quick way I know, if you want to get used to the hero of this article.&lt;/p&gt;
-&lt;p&gt;At the beginning, there are always some basic questions, ie.: &lt;em&gt;how to install Vim?&lt;/em&gt;. A bit later, after the first run, you will notice that the look of Vim does not knock on knees, and even then you find that: "After all, there is nothing at all! Why every one say, that Vim it is the best. No, hell no!!!".&lt;/p&gt;
-&lt;p&gt;If at this point your patience is not completely exhausted, the next step is keyboard controls and customize them to suit your needs (as you progress through learning).&lt;/p&gt;
-&lt;p&gt;The last of the steps, which substantially simultaneously intertwined with learning keyboard controls and general customization, that great power of this editor lay in its configuration (the &lt;code&gt;~/.vimrc&lt;/code&gt; file). You will discover over time a lot of interesting things about Vim (modes, buffers, plugins), as well as the possibility of efficient typing on a keyboard, since the default layout of Vim keyboard controls is not shaped by accident ;)&lt;/p&gt;
-&lt;p&gt;In fact, this is the end. The only thing you need to do is to try to use Vim as far as possible, and as often as you can. In a relatively short period of time (it took me about a week to get used to it and two months to become addicted to it) you can master it in sufficient detail to enable a rapid and smooth operations.&lt;/p&gt;
-&lt;p&gt;The following slight digression comparing &lt;strong&gt;effort&lt;/strong&gt; (Y axis) and &lt;strong&gt;time&lt;/strong&gt; (X axis) that must be put into a selective group of text editors. As you can see the most interesting curves of all are presented by curves of Emacs and Vim.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Learning curve of some text editors" src="http://egel.pl/images/text_editors.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;However I cannot leave you without any kind of further hint or help. So for the beginners, (and also advanced hackers) I can recommend you my &lt;a href="https://github.com/egel/dot-files"&gt;&lt;code&gt;dotfiles&lt;/code&gt;&lt;/a&gt; github repository, which I've made a while ago also for this kind of situations. Among other stuff, it stores my Vim configuration, so it is a good start to gets your own nice configuration.&lt;/p&gt;
-&lt;p&gt;This repository I've made specially for my Linux OS (mainly based on Debian, like Ubuntu, XUbuntu, Mint and so on), it also can be used for any other system, but have to be installed manually. In near future It will also support Macs! ;)&lt;/p&gt;
-&lt;p&gt;This repository also contains my keyboard shortcuts in beautiful PDF to download, print or modify by your self in your own fork. Yeah!&lt;/p&gt;
-&lt;p&gt;Thank you for staying with me to the end. Now, give Vim a try, leave a comment and say fresh!&lt;/p&gt;</content><category term="vim"></category><category term="text-editor"></category></entry></feed>
+&lt;p&gt;Awesome! Now you are ready to discover the Vim! Good luck hacker! See you on the grid ;)&lt;/p&gt;</content><category term="text-editor"></category><category term="vim"></category><category term="linux"></category><category term="source-files"></category><category term="ubuntu"></category></entry></feed>
